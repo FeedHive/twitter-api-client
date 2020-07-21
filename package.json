@@ -1,0 +1,45 @@
+{
+  "name": "twitter-api-client",
+  "version": "0.0.1",
+  "description": "Node.js / JavaScript client for Twitter API",
+  "main": "dist/index.js",
+  "scripts": {
+    "prestart": "npm run build",
+    "start": "serverless offline",
+    "build": "tsc"
+  },
+  "files": [
+    "dist/*"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FeedHive/twitter-api-client.git"
+  },
+  "keywords": [
+    "node.js",
+    "javascript",
+    "twitter",
+    "api"
+  ],
+  "author": "FeedHype",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FeedHive/twitter-api-client/issues"
+  },
+  "homepage": "https://github.com/FeedHive/twitter-api-client#readme",
+  "dependencies": {
+    "@types/node": "^13.11.1",
+    "@types/oauth": "^0.9.1",
+    "oauth": "^0.9.15",
+    "typescript": "^3.8.3"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-react": "^7.19.0",
+    "@typescript-eslint/parser": "^2.27.0",
+    "@typescript-eslint/eslint-plugin": "^2.27.0",
+    "serverless-offline": "^6.4.0"
+  }
+}
