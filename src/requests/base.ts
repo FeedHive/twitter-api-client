@@ -1,5 +1,4 @@
 import OAuth from 'oauth';
-import { IncomingMessage } from 'http';
 import IClientOptions from '../interfaces/IClientOptions';
 import { formatURL } from '../utils/formatURL';
 import Cache from '../services/Cache';
@@ -30,7 +29,7 @@ export const setOptions = (options: IClientOptions) => {
   }
 };
 
-export const doGetRequest = async (url: string) => {
+export const doGetRequest = async <T>(url: string): Promise<T> => {
   if (!oauth || !credentials) {
     throw Error('Unable to make request. Authentication has not been established');
   }
@@ -46,10 +45,7 @@ export const doGetRequest = async (url: string) => {
       formattedUrl,
       credentials.accessToken,
       credentials.accessTokenSecret,
-      (
-        err: { statusCode: number; data?: any },
-        body?: string | Buffer,
-      ) => {
+      (err: { statusCode: number; data?: any }, body?: string | Buffer) => {
         if (err) {
           reject(err);
           return;
@@ -68,7 +64,7 @@ export const doGetRequest = async (url: string) => {
   });
 };
 
-export const doPostRequest = async (url: string, body?: any) => {
+export const doPostRequest = async <T>(url: string, body?: any): Promise<T> => {
   if (!oauth || !credentials) {
     throw Error('Unable to make request. Authentication has not been established');
   }
@@ -82,11 +78,7 @@ export const doPostRequest = async (url: string, body?: any) => {
       credentials.accessTokenSecret,
       body,
       'application/x-www-form-urlencoded',
-      (
-        err: { statusCode: number; data?: any },
-        body?: string | Buffer,
-        response?: IncomingMessage,
-      ) => {
+      (err: { statusCode: number; data?: any }, body?: string | Buffer) => {
         if (err) {
           reject(err);
           return;

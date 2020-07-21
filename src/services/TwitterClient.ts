@@ -1,15 +1,11 @@
-import ITweet from '../interfaces/ITweet';
-import ITwitterUser from '../interfaces/ITwitterUser';
 import IClientOptions from '../interfaces/IClientOptions';
 import { setOptions } from '../requests/base';
+import * as accountsAndUsers from '../requests/accountsAndUsers';
 import {
-  getAssociatedUsers,
-  getUserFromID,
-  handleFriendship,
-  getTweetCollection,
-  getTweetsFromSearch,
-  likeTweetGivenID,
-} from '../requests/requests';
+  UserIdOrScreenName,
+  IParameterWithId,
+  IParameterWithQuery,
+} from '../interfaces/GenericTypes';
 
 class TwitterRequester {
   /**
@@ -36,76 +32,131 @@ class TwitterRequester {
     setOptions(options);
   }
 
+  // Accounts And Users
+
   /**
-   * Get all followers associated with Twitter account
+   * Returns settings (including current trend, geo and sleep time information) for the authenticating user.
+   *
+   * @link https://developer.twitter.com/en/docs/accounts-and-users/manage-account-settings/api-reference/get-account-settings
    */
-  public async getFollowers(): Promise<string[]> {
-    return getAssociatedUsers('followers');
+  public async accountSettings() {
+    return accountsAndUsers.accountSettings();
   }
 
   /**
-   * Get all friends associated with Twitter account
+   * Returns a representation of the requesting user if authentication was successful.
+   * Use this method to test if supplied user credentials are valid.
+   *
+   * @link https://developer.twitter.com/en/docs/accounts-and-users/manage-account-settings/api-reference/get-account-verify_credentials
+   * @param parameters
    */
-  public async getFriends(): Promise<string[]> {
-    return getAssociatedUsers('friends');
+  public async accountVerifyCredentials(
+    parameters?: accountsAndUsers.IAccountVerifyCrendetialsParams,
+  ) {
+    return accountsAndUsers.accountVerifyCredentials(parameters);
   }
 
   /**
-   * Get a twitter user
-   * @param userID ID of twitter user
+   * Returns a map of the available size variations of the specified user's profile banner.
+   *
+   * @link https://developer.twitter.com/en/docs/accounts-and-users/manage-account-settings/api-reference/get-users-profile_banner
+   * @param paramaters
    */
-  public async getUser(userID: string): Promise<ITwitterUser | null> {
-    return getUserFromID(userID);
+  public async usersProfileBanner(parameters: UserIdOrScreenName) {
+    return accountsAndUsers.usersProfileBanner(parameters);
   }
 
   /**
-   * Follow a twitter user
-   * @param userID ID of twitter user to follow
+   * Returns the authenticated user's saved search queries.
+   *
+   * @link https://developer.twitter.com/en/docs/accounts-and-users/manage-account-settings/api-reference/get-saved_searches-list
    */
-  public async followUser(userID: string): Promise<ITwitterUser | null> {
-    return handleFriendship(userID, 'create');
+  public async savedSearchesList() {
+    return accountsAndUsers.savedSearchesList();
   }
 
   /**
-   * Unfollow a twitter user
-   * @param userID ID of twitter user to unfollow
+   * Retrieve the information for the saved search represented by the given id.
+   * The authenticating user must be the owner of saved search ID being requested.
+   *
+   * @link https://developer.twitter.com/en/docs/accounts-and-users/manage-account-settings/api-reference/get-saved_searches-show-id
+   * @param parameters
    */
-  public async unfollowUser(userID: string): Promise<ITwitterUser | null> {
-    return handleFriendship(userID, 'destroy');
+  public async savedSearchesShow(parameters: IParameterWithId) {
+    return accountsAndUsers.savedSearchesShow(parameters);
   }
 
   /**
-   * Get most recent tweets from a user
-   * @param userID ID of user to get tweets from
-   * @param count The amount of recent tweets to get
+   * Removes the uploaded profile banner for the authenticating user.
+   *
+   * @link https://developer.twitter.com/en/docs/accounts-and-users/manage-account-settings/api-reference/post-account-remove_profile_banner
    */
-  public async getRecentTweets(userID: string, count?: number): Promise<ITweet[]> {
-    return getTweetCollection(userID, count);
+  public async accountRemoveProfileBanner() {
+    return accountsAndUsers.accountRemoveProfileBanner();
   }
 
   /**
-   * Get most recent tweets from authenticated user
-   * @param count
+   * Updates the authenticating user's settings.
+   *
+   * @link https://developer.twitter.com/en/docs/accounts-and-users/manage-account-settings/api-reference/post-account-settings
+   * @param parameters
    */
-  public async getMyRecentTweets(count?: number): Promise<ITweet[]> {
-    return getTweetCollection(process.env.TWITTER_ID || '', count);
+  public async accountUpdateSettings(parameters?: accountsAndUsers.IAccountSettingsParams) {
+    return accountsAndUsers.accountUpdateSettings(parameters);
   }
 
   /**
-   * Get a list of relevant tweets
-   * @param query Search word
-   * @param count The amount of tweets to get
+   * Sets some values that users are able to set under the "Account" tab of their settings page. Only the parameters specified will be updated.
+   *
+   * @link https://developer.twitter.com/en/docs/accounts-and-users/manage-account-settings/api-reference/post-account-update_profile
+   * @param parameters
    */
-  public async getRelevantTweets(query: string, count?: number): Promise<ITweet[]> {
-    return getTweetsFromSearch(query, count);
+  public async accountUpdateProfile(parameters?: accountsAndUsers.IAccountUpdateProfileParams) {
+    return accountsAndUsers.accountUpdateProfile(parameters);
   }
 
   /**
-   * Like a tweet
-   * @param tweetID tweet to like
+   * Uploads a profile banner on behalf of the authenticating user.
+   *
+   * @link https://developer.twitter.com/en/docs/accounts-and-users/manage-account-settings/api-reference/post-account-update_profile_banner
+   * @param parameters
    */
-  public async likeTweet(tweetID: string): Promise<void> {
-    likeTweetGivenID(tweetID);
+  public async accountUpdateProfileBanner(
+    parameters: accountsAndUsers.IAccountUpdateProfileBannerParams,
+  ) {
+    return accountsAndUsers.accountUpdateProfileBanner(parameters);
+  }
+
+  /**
+   * Updates the authenticating user's profile image. Note that this method expects raw multipart data, not a URL to an image.
+   *
+   * @link https://developer.twitter.com/en/docs/accounts-and-users/manage-account-settings/api-reference/post-account-update_profile_image
+   * @param parameters
+   */
+  public async accountUpdateProfileImage(
+    parameters: accountsAndUsers.IAccountUpdateProfileImageParams,
+  ) {
+    return accountsAndUsers.accountUpdateProfileImage(parameters);
+  }
+
+  /**
+   * reate a new saved search for the authenticated user. A user may only have 25 saved searches.
+   *
+   * @link https://developer.twitter.com/en/docs/accounts-and-users/manage-account-settings/api-reference/post-saved_searches-create
+   * @param parameters
+   */
+  public async accountSavedSearchesCreate(parameters: IParameterWithQuery) {
+    return accountsAndUsers.accountSavedSearchesCreate(parameters);
+  }
+
+  /**
+   * Destroys a saved search for the authenticating user. The authenticating user must be the owner of saved search id being destroyed.
+   *
+   * @link https://developer.twitter.com/en/docs/accounts-and-users/manage-account-settings/api-reference/post-saved_searches-destroy-id
+   * @param parameters
+   */
+  public async accountSavedSearchesDestroy(parameters: IParameterWithId) {
+    return accountsAndUsers.accountSavedSearchesDestroy(parameters);
   }
 }
 
