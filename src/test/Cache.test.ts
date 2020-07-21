@@ -15,7 +15,7 @@ describe('requests - GitHubCache', () => {
     cache.add('mock-query', result);
 
     const cachedResult = cache.get('mock-query');
-    expect(cachedResult.data).toEqual(result);
+    expect(cachedResult).toEqual(result);
   });
 
   it('does not use cache when ttl has expired', () => {
