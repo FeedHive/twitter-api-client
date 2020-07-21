@@ -145,8 +145,8 @@ class TwitterRequester {
    * @link https://developer.twitter.com/en/docs/accounts-and-users/manage-account-settings/api-reference/post-saved_searches-create
    * @param parameters
    */
-  public async accountSavedSearchesCreate(parameters: IParameterWithQuery) {
-    return accountsAndUsers.accountSavedSearchesCreate(parameters);
+  public async savedSearchesCreate(parameters: IParameterWithQuery) {
+    return accountsAndUsers.savedSearchesCreate(parameters);
   }
 
   /**
@@ -155,8 +155,8 @@ class TwitterRequester {
    * @link https://developer.twitter.com/en/docs/accounts-and-users/manage-account-settings/api-reference/post-saved_searches-destroy-id
    * @param parameters
    */
-  public async accountSavedSearchesDestroy(parameters: IParameterWithId) {
-    return accountsAndUsers.accountSavedSearchesDestroy(parameters);
+  public async savedSearchesDestroy(parameters: IParameterWithId) {
+    return accountsAndUsers.savedSearchesDestroy(parameters);
   }
 }
 

@@ -16,12 +16,12 @@ export interface IAccountVerifyCrendetialsParams {
 }
 
 export interface IAccountSettingsParams {
-  sleep_time_enabled: true;
-  start_sleep_time: number;
-  end_sleep_time: number;
-  trend_location_woeid: number;
-  time_zone: string;
-  lang: string;
+  sleep_time_enabled?: true;
+  start_sleep_time?: number;
+  end_sleep_time?: number;
+  trend_location_woeid?: number;
+  time_zone?: string;
+  lang?: string;
 }
 
 export interface IAccountUpdateProfileParams {
@@ -169,10 +169,10 @@ export const accountUpdateProfileImage = async (parameters: IAccountUpdateProfil
   );
 };
 
-export const accountSavedSearchesCreate = async (parameters: IParameterWithQuery) => {
+export const savedSearchesCreate = async (parameters: IParameterWithQuery) => {
   return doPostRequest<ISavedSearch>(`saved_searches/create.json?query=${parameters.query}`);
 };
 
-export const accountSavedSearchesDestroy = async (parameters: IParameterWithId) => {
+export const savedSearchesDestroy = async (parameters: IParameterWithId) => {
   return doPostRequest<ISavedSearch>(`saved_searches/destroy/${parameters.id}.json`);
 };
