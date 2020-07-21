@@ -1,9 +1,8 @@
-import IAPICredentials from './interfaces/IAPICredentials';
 import ITwitterUser from './interfaces/ITwitterUser';
 import ITweet from './interfaces/ITweet';
 
-import TwitterClient from './TwitterClient';
+import TwitterClient from './services/TwitterClient';
 
-export { IAPICredentials, ITwitterUser, ITweet };
+export { ITwitterUser, ITweet };
 
 export default TwitterClient;

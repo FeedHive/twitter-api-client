@@ -1,14 +1,16 @@
 import OAuth from 'oauth';
 import { IncomingMessage } from 'http';
-import IAPICredentials from '../interfaces/IAPICredentials';
+import IClientOptions from '../interfaces/IClientOptions';
 import { formatURL } from '../utils/formatURL';
+import Cache from '../services/Cache';
 
 let oauth: OAuth.OAuth;
-let credentials: IAPICredentials;
+let cache: Cache;
+let credentials: IClientOptions;
 
-export const setCredentials = (apiCredentials: IAPICredentials) => {
+export const setOptions = (options: IClientOptions) => {
   if (!credentials) {
-    credentials = apiCredentials;
+    credentials = options;
   }
 
   if (!oauth) {
@@ -22,11 +24,19 @@ export const setCredentials = (apiCredentials: IAPICredentials) => {
       'HMAC-SHA1',
     );
   }
+
+  if (!options?.disableCache) {
+    cache = new Cache(options?.ttl, options.maxByteSize);
+  }
 };
 
-export const doGetRequest = async (url: string): Promise<string | Buffer> => {
+export const doGetRequest = async (url: string) => {
   if (!oauth || !credentials) {
     throw Error('Unable to make request. Authentication has not been established');
+  }
+
+  if (cache?.has(url)) {
+    return cache.get(url);
   }
 
   return new Promise((resolve, reject) => {
@@ -39,23 +49,26 @@ export const doGetRequest = async (url: string): Promise<string | Buffer> => {
       (
         err: { statusCode: number; data?: any },
         body?: string | Buffer,
-        response?: IncomingMessage,
       ) => {
         if (err) {
           reject(err);
+          return;
         }
 
-        if (response?.statusCode !== 200) {
-          reject(`Response code: ${response?.statusCode}`);
+        if (!body) {
+          return;
         }
 
-        resolve(body);
+        const result = JSON.parse(body.toString());
+
+        cache?.add(url, result);
+        resolve(result);
       },
     );
   });
 };
 
-export const doPostRequest = async (url: string, body?: any): Promise<string | Buffer> => {
+export const doPostRequest = async (url: string, body?: any) => {
   if (!oauth || !credentials) {
     throw Error('Unable to make request. Authentication has not been established');
   }
@@ -76,13 +89,15 @@ export const doPostRequest = async (url: string, body?: any): Promise<string | B
       ) => {
         if (err) {
           reject(err);
+          return;
         }
 
-        if (response?.statusCode !== 200) {
-          reject(`Response code: ${response?.statusCode}`);
+        if (!body) {
+          return;
         }
 
-        resolve(body);
+        const result = JSON.parse(body.toString());
+        resolve(result);
       },
     );
   });

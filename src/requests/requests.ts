@@ -10,7 +10,7 @@ export const getAssociatedUsers = async (
     const result = await doGetRequest(
       `${type}/ids.json?count=5000&stringify_ids=true&cursor=${cursor}`,
     );
-    const parsedResult = JSON.parse(result.toString()) as ITwitterIdListResult;
+    const parsedResult = result as ITwitterIdListResult;
 
     if (parsedResult.next_cursor) {
       const additionalUsers = await getAssociatedUsers(type, parsedResult.next_cursor);
@@ -28,7 +28,7 @@ export const getUserFromID = async (userID: string): Promise<ITwitterUser | null
   try {
     const result = await doGetRequest(`users/lookup.json?stringify_ids=true&user_id=${userID}`);
 
-    const parsedResult = JSON.parse(result.toString()) as ITwitterUser[];
+    const parsedResult = result as ITwitterUser[];
     return parsedResult[0];
   } catch (err) {
     console.error(err);
@@ -43,7 +43,7 @@ export const handleFriendship = async (
   try {
     const result = await doPostRequest(`friendships/${type}.json?user_id=${userID}`);
 
-    return JSON.parse(result.toString()) as ITwitterUser;
+    return result as ITwitterUser;
   } catch (err) {
     console.error(err);
     return null;
@@ -60,7 +60,7 @@ export const getTweetCollection = async (
       `statuses/user_timeline.json?user_id=${userID}&count=${count}&exclude_replies=true&include_rts=${includeRetweets}`,
     );
 
-    return JSON.parse(result.toString()) as ITweet[];
+    return result as ITweet[];
   } catch (err) {
     console.error(err);
     return [];
@@ -76,7 +76,7 @@ export const getTweetsFromSearch = async (
       `search/tweets.json?q=${query}&count=${count}&lang=en&include_entities=false&tweet_mode=extended`,
     );
 
-    return JSON.parse(result.toString()).statuses as ITweet[];
+    return result.statuses as ITweet[];
   } catch (err) {
     console.error(err);
     return [];

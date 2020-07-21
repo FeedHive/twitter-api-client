@@ -1,12 +1,12 @@
 {
   "name": "twitter-api-client",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Node.js / JavaScript client for Twitter API",
   "main": "dist/index.js",
   "scripts": {
     "prestart": "npm run build",
-    "start": "serverless offline",
-    "build": "tsc"
+    "build": "tsc",
+    "test": "jest"
   },
   "files": [
     "dist/*"
@@ -21,25 +21,42 @@
     "twitter",
     "api"
   ],
-  "author": "FeedHype",
+  "author": "FeedHive",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/FeedHive/twitter-api-client/issues"
   },
   "homepage": "https://github.com/FeedHive/twitter-api-client#readme",
   "dependencies": {
-    "@types/node": "^13.11.1",
-    "@types/oauth": "^0.9.1",
+    "@sinonjs/fake-timers": "^6.0.1",
+    "jest": "^26.1.0",
     "oauth": "^0.9.15",
+    "object-sizeof": "^1.6.1",
+    "ts-jest": "^26.1.3",
     "typescript": "^3.8.3"
   },
   "devDependencies": {
+    "@types/jest": "^26.0.5",
+    "@types/node": "^13.11.1",
+    "@types/oauth": "^0.9.1",
+    "@types/sinonjs__fake-timers": "^6.0.1",
+    "@typescript-eslint/parser": "^2.27.0",
+    "@typescript-eslint/eslint-plugin": "^2.27.0",
     "eslint": "^6.8.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-react": "^7.19.0",
-    "@typescript-eslint/parser": "^2.27.0",
-    "@typescript-eslint/eslint-plugin": "^2.27.0",
-    "serverless-offline": "^6.4.0"
+    "eslint-plugin-react": "^7.19.0"
+  },
+  "jest": {
+    "roots": [
+      "<rootDir>/src"
+    ],
+    "testMatch": [
+      "**/?(*.)+(spec|test).+(ts|tsx|js)"
+    ],
+    "transform": {
+      "^.+\\.(ts|tsx)$": "ts-jest"
+    },
+    "collectCoverage": true
   }
 }

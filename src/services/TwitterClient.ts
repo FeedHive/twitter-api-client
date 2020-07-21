@@ -1,5 +1,7 @@
-import ITweet from './interfaces/ITweet';
-import ITwitterUser from './interfaces/ITwitterUser';
+import ITweet from '../interfaces/ITweet';
+import ITwitterUser from '../interfaces/ITwitterUser';
+import IClientOptions from '../interfaces/IClientOptions';
+import { setOptions } from '../requests/base';
 import {
   getAssociatedUsers,
   getUserFromID,
@@ -7,33 +9,31 @@ import {
   getTweetCollection,
   getTweetsFromSearch,
   likeTweetGivenID,
-} from './requests/requests';
-import IAPICredentials from './interfaces/IAPICredentials';
-import { setCredentials } from './requests/base';
+} from '../requests/requests';
 
 class TwitterRequester {
   /**
-   * Provide Twitter API Credentials
-   * @param credentials
+   * Provide Twitter API Credentials and options
+   * @param options
    */
-  constructor(credentials: IAPICredentials) {
-    if (!credentials.apiKey) {
+  constructor(options: IClientOptions) {
+    if (!options.apiKey) {
       throw Error('API KEY needs to be provided.');
     }
 
-    if (!credentials.apiSecret) {
+    if (!options.apiSecret) {
       throw Error('API SECRET needs to be provided.');
     }
 
-    if (!credentials.accessToken) {
+    if (!options.accessToken) {
       throw Error('ACCESS TOKEN needs to be provided.');
     }
 
-    if (!credentials.accessTokenSecret) {
+    if (!options.accessTokenSecret) {
       throw Error('ACCESS TOKEN SECRET needs to be provided.');
     }
 
-    setCredentials(credentials);
+    setOptions(options);
   }
 
   /**
