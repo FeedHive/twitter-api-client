@@ -2,8 +2,10 @@
 
 Node.js / JavaScript client for Twitter API
 
+![](https://i.imgur.com/NfnLHIM.png)
+
 [![NPM Version](https://img.shields.io/npm/v/twitter-api-client)](https://www.npmjs.com/package/twitter-api-client)
-![GitHub](https://img.shields.io/github/license/FeedHive/twitter-api-client)
+![License](https://img.shields.io/github/license/Silind/Hue-Debugger-UI.svg)
 ![Build Status](https://github.com/FeedHive/twitter-api-client/workflows/build/badge.svg)
 
 ## Table of content
@@ -15,6 +17,11 @@ Node.js / JavaScript client for Twitter API
 - [Contribute](#contribute)
 
 ## Getting Started
+
+### Features
+☑️ Includes 90% of the official Twitter API endpoints.  
+☑️ Fully typed. Both for query parameters and return types.  
+☑️ Inbuilt in-memory cache for rate-limit friendly usage.  
 
 ### Install
 ```console
