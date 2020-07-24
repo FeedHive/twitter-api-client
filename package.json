@@ -1,6 +1,6 @@
 {
   "name": "twitter-api-client",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "description": "Node.js / JavaScript client for Twitter API",
   "main": "dist/index.js",
   "scripts": {
@@ -40,8 +40,8 @@
     "@types/node": "^13.11.1",
     "@types/oauth": "^0.9.1",
     "@types/sinonjs__fake-timers": "^6.0.1",
-    "@typescript-eslint/parser": "^2.27.0",
     "@typescript-eslint/eslint-plugin": "^2.27.0",
+    "@typescript-eslint/parser": "^2.27.0",
     "eslint": "^6.8.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
