@@ -18,7 +18,7 @@ class BasicsClient {
    * @link https://developer.twitter.com/en/docs/basics/authentication/api-reference/authenticate
    * @param parameters
    */
-  public async oauthAuthenticate(parameters: OauthAuthenticateParams) {
+  public async oauthAuthenticate(parameters?: OauthAuthenticateParams) {
     const params = createParams(parameters);
     return await doGetRequest('https://api.twitter.com/oauth/authenticate' + params);
   }
@@ -29,7 +29,7 @@ class BasicsClient {
    * @link https://developer.twitter.com/en/docs/basics/authentication/api-reference/authorize
    * @param parameters
    */
-  public async oauthAuthorize(parameters: OauthAuthorizeParams) {
+  public async oauthAuthorize(parameters?: OauthAuthorizeParams) {
     const params = createParams(parameters);
     return await doGetRequest('https://api.twitter.com/oauth/authorize' + params);
   }

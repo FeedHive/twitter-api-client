@@ -167,7 +167,7 @@ class TweetsClient {
    * @link https://developer.twitter.com/en/docs/tweets/timelines/api-reference/get-statuses-home_timeline
    * @param parameters
    */
-  public async statusesHomeTimeline(parameters: StatusesHomeTimelineParams) {
+  public async statusesHomeTimeline(parameters?: StatusesHomeTimelineParams) {
     const params = createParams(parameters);
     return await doGetRequest<StatusesHomeTimeline>('https://api.twitter.com/1.1/statuses/home_timeline.json' + params);
   }
@@ -178,7 +178,7 @@ class TweetsClient {
    * @link https://developer.twitter.com/en/docs/tweets/timelines/api-reference/get-statuses-mentions_timeline
    * @param parameters
    */
-  public async statusesMentionsTimeline(parameters: StatusesMentionsTimelineParams) {
+  public async statusesMentionsTimeline(parameters?: StatusesMentionsTimelineParams) {
     const params = createParams(parameters);
     return await doGetRequest<StatusesMentionsTimeline[]>('https://api.twitter.com/1.1/statuses/mentions_timeline.json' + params);
   }
@@ -189,7 +189,7 @@ class TweetsClient {
    * @link https://developer.twitter.com/en/docs/tweets/timelines/api-reference/get-statuses-user_timeline
    * @param parameters
    */
-  public async statusesUserTimeline(parameters: StatusesUserTimelineParams) {
+  public async statusesUserTimeline(parameters?: StatusesUserTimelineParams) {
     const params = createParams(parameters);
     return await doGetRequest<StatusesUserTimeline[]>('https://api.twitter.com/1.1/statuses/user_timeline.json' + params);
   }
@@ -200,7 +200,7 @@ class TweetsClient {
    * @link https://developer.twitter.com/en/docs/tweets/post-and-engage/api-reference/get-favorites-list
    * @param parameters
    */
-  public async favoritesList(parameters: FavoritesListParams) {
+  public async favoritesList(parameters?: FavoritesListParams) {
     const params = createParams(parameters);
     return await doGetRequest<FavoritesList[]>('https://api.twitter.com/1.1/favorites/list.json' + params);
   }
@@ -242,7 +242,7 @@ class TweetsClient {
    * @link https://developer.twitter.com/en/docs/tweets/post-and-engage/api-reference/get-statuses-retweets_of_me
    * @param parameters
    */
-  public async statusesRetweetsOfMe(parameters: StatusesRetweetsOfMeParams) {
+  public async statusesRetweetsOfMe(parameters?: StatusesRetweetsOfMeParams) {
     const params = createParams(parameters);
     return await doGetRequest<StatusesRetweetsOfMe[]>('https://api.twitter.com/1.1/statuses/retweets_of_me.json' + params);
   }

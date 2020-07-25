@@ -1310,73 +1310,115 @@ Users have the ability to remove all geotags from all their Tweets en masse via 
 https://developer.twitter.com/en/docs/tweets/post-and-engage/api-reference/post-statuses-update  
   
 ## DirectMessages
-### `TwitterClient.directMessages.customProfilesById()`
+### `TwitterClient.directMessages.customProfilesById(parameters)`
 #### Description
 Returns a custom profile that was created with POST custom_profiles/new.json.
 
+#### Parameters
+
+| Name | Required | type |
+| ---- | -------- | ---- |
+| id | true | string |
   
 #### Link
 https://developer.twitter.com/en/docs/direct-messages/custom-profiles/api-reference/get-profile  
   
-### `TwitterClient.directMessages.directMessagesEventsShow()`
+### `TwitterClient.directMessages.directMessagesEventsShow(parameters)`
 #### Description
 
 Returns a single Direct Message event by the given id.
 
+#### Parameters
+
+| Name | Required | type |
+| ---- | -------- | ---- |
+| id | true | string |
   
 #### Link
 https://developer.twitter.com/en/docs/direct-messages/sending-and-receiving/api-reference/get-event  
   
-### `TwitterClient.directMessages.directMessagesEventsNewMessageCreate()`
+### `TwitterClient.directMessages.directMessagesEventsNewMessageCreate(parameters)`
 #### Description
 
 Publishes a new message_create event resulting in a Direct Message sent to a specified user from the authenticating user. Returns an event if successful. Supports publishing Direct Messages with optional Quick Reply and media attachment. Replaces behavior currently provided by POST direct_messages/new.Requires a JSON POST body and Content-Type header to be set to application/json. Setting Content-Length may also be required if it is not automatically.
 
+#### Parameters
+
+| Name | Required | type |
+| ---- | -------- | ---- |
+| id | true | string |
+| data | true | string |
   
 #### Link
 https://developer.twitter.com/en/docs/direct-messages/sending-and-receiving/api-reference/new-event  
   
-### `TwitterClient.directMessages.directMessagesIndicateTyping()`
+### `TwitterClient.directMessages.directMessagesIndicateTyping(parameters)`
 #### Description
 
 Displays a visual typing indicator in the recipient’s Direct Message conversation view with the sender. Each request triggers a typing indicator animation with a duration of ~3 seconds.
 
+#### Parameters
+
+| Name | Required | type |
+| ---- | -------- | ---- |
+| recipient_id | true | string |
   
 #### Link
 https://developer.twitter.com/en/docs/direct-messages/typing-indicator-and-read-receipts/api-reference/new-typing-indicator  
   
-### `TwitterClient.directMessages.directMessagesWelcomeMessagesRulesShow()`
+### `TwitterClient.directMessages.directMessagesWelcomeMessagesRulesShow(parameters)`
 #### Description
 
 Returns a Welcome Message Rule by the given id.
 
+#### Parameters
+
+| Name | Required | type |
+| ---- | -------- | ---- |
+| id | true | string |
   
 #### Link
 https://developer.twitter.com/en/docs/direct-messages/welcome-messages/api-reference/get-welcome-message-rule  
   
-### `TwitterClient.directMessages.directMessagesWelcomeMessagesShow()`
+### `TwitterClient.directMessages.directMessagesWelcomeMessagesShow(parameters)`
 #### Description
 
 Returns a Welcome Message by the given id.
 
+#### Parameters
+
+| Name | Required | type |
+| ---- | -------- | ---- |
+| id | true | string |
   
 #### Link
 https://developer.twitter.com/en/docs/direct-messages/welcome-messages/api-reference/get-welcome-message  
   
-### `TwitterClient.directMessages.directMessagesWelcomeMessagesNew()`
+### `TwitterClient.directMessages.directMessagesWelcomeMessagesNew(parameters)`
 #### Description
 
 Creates a new Welcome Message that will be stored and sent in the future from the authenticating user in defined circumstances. Returns the message template if successful. Supports publishing with the same elements as Direct Messages (e.g. Quick Replies, media attachments).Requires a JSON POST body and Content-Type header to be set to application/json. Setting Content-Length may also be required if it is not automatically.See the Welcome Messages overview to learn how to work with Welcome Messages.
 
+#### Parameters
+
+| Name | Required | type |
+| ---- | -------- | ---- |
+| message_data | true | string |
+| name | false | string |
   
 #### Link
 https://developer.twitter.com/en/docs/direct-messages/welcome-messages/api-reference/new-welcome-message  
   
-### `TwitterClient.directMessages.directMessagesWelcomeMessagesRulesNew()`
+### `TwitterClient.directMessages.directMessagesWelcomeMessagesRulesNew(parameters)`
 #### Description
 
 Creates a new Welcome Message Rule that determines which Welcome Message will be shown in a given conversation. Returns the created rule if successful.Requires a JSON POST body and Content-Type header to be set to application/json. Setting Content-Length may also be required if it is not automatically.Additional rule configurations are forthcoming. For the initial beta release, the most recently created Rule will always take precedence, and the assigned Welcome Message will be displayed in the conversation.See the Welcome Messages overview to learn how to work with Welcome Messages.
 
+#### Parameters
+
+| Name | Required | type |
+| ---- | -------- | ---- |
+| welcome_message_id | true | string |
   
 #### Link
 https://developer.twitter.com/en/docs/direct-messages/welcome-messages/api-reference/new-welcome-message-rule  

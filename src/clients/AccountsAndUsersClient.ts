@@ -104,7 +104,7 @@ class AccountsAndUsersClient {
    * @link https://developer.twitter.com/en/docs/accounts-and-users/create-manage-lists/api-reference/get-lists-list
    * @param parameters
    */
-  public async listsList(parameters: ListsListParams) {
+  public async listsList(parameters?: ListsListParams) {
     const params = createParams(parameters);
     return await doGetRequest<ListsList[]>('https://api.twitter.com/1.1/lists/list.json' + params);
   }
@@ -135,7 +135,7 @@ class AccountsAndUsersClient {
    * @link https://developer.twitter.com/en/docs/accounts-and-users/create-manage-lists/api-reference/get-lists-memberships
    * @param parameters
    */
-  public async listsMemberships(parameters: ListsMembershipsParams) {
+  public async listsMemberships(parameters?: ListsMembershipsParams) {
     const params = createParams(parameters);
     return await doGetRequest<ListsMemberships>('https://api.twitter.com/1.1/lists/memberships.json' + params);
   }
@@ -146,7 +146,7 @@ class AccountsAndUsersClient {
    * @link https://developer.twitter.com/en/docs/accounts-and-users/create-manage-lists/api-reference/get-lists-ownerships
    * @param parameters
    */
-  public async listsOwnerships(parameters: ListsOwnershipsParams) {
+  public async listsOwnerships(parameters?: ListsOwnershipsParams) {
     const params = createParams(parameters);
     return await doGetRequest<ListsOwnerships>('https://api.twitter.com/1.1/lists/ownerships.json' + params);
   }
@@ -201,7 +201,7 @@ class AccountsAndUsersClient {
    * @link https://developer.twitter.com/en/docs/accounts-and-users/create-manage-lists/api-reference/get-lists-subscriptions
    * @param parameters
    */
-  public async listsSubscriptions(parameters: ListsSubscriptionsParams) {
+  public async listsSubscriptions(parameters?: ListsSubscriptionsParams) {
     const params = createParams(parameters);
     return await doGetRequest<ListsSubscriptions>('https://api.twitter.com/1.1/lists/subscriptions.json' + params);
   }
@@ -256,7 +256,7 @@ class AccountsAndUsersClient {
    * @link https://developer.twitter.com/en/docs/accounts-and-users/create-manage-lists/api-reference/post-lists-members-destroy
    * @param parameters
    */
-  public async listsMembersDestroy(parameters: ListsMembersDestroyParams) {
+  public async listsMembersDestroy(parameters?: ListsMembersDestroyParams) {
     const params = createParams(parameters);
     return await doPostRequest('https://api.twitter.com/1.1/lists/members/destroy.json' + params);
   }
@@ -356,7 +356,7 @@ class AccountsAndUsersClient {
    * @link https://developer.twitter.com/en/docs/accounts-and-users/follow-search-get-users/api-reference/get-friendships-lookup
    * @param parameters
    */
-  public async friendshipsLookup(parameters: FriendshipsLookupParams) {
+  public async friendshipsLookup(parameters?: FriendshipsLookupParams) {
     const params = createParams(parameters);
     return await doGetRequest<FriendshipsLookup[]>('https://api.twitter.com/1.1/friendships/lookup.json' + params);
   }
@@ -367,7 +367,7 @@ class AccountsAndUsersClient {
    * @link https://developer.twitter.com/en/docs/accounts-and-users/follow-search-get-users/api-reference/get-friendships-no_retweets-ids
    * @param parameters
    */
-  public async friendshipsNoRetweetsIds(parameters: FriendshipsNoRetweetsIdsParams) {
+  public async friendshipsNoRetweetsIds(parameters?: FriendshipsNoRetweetsIdsParams) {
     const params = createParams(parameters);
     return await doGetRequest('https://api.twitter.com/1.1/friendships/no_retweets/ids.json' + params);
   }
@@ -387,7 +387,7 @@ class AccountsAndUsersClient {
    * @link https://developer.twitter.com/en/docs/accounts-and-users/follow-search-get-users/api-reference/get-friendships-show
    * @param parameters
    */
-  public async friendshipsShow(parameters: FriendshipsShowParams) {
+  public async friendshipsShow(parameters?: FriendshipsShowParams) {
     const params = createParams(parameters);
     return await doGetRequest<FriendshipsShow>('https://api.twitter.com/1.1/friendships/show.json' + params);
   }
@@ -398,7 +398,7 @@ class AccountsAndUsersClient {
    * @link https://developer.twitter.com/en/docs/accounts-and-users/follow-search-get-users/api-reference/get-users-lookup
    * @param parameters
    */
-  public async usersLookup(parameters: UsersLookupParams) {
+  public async usersLookup(parameters?: UsersLookupParams) {
     const params = createParams(parameters);
     return await doGetRequest<UsersLookup[]>('https://api.twitter.com/1.1/users/lookup.json' + params);
   }
@@ -431,7 +431,7 @@ class AccountsAndUsersClient {
    * @link https://developer.twitter.com/en/docs/accounts-and-users/follow-search-get-users/api-reference/post-friendships-create
    * @param parameters
    */
-  public async friendshipsCreate(parameters: FriendshipsCreateParams) {
+  public async friendshipsCreate(parameters?: FriendshipsCreateParams) {
     const params = createParams(parameters);
     return await doPostRequest<FriendshipsCreate>('https://api.twitter.com/1.1/friendships/create.json' + params);
   }
@@ -442,7 +442,7 @@ class AccountsAndUsersClient {
    * @link https://developer.twitter.com/en/docs/accounts-and-users/follow-search-get-users/api-reference/post-friendships-destroy
    * @param parameters
    */
-  public async friendshipsDestroy(parameters: FriendshipsDestroyParams) {
+  public async friendshipsDestroy(parameters?: FriendshipsDestroyParams) {
     const params = createParams(parameters);
     return await doPostRequest<FriendshipsDestroy>('https://api.twitter.com/1.1/friendships/destroy.json' + params);
   }
@@ -453,7 +453,7 @@ class AccountsAndUsersClient {
    * @link https://developer.twitter.com/en/docs/accounts-and-users/follow-search-get-users/api-reference/post-friendships-update
    * @param parameters
    */
-  public async friendshipsUpdate(parameters: FriendshipsUpdateParams) {
+  public async friendshipsUpdate(parameters?: FriendshipsUpdateParams) {
     const params = createParams(parameters);
     return await doPostRequest<FriendshipsUpdate>('https://api.twitter.com/1.1/friendships/update.json' + params);
   }
@@ -493,7 +493,7 @@ class AccountsAndUsersClient {
    * @link https://developer.twitter.com/en/docs/accounts-and-users/manage-account-settings/api-reference/get-users-profile_banner
    * @param parameters
    */
-  public async usersProfileBanner(parameters: UsersProfileBannerParams) {
+  public async usersProfileBanner(parameters?: UsersProfileBannerParams) {
     const params = createParams(parameters);
     return await doGetRequest<UsersProfileBanner>('https://api.twitter.com/1.1/users/profile_banner.json' + params);
   }
@@ -513,7 +513,7 @@ class AccountsAndUsersClient {
    * @link https://developer.twitter.com/en/docs/accounts-and-users/manage-account-settings/api-reference/post-account-update_profile
    * @param parameters
    */
-  public async accountUpdateProfile(parameters: AccountUpdateProfileParams) {
+  public async accountUpdateProfile(parameters?: AccountUpdateProfileParams) {
     const params = createParams(parameters);
     return await doPostRequest<AccountUpdateProfile>('https://api.twitter.com/1.1/account/update_profile.json' + params);
   }
@@ -524,7 +524,7 @@ class AccountsAndUsersClient {
    * @link https://developer.twitter.com/en/docs/accounts-and-users/manage-account-settings/api-reference/post-account-update_profile_background_image
    * @param parameters
    */
-  public async accountUpdateProfileBackgroundImageRetired(parameters: AccountUpdateProfileBackgroundImageRetiredParams) {
+  public async accountUpdateProfileBackgroundImageRetired(parameters?: AccountUpdateProfileBackgroundImageRetiredParams) {
     const params = createParams(parameters);
     return await doPostRequest<AccountUpdateProfileBackgroundImageRetired>('https://api.twitter.com/1.1/account/update_profile_background_image.json' + params);
   }
@@ -615,7 +615,7 @@ class AccountsAndUsersClient {
    * @link https://developer.twitter.com/en/docs/accounts-and-users/mute-block-report-users/api-reference/post-blocks-create
    * @param parameters
    */
-  public async blocksCreate(parameters: BlocksCreateParams) {
+  public async blocksCreate(parameters?: BlocksCreateParams) {
     const params = createParams(parameters);
     return await doPostRequest<BlocksCreate>('https://api.twitter.com/1.1/blocks/create.json' + params);
   }
@@ -626,7 +626,7 @@ class AccountsAndUsersClient {
    * @link https://developer.twitter.com/en/docs/accounts-and-users/mute-block-report-users/api-reference/post-mutes-users-create
    * @param parameters
    */
-  public async mutesUsersCreate(parameters: MutesUsersCreateParams) {
+  public async mutesUsersCreate(parameters?: MutesUsersCreateParams) {
     const params = createParams(parameters);
     return await doPostRequest<MutesUsersCreate>('https://api.twitter.com/1.1/mutes/users/create.json' + params);
   }
@@ -637,7 +637,7 @@ class AccountsAndUsersClient {
    * @link https://developer.twitter.com/en/docs/accounts-and-users/mute-block-report-users/api-reference/post-mutes-users-destroy
    * @param parameters
    */
-  public async mutesUsersDestroy(parameters: MutesUsersDestroyParams) {
+  public async mutesUsersDestroy(parameters?: MutesUsersDestroyParams) {
     const params = createParams(parameters);
     return await doPostRequest<MutesUsersDestroy>('https://api.twitter.com/1.1/mutes/users/destroy.json' + params);
   }
@@ -648,7 +648,7 @@ class AccountsAndUsersClient {
    * @link https://developer.twitter.com/en/docs/accounts-and-users/mute-block-report-users/api-reference/post-users-report_spam
    * @param parameters
    */
-  public async usersReportSpam(parameters: UsersReportSpamParams) {
+  public async usersReportSpam(parameters?: UsersReportSpamParams) {
     const params = createParams(parameters);
     return await doPostRequest<UsersReportSpam>('https://api.twitter.com/1.1/users/report_spam.json' + params);
   }
