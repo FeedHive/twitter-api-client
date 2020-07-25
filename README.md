@@ -19,16 +19,23 @@ Node.js / JavaScript client for Twitter API
 ## Getting Started
 
 ### Features
+
 ☑️ Includes 90% of the official Twitter API endpoints.  
 ☑️ Fully typed. Both for query parameters and return types.  
-☑️ Inbuilt in-memory cache for rate-limit friendly usage.  
+☑️ Inbuilt in-memory cache for rate-limit friendly usage.
+
+### Demo
+
+![](https://i.imgur.com/yRxsDZz.gif)
 
 ### Install
+
 ```console
 npm i twitter-api-client
 ```
 
 ## Usage
+
 ```javascript
 import TwitterClient from 'twitter-api-client';
 
@@ -55,10 +62,12 @@ const data = await twitterClient.trends.trendsAvailable();
 [See all available methods here](https://github.com/FeedHive/twitter-api-client/blob/master/REFERENCES.md).
 
 ### Configuration
+
 `twitter-api-client` comes with an inbuilt in-memory cache.  
-The stale data is served by the cache-first principle.  
-  
+The stale data is served by the cache-first principle.
+
 You can configure the caching behavior upon instantiation of the client:
+
 ```javascript
 const twitterClient = new TwitterClient({
   apiKey: '<YOUR-TWITTER-API-KEY>',
@@ -67,14 +76,16 @@ const twitterClient = new TwitterClient({
   accessTokenSecret: '<YOUR-TWITTER-ACCESS-TOKEN-SECERT>',
   ttl: 120, // seconds. Defaults to 360
   disableCache: true, // Disables the caching behavior. Defaults to 'false'
-  maxByteSize: 32000000 // Maximum (approximated) memory size for cache store. Defaults to 16000000.
+  maxByteSize: 32000000, // Maximum (approximated) memory size for cache store. Defaults to 16000000.
 });
 ```
 
 ## License
+
 This project is licensed under the [MIT License](https://github.com/FeedHive/twitter-api-client/blob/master/LICENSE)
 
 ## Get Help
+
 - Reach out on [Twitter](https://twitter.com/SimonHoiberg)
 - Reach out on [Discord](http://discord.gg/7daE6Ue)
 - Open an [issue on GitHub](https://github.com/FeedHive/twitter-api-client/issues)
@@ -82,7 +93,9 @@ This project is licensed under the [MIT License](https://github.com/FeedHive/twi
 ## Contribute
 
 #### Issues
+
 In the case of a bug report, bugfix or a suggestions, please feel very free to open an issue.
 
 #### Pull request
+
 Pull requests are always welcome, and I'll do my best to do reviews as fast as I can.
