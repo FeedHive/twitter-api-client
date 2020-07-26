@@ -1,32 +1,47 @@
 # Twitter API Client
 
-Node.js / JavaScript client for Twitter API
+Node.js client for Twitter API
 
 ![](https://i.imgur.com/NfnLHIM.png)
 
+[![](https://nodei.co/npm/twitter-api-client.png?mini=true)](https://www.npmjs.com/package/twitter-api-client)
 [![NPM Version](https://img.shields.io/npm/v/twitter-api-client)](https://www.npmjs.com/package/twitter-api-client)
-![License](https://img.shields.io/github/license/Silind/Hue-Debugger-UI.svg)
 ![Build Status](https://github.com/FeedHive/twitter-api-client/workflows/build/badge.svg)
 
 ## Table of content
 
+- [Features](#features)
 - [**Getting Started**](#getting-started)
 - [Usage](#usage)
 - [License](#license)
 - [Get Help](#get-help)
 - [Contribute](#contribute)
 
+## Features
+
+☑️ Includes 90% of the **official Twitter API** endpoints.  
+☑️ **Promise-based!** No ugly callbacks.  
+☑️ **Fully typed!** Both for query parameters and responses.  
+☑️ Inbuilt in-memory **cache** for rate-limit friendly usage.  
+
+<div style="display:flex;flex-direction:column;align-items:center">
+  
+## Fully typed query parameters 👉
+
+![](https://i.imgur.com/KsdsIYc.gif)
+
+## Fully typed responses 👈
+
+![](https://i.imgur.com/DGz3VYK.gif)
+
+</div>
+
 ## Getting Started
 
-### Features
-
-☑️ Includes 90% of the official Twitter API endpoints.  
-☑️ Fully typed. Both for query parameters and return types.  
-☑️ Inbuilt in-memory cache for rate-limit friendly usage.
-
-### Demo
-
-![](https://i.imgur.com/yRxsDZz.gif)
+### Get your Twitter credentials
+You will need to create a set of Twitter developer credentials from your Twitter Developer account.  
+If you don't have one already, apply for a developer account [here](https://developer.twitter.com/).  
+It takes about 5 minutes.  
 
 ### Install
 
