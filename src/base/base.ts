@@ -30,7 +30,7 @@ export const setOptions = (options: IClientOptions) => {
 };
 
 export const doGetRequest = async <T>(url: string): Promise<T> => {
-  if (!oauth || !credentials) {
+  if (!oauth) {
     throw Error('Unable to make request. Authentication has not been established');
   }
 
@@ -39,6 +39,11 @@ export const doGetRequest = async <T>(url: string): Promise<T> => {
   }
 
   return new Promise((resolve, reject) => {
+    if (!credentials.accessToken || !credentials.accessTokenSecret) {
+      reject(new Error('Unable to make request. Authentication has not been established'));
+      return;
+    }
+    
     const formattedUrl = formatURL(url);
 
     oauth.get(
@@ -70,6 +75,11 @@ export const doPostRequest = async <T>(url: string, body?: any): Promise<T> => {
   }
 
   return new Promise((resolve, reject) => {
+    if (!credentials.accessToken || !credentials.accessTokenSecret) {
+      reject(new Error('Unable to make request. Authentication has not been established'));
+      return;
+    }
+
     const formattedUrl = formatURL(url);
 
     oauth.post(

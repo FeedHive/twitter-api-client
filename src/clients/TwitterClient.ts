@@ -29,14 +29,14 @@ class TwitterClient {
       throw Error('API SECRET needs to be provided.');
     }
 
-    if (!options.accessToken) {
-      throw Error('ACCESS TOKEN needs to be provided.');
-    }
+    this.setOptions(options);
+  }
 
-    if (!options.accessTokenSecret) {
-      throw Error('ACCESS TOKEN SECRET needs to be provided.');
-    }
-
+  /**
+   * Set or re-set options for the client
+   * @param options
+   */
+  public setOptions(options: IClientOptions) {
     setOptions(options);
   }
 
