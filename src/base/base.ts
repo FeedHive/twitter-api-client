@@ -40,6 +40,19 @@ export const updateOptions = (options: Partial<IClientOptions>) => {
   });
 };
 
+export const getRequestToken = async () => {
+  return new Promise((resolve, reject) => {
+    oauth.getOAuthRequestToken({}, (err: { statusCode: number; data?: any }, token: string) => {
+      if (err) {
+        reject(err);
+        return;
+      }
+
+      resolve(token);
+    });
+  });
+};
+
 export const doGetRequest = async <T>(url: string): Promise<T> => {
   if (!oauth) {
     throw Error('Unable to make request. Authentication has not been established');

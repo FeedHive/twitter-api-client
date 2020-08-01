@@ -1,4 +1,4 @@
-import { doGetRequest, doPostRequest } from '../base/base';
+import { doGetRequest, doPostRequest, getRequestToken } from '../base/base';
 import { createParams } from '../utils/utils';
 
 import {
@@ -12,6 +12,13 @@ import OauthRequestToken from '../interfaces/types/OauthRequestTokenTypes';
 import Oauth2InvalidateToken from '../interfaces/types/Oauth2InvalidateTokenTypes';
 
 class BasicsClient {
+  /**
+   * Get OAuth request token
+   */
+  public async oauthGetRequestToken() {
+    return await getRequestToken();
+  }
+
   /**
    *  Allows a Consumer application to use an OAuth request_token to request user authorization.This method is a replacement of Section 6.2 of the OAuth 1.0 authentication flow for applications using the callback authentication flow. The method will use the currently logged in user as the account for access authorization unless the force_login parameter is set to true.This method differs from GET oauth / authorize in that if the user has already granted the application permission, the redirect will occur without the user having to re-approve the application. To realize this behavior, you must enable the Use Sign in with Twitter setting on your application record.
    *
@@ -49,12 +56,12 @@ class BasicsClient {
    * @link https://developer.twitter.com/en/docs/basics/authentication/api-reference/invalidate_access_token
    */
   public async oauthInvalidateToken() {
-    return await doPostRequest<OauthInvalidateToken>('https://api.twitter.com/1.1/oauth/invalidate_token');
+    return await doPostRequest<OauthInvalidateToken>(
+      'https://api.twitter.com/1.1/oauth/invalidate_token',
+    );
   }
 
   /**
-   * undefined
-   *
    * @link https://developer.twitter.com/en/docs/basics/authentication/api-reference/request_token
    */
   public async oauthRequestToken() {
@@ -67,7 +74,9 @@ class BasicsClient {
    * @link https://developer.twitter.com/en/docs/basics/authentication/api-reference/invalidate_bearer_token
    */
   public async oauth2InvalidateToken() {
-    return await doPostRequest<Oauth2InvalidateToken>('https://api.twitter.com/oauth2/invalidate_token');
+    return await doPostRequest<Oauth2InvalidateToken>(
+      'https://api.twitter.com/oauth2/invalidate_token',
+    );
   }
 
   /**
@@ -80,7 +89,6 @@ class BasicsClient {
     const params = createParams(parameters);
     return await doPostRequest('https://api.twitter.com/oauth2/token' + params);
   }
-
 }
 
 export default BasicsClient;
