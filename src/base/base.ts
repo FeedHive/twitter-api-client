@@ -5,7 +5,7 @@ import Cache from '../services/Cache';
 
 let oauth: OAuth.OAuth;
 let cache: Cache;
-let credentials: IClientOptions;
+let credentials: IClientOptions & { [key: string]: any };
 
 export const setOptions = (options: IClientOptions) => {
   if (!credentials) {
@@ -29,6 +29,17 @@ export const setOptions = (options: IClientOptions) => {
   }
 };
 
+export const updateOptions = (options: Partial<IClientOptions>) => {
+  const { apiKey, apiSecret, ...rest } = options;
+  const cleanOptions = rest as { [key: string]: any };
+
+  Object.keys(cleanOptions).forEach((key: string) => {
+    if (cleanOptions[key]) {
+      credentials[key] = cleanOptions[key];
+    }
+  });
+};
+
 export const doGetRequest = async <T>(url: string): Promise<T> => {
   if (!oauth) {
     throw Error('Unable to make request. Authentication has not been established');
@@ -43,7 +54,7 @@ export const doGetRequest = async <T>(url: string): Promise<T> => {
       reject(new Error('Unable to make request. Authentication has not been established'));
       return;
     }
-    
+
     const formattedUrl = formatURL(url);
 
     oauth.get(

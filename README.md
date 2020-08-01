@@ -28,11 +28,11 @@ Node.js client for Twitter API
   
 ## Fully typed query parameters 👉
 
-![](https://i.imgur.com/KsdsIYc.gif)
+![](https://i.imgur.com/YptvQEH.gif)
 
 ## Fully typed responses 👈
 
-![](https://i.imgur.com/DGz3VYK.gif)
+![](https://i.imgur.com/vuitbEC.gif)
 
 </div>
 
