@@ -6,22 +6,22 @@ export interface CollectionsEntriesParams {
   /**
   * Specifies the maximum number of results to include in the response. Specify a count between 1 and 200. A next_cursor value will be provided in the response if additional results are available.
   */
-  count?: number;
+  count?: string | number;
   /**
   * Returns results with a position value less than or equal to the specified position.
   */
-  max_position?: number;
+  max_position?: string | number;
   /**
   * Returns results with a position greater than the specified position.
   */
-  min_position?: number;
+  min_position?: string | number;
 }
 
 export interface CollectionsListParams {
   /**
   * The ID of the user for whom to return results.
   */
-  user_id: number;
+  user_id: string | number;
   /**
   * The screen name of the user for whom to return results.
   */
@@ -29,11 +29,11 @@ export interface CollectionsListParams {
   /**
   * The identifier of the Tweet for which to return results.
   */
-  tweet_id?: number;
+  tweet_id?: string | number;
   /**
   * Specifies the maximum number of results to include in the response. Specify a count between 1 and 200. A next_cursor value will be provided in the response if additional results are available.
   */
-  count?: number;
+  count?: string | number;
   /**
   * A string identifying the segment of the current result set to retrieve. Values for this parameter are yielded in the cursors node attached to response objects. Usage of the count parameter affects cursoring.
   */
@@ -81,11 +81,11 @@ export interface CollectionsEntriesAddParams {
   /**
   * The identifier of the Tweet to add to the Collection.
   */
-  tweet_id: number;
+  tweet_id: string | number;
   /**
   * The identifier of the Tweet used for relative positioning in a curation_reverse_chron ordered collection.
   */
-  relative_to?: number;
+  relative_to?: string | number;
   /**
   * Set to false to insert the specified tweet_id below the relative_to Tweet in the collection. Default: true
   */
@@ -100,11 +100,11 @@ export interface CollectionsEntriesMoveParams {
   /**
   * The identifier of the Tweet to add to the Collection.
   */
-  tweet_id: number;
+  tweet_id: string | number;
   /**
   * The identifier of the Tweet used for relative positioning.
   */
-  relative_to: number;
+  relative_to: string | number;
   /**
   * Set to false to insert the specified tweet_id below the relative_to Tweet in the collection. Default: true
   */
@@ -119,7 +119,7 @@ export interface CollectionsEntriesRemoveParams {
   /**
   * The identifier of the Tweet to remove.
   */
-  tweet_id: number;
+  tweet_id: string | number;
 }
 
 export interface CollectionsUpdateParams {

@@ -2,7 +2,7 @@ export interface FavoritesListParams {
   /**
   * The ID of the user for whom to return results.
   */
-  user_id?: number;
+  user_id?: string | number;
   /**
   * The screen name of the user for whom to return results.
   */
@@ -10,15 +10,15 @@ export interface FavoritesListParams {
   /**
   * Specifies the number of records to retrieve. Must be less than or equal to 200; defaults to 20. The value of count is best thought of as a limit to the number of Tweets to return because suspended or deleted content is removed after the count has been applied.
   */
-  count?: number;
+  count?: string | number;
   /**
   * Returns results with an ID greater than (that is, more recent than) the specified ID. There are limits to the number of Tweets which can be accessed through the API. If the limit of Tweets has occured since the since_id, the since_id will be forced to the oldest ID available.
   */
-  since_id?: number;
+  since_id?: string | number;
   /**
   * Returns results with an ID less than (that is, older than) or equal to the specified ID.
   */
-  max_id?: number;
+  max_id?: string | number;
   /**
   * The entities node will be omitted when set to false .
   */
@@ -56,11 +56,11 @@ export interface StatusesRetweetsByIdParams {
   /**
   * The numerical ID of the desired status.
   */
-  id: number;
+  id: string | number;
   /**
   * Specifies the number of records to retrieve. Must be less than or equal to 100.
   */
-  count?: number;
+  count?: string | number;
   /**
   * When set to either true , t or 1 , each tweet returned in a timeline will include a user object including only the status authors numerical ID. Omit this parameter to receive the complete user object.
   */
@@ -71,15 +71,15 @@ export interface StatusesRetweetsOfMeParams {
   /**
   * Specifies the number of records to retrieve. Must be less than or equal to 100. If omitted, 20 will be assumed.
   */
-  count?: number;
+  count?: string | number;
   /**
   * Returns results with an ID greater than (that is, more recent than) the specified ID. There are limits to the number of Tweets which can be accessed through the API. If the limit of Tweets has occured since the since_id, the since_id will be forced to the oldest ID available.
   */
-  since_id?: number;
+  since_id?: string | number;
   /**
   * Returns results with an ID less than (that is, older than) or equal to the specified ID.
   */
-  max_id?: number;
+  max_id?: string | number;
   /**
   * When set to either true , t or 1 , each tweet returned in a timeline will include a user object including only the status authors numerical ID. Omit this parameter to receive the complete user object.
   */
@@ -98,7 +98,7 @@ export interface StatusesShowByIdParams {
   /**
   * The numerical ID of the desired Tweet.
   */
-  id: number;
+  id: string | number;
   /**
   * When set to either true , t or 1 , each Tweet returned in a timeline will include a user object including only the status authors numerical ID. Omit this parameter to receive the complete user object.
   */
@@ -125,7 +125,7 @@ export interface FavoritesCreateParams {
   /**
   * The numerical ID of the Tweet to like.
   */
-  id: number;
+  id: string | number;
   /**
   * The entities node will be omitted when set to false .
   */
@@ -136,7 +136,7 @@ export interface FavoritesDestroyParams {
   /**
   * The numerical ID of the Tweet to un-like
   */
-  id: number;
+  id: string | number;
   /**
   * The entities node will be omitted when set to false .
   */
@@ -147,7 +147,7 @@ export interface StatusesDestroyByIdParams {
   /**
   * The numerical ID of the desired status.
   */
-  id: number;
+  id: string | number;
   /**
   * When set to either true , t or 1 , each tweet returned in a timeline will include a user object including only the status authors numerical ID. Omit this parameter to receive the complete user object.
   */
@@ -158,7 +158,7 @@ export interface StatusesRetweetByIdParams {
   /**
   * The numerical ID of the desired status.
   */
-  id: number;
+  id: string | number;
   /**
   * When set to either true , t or 1 , each tweet returned in a timeline will include a user object including only the status authors numerical ID. Omit this parameter to receive the complete user object.
   */
@@ -169,7 +169,7 @@ export interface StatusesUnretweetByIdParams {
   /**
   * The numerical ID of the desired status.
   */
-  id: number;
+  id: string | number;
   /**
   * When set to either true , t or 1 , each Tweet returned in a timeline will include a user object including only the status authors numerical ID. Omit this parameter to receive the complete user object.
   */

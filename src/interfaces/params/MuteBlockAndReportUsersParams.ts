@@ -6,7 +6,7 @@ export interface BlocksCreateParams {
   /**
   * The ID of the potentially blocked user. Helpful for disambiguating when a valid user ID is also a valid screen name.
   */
-  user_id?: number;
+  user_id?: string | number;
   /**
   * The entities node will not be included when set to false .
   */
@@ -25,7 +25,7 @@ export interface MutesUsersCreateParams {
   /**
   * The ID of the potentially muted user. Helpful for disambiguating when a valid user ID is also a valid screen name.
   */
-  user_id?: number;
+  user_id?: string | number;
 }
 
 export interface MutesUsersDestroyParams {
@@ -36,7 +36,7 @@ export interface MutesUsersDestroyParams {
   /**
   * The ID of the potentially muted user. Helpful for disambiguating when a valid user ID is also a valid screen name.
   */
-  user_id?: number;
+  user_id?: string | number;
 }
 
 export interface UsersReportSpamParams {
@@ -47,7 +47,7 @@ export interface UsersReportSpamParams {
   /**
   * The ID of the user to report as a spammer. Helpful for disambiguating when a valid user ID is also a valid screen name.
   */
-  user_id?: number;
+  user_id?: string | number;
   /**
   * Whether the account should be blocked by the authenticated user, as well as being reported for spam.
   */

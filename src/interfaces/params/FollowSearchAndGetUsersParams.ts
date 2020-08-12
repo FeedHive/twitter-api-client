@@ -20,7 +20,7 @@ export interface FriendshipsShowParams {
   /**
   * The user_id of the subject user.
   */
-  source_id?: number;
+  source_id?: string | number;
   /**
   * The screen_name of the subject user.
   */
@@ -28,7 +28,7 @@ export interface FriendshipsShowParams {
   /**
   * The user_id of the target user.
   */
-  target_id?: number;
+  target_id?: string | number;
   /**
   * The screen_name of the target user.
   */
@@ -62,11 +62,11 @@ export interface UsersSearchParams {
   /**
   * Specifies the page of results to retrieve.
   */
-  page?: number;
+  page?: string | number;
   /**
   * The number of potential user results to retrieve per page. This value has a maximum of 20.
   */
-  count?: number;
+  count?: string | number;
   /**
   * The entities node will not be included in embedded Tweet objects when set to false .
   */
@@ -77,7 +77,7 @@ export interface UsersShowParams {
   /**
   * The ID of the user for whom to return results. Either an id or screen_name is required for this method.
   */
-  user_id: number;
+  user_id: string | number;
   /**
   * The screen name of the user for whom to return results. Either a id or screen_name is required for this method.
   */
@@ -96,7 +96,7 @@ export interface FriendshipsCreateParams {
   /**
   * The ID of the user to follow.
   */
-  user_id?: number;
+  user_id?: string | number;
   /**
   * Enable notifications for the target user.
   */
@@ -111,7 +111,7 @@ export interface FriendshipsDestroyParams {
   /**
   * The ID of the user to unfollow.
   */
-  user_id?: number;
+  user_id?: string | number;
 }
 
 export interface FriendshipsUpdateParams {
@@ -122,7 +122,7 @@ export interface FriendshipsUpdateParams {
   /**
   * The ID of the user being followed.
   */
-  user_id?: number;
+  user_id?: string | number;
   /**
   * Enable/disable device notifications from the target user.
   */

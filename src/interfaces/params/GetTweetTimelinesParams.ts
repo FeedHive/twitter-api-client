@@ -2,15 +2,15 @@ export interface StatusesHomeTimelineParams {
   /**
   * Specifies the number of records to retrieve. Must be less than or equal to 200. Defaults to 20. The value of count is best thought of as a limit to the number of tweets to return because suspended or deleted content is removed after the count has been applied.
   */
-  count?: number;
+  count?: string | number;
   /**
   * Returns results with an ID greater than (that is, more recent than) the specified ID. There are limits to the number of Tweets which can be accessed through the API. If the limit of Tweets has occured since the since_id, the since_id will be forced to the oldest ID available.
   */
-  since_id?: number;
+  since_id?: string | number;
   /**
   * Returns results with an ID less than (that is, older than) or equal to the specified ID.
   */
-  max_id?: number;
+  max_id?: string | number;
   /**
   * When set to either true , t or 1 , each Tweet returned in a timeline will include a user object including only the status authors numerical ID. Omit this parameter to receive the complete user object.
   */
@@ -29,15 +29,15 @@ export interface StatusesMentionsTimelineParams {
   /**
   * Specifies the number of Tweets to try and retrieve, up to a maximum of 200. The value of count is best thought of as a limit to the number of tweets to return because suspended or deleted content is removed after the count has been applied. We include retweets in the count, even if include_rts is not supplied. It is recommended you always send include_rts=1 when using this API method.
   */
-  count?: number;
+  count?: string | number;
   /**
   * Returns results with an ID greater than (that is, more recent than) the specified ID. There are limits to the number of Tweets which can be accessed through the API. If the limit of Tweets has occured since the since_id, the since_id will be forced to the oldest ID available.
   */
-  since_id?: number;
+  since_id?: string | number;
   /**
   * Returns results with an ID less than (that is, older than) or equal to the specified ID.
   */
-  max_id?: number;
+  max_id?: string | number;
   /**
   * When set to either true , t or 1 , each tweet returned in a timeline will include a user object including only the status authors numerical ID. Omit this parameter to receive the complete user object.
   */
@@ -52,7 +52,7 @@ export interface StatusesUserTimelineParams {
   /**
   * The ID of the user for whom to return results.
   */
-  user_id?: number;
+  user_id?: string | number;
   /**
   * The screen name of the user for whom to return results.
   */
@@ -60,15 +60,15 @@ export interface StatusesUserTimelineParams {
   /**
   * Returns results with an ID greater than (that is, more recent than) the specified ID. There are limits to the number of Tweets that can be accessed through the API. If the limit of Tweets has occured since the since_id, the since_id will be forced to the oldest ID available.
   */
-  since_id?: number;
+  since_id?: string | number;
   /**
   * Specifies the number of Tweets to try and retrieve, up to a maximum of 200 per distinct request. The value of count is best thought of as a limit to the number of Tweets to return because suspended or deleted content is removed after the count has been applied. We include retweets in the count, even if include_rts is not supplied. It is recommended you always send include_rts=1 when using this API method.
   */
-  count?: number;
+  count?: string | number;
   /**
   * Returns results with an ID less than (that is, older than) or equal to the specified ID.
   */
-  max_id?: number;
+  max_id?: string | number;
   /**
   * When set to either true , t or 1 , each Tweet returned in a timeline will include a user object including only the status authors numerical ID. Omit this parameter to receive the complete user object.
   */

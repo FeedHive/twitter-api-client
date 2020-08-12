@@ -24,18 +24,6 @@ Node.js client for Twitter API
 ☑️ **Fully typed!** Both for query parameters and responses.  
 ☑️ Inbuilt in-memory **cache** for rate-limit friendly usage.  
 
-<div style="display:flex;flex-direction:column;align-items:center">
-  
-## Fully typed query parameters 👉
-
-![](https://i.imgur.com/YptvQEH.gif)
-
-## Fully typed responses 👈
-
-![](https://i.imgur.com/vuitbEC.gif)
-
-</div>
-
 ## Getting Started
 
 ### Get your Twitter credentials

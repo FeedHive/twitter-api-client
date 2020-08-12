@@ -2,7 +2,7 @@ export interface ListsListParams {
   /**
   * The ID of the user for whom to return results. Helpful for disambiguating when a valid user ID is also a valid screen name. Note: : Specifies the ID of the user to get lists from. Helpful for disambiguating when a valid user ID is also a valid screen name.
   */
-  user_id?: number;
+  user_id?: string | number;
   /**
   * The screen name of the user for whom to return results. Helpful for disambiguating when a valid screen name is also a user ID.
   */
@@ -17,7 +17,7 @@ export interface ListsMembersShowParams {
   /**
   * The numerical id of the list.
   */
-  list_id: number;
+  list_id: string | number;
   /**
   * You can identify a list by its slug instead of its numerical id. If you decide to do so, note that you'll also have to specify the list owner using the owner_id or owner_screen_name parameters.
   */
@@ -25,7 +25,7 @@ export interface ListsMembersShowParams {
   /**
   * The ID of the user for whom to return results. Helpful for disambiguating when a valid user ID is also a valid screen name.
   */
-  user_id: number;
+  user_id: string | number;
   /**
   * The screen name of the user for whom to return results. Helpful for disambiguating when a valid screen name is also a user ID.
   */
@@ -37,7 +37,7 @@ export interface ListsMembersShowParams {
   /**
   * The user ID of the user who owns the list being requested by a slug.
   */
-  owner_id?: number;
+  owner_id?: string | number;
   /**
   * When set to either true, t or 1, each tweet will include a node called "entities". This node offers a variety of metadata about the tweet in a discreet structure, including: user_mentions, urls, and hashtags. While entities are opt-in on timelines at present, they will be made a default component of output in the future. See Tweet Entities for more details.
   */
@@ -52,7 +52,7 @@ export interface ListsMembershipsParams {
   /**
   * The ID of the user for whom to return results. Helpful for disambiguating when a valid user ID is also a valid screen name.
   */
-  user_id?: number;
+  user_id?: string | number;
   /**
   * The screen name of the user for whom to return results. Helpful for disambiguating when a valid screen name is also a user ID.
   */
@@ -60,22 +60,22 @@ export interface ListsMembershipsParams {
   /**
   * The amount of results to return per page. Defaults to 20. No more than 1000 results will ever be returned in a single page.
   */
-  count?: number;
+  count?: string | number;
   /**
   * Breaks the results into pages. Provide a value of -1 to begin paging. Provide values as returned in the response body's next_cursor and previous_cursor attributes to page back and forth in the list. It is recommended to always use cursors when the method supports them. See Cursoring for more information.
   */
-  cursor?: number;
+  cursor?: string | number;
   /**
   * When set to true , t or 1 , will return just lists the authenticating user owns, and the user represented by user_id or screen_name is a member of.
   */
-  filter_to_owned_lists?: number;
+  filter_to_owned_lists?: string | number;
 }
 
 export interface ListsOwnershipsParams {
   /**
   * The ID of the user for whom to return results. Helpful for disambiguating when a valid user ID is also a valid screen name.
   */
-  user_id?: number;
+  user_id?: string | number;
   /**
   * The screen name of the user for whom to return results. Helpful for disambiguating when a valid screen name is also a user ID.
   */
@@ -83,18 +83,18 @@ export interface ListsOwnershipsParams {
   /**
   * The amount of results to return per page. Defaults to 20. No more than 1000 results will ever be returned in a single page.
   */
-  count?: number;
+  count?: string | number;
   /**
   * Breaks the results into pages. Provide a value of -1 to begin paging. Provide values as returned in the response body's next_cursor and previous_cursor attributes to page back and forth in the list. It is recommended to always use cursors when the method supports them. See Cursoring for more information.
   */
-  cursor?: number;
+  cursor?: string | number;
 }
 
 export interface ListsShowParams {
   /**
   * The numerical id of the list.
   */
-  list_id: number;
+  list_id: string | number;
   /**
   * You can identify a list by its slug instead of its numerical id. If you decide to do so, note that you'll also have to specify the list owner using the owner_id or owner_screen_name parameters.
   */
@@ -106,14 +106,14 @@ export interface ListsShowParams {
   /**
   * The user ID of the user who owns the list being requested by a slug .
   */
-  owner_id?: number;
+  owner_id?: string | number;
 }
 
 export interface ListsStatusesParams {
   /**
   * The numerical id of the list.
   */
-  list_id: number;
+  list_id: string | number;
   /**
   * You can identify a list by its slug instead of its numerical id. If you decide to do so, note that you'll also have to specify the list owner using the owner_id or owner_screen_name parameters.
   */
@@ -125,19 +125,19 @@ export interface ListsStatusesParams {
   /**
   * The user ID of the user who owns the list being requested by a slug .
   */
-  owner_id?: number;
+  owner_id?: string | number;
   /**
   * Returns results with an ID greater than (that is, more recent than) the specified ID. There are limits to the number of Tweets which can be accessed through the API. If the limit of Tweets has occured since the since_id, the since_id will be forced to the oldest ID available.
   */
-  since_id?: number;
+  since_id?: string | number;
   /**
   * Returns results with an ID less than (that is, older than) or equal to the specified ID.
   */
-  max_id?: number;
+  max_id?: string | number;
   /**
   * Specifies the number of results to retrieve per "page."
   */
-  count?: number;
+  count?: string | number;
   /**
   * Entities are ON by default in API 1.1, each tweet includes a node called "entities". This node offers a variety of metadata about the tweet in a discreet structure, including: user_mentions, urls, and hashtags. You can omit entities from the result by using include_entities=false
   */
@@ -145,14 +145,14 @@ export interface ListsStatusesParams {
   /**
   * When set to either true , t or 1 , the list timeline will contain native retweets (if they exist) in addition to the standard stream of tweets. The output format of retweeted tweets is identical to the representation you see in home_timeline.
   */
-  include_rts?: number;
+  include_rts?: string | number;
 }
 
 export interface ListsSubscribersParams {
   /**
   * The numerical id of the list.
   */
-  list_id: number;
+  list_id: string | number;
   /**
   * You can identify a list by its slug instead of its numerical id. If you decide to do so, note that you'll also have to specify the list owner using the owner_id or owner_screen_name parameters.
   */
@@ -164,15 +164,15 @@ export interface ListsSubscribersParams {
   /**
   * The user ID of the user who owns the list being requested by a slug .
   */
-  owner_id?: number;
+  owner_id?: string | number;
   /**
   * Specifies the number of results to return per page (see cursor below). The default is 20, with a maximum of 5,000.
   */
-  count?: number;
+  count?: string | number;
   /**
   * Breaks the results into pages. A single page contains 20 lists. Provide a value of -1 to begin paging. Provide values as returned in the response body's next_cursor and previous_cursor attributes to page back and forth in the list. See Using cursors to navigate collections for more information.
   */
-  cursor?: number;
+  cursor?: string | number;
   /**
   * When set to either true , t or 1 , each tweet will include a node called "entities". This node offers a variety of metadata about the tweet in a discreet structure, including: user_mentions, urls, and hashtags. While entities are opt-in on timelines at present, they will be made a default component of output in the future. See Tweet Entities for more details.
   */
@@ -191,11 +191,11 @@ export interface ListsSubscribersShowParams {
   /**
   * The user ID of the user who owns the list being requested by a slug.
   */
-  owner_id?: number;
+  owner_id?: string | number;
   /**
   * The numerical id of the list.
   */
-  list_id: number;
+  list_id: string | number;
   /**
   * You can identify a list by its slug instead of its numerical id. If you decide to do so, note that you'll also have to specify the list owner using the owner_id or owner_screen_name parameters.
   */
@@ -203,7 +203,7 @@ export interface ListsSubscribersShowParams {
   /**
   * The ID of the user for whom to return results. Helpful for disambiguating when a valid user ID is also a valid screen name.
   */
-  user_id: number;
+  user_id: string | number;
   /**
   * The screen name of the user for whom to return results. Helpful for disambiguating when a valid screen name is also a user ID.
   */
@@ -222,7 +222,7 @@ export interface ListsSubscriptionsParams {
   /**
   * The ID of the user for whom to return results. Helpful for disambiguating when a valid user ID is also a valid screen name.
   */
-  user_id?: number;
+  user_id?: string | number;
   /**
   * The screen name of the user for whom to return results. Helpful for disambiguating when a valid screen name is also a user ID.
   */
@@ -230,26 +230,26 @@ export interface ListsSubscriptionsParams {
   /**
   * The amount of results to return per page. Defaults to 20. No more than 1000 results will ever be returned in a single page.
   */
-  count?: number;
+  count?: string | number;
   /**
   * Breaks the results into pages. Provide a value of -1 to begin paging. Provide values as returned in the response body's next_cursor and previous_cursor attributes to page back and forth in the list. It is recommended to always use cursors when the method supports them. See Cursoring for more information.
   */
-  cursor?: number;
+  cursor?: string | number;
 }
 
 export interface ListsCreateParams {
   /**
   * The name for the list. A list's name must start with a letter and can consist only of 25 or fewer letters, numbers, "-", or "_" characters.
   */
-  name: number;
+  name: string | number;
   /**
   * Whether your list is public or private. Values can be public or private . If no mode is specified the list will be public.
   */
-  mode?: number;
+  mode?: string | number;
   /**
   * The description to give the list.
   */
-  description?: number;
+  description?: string | number;
 }
 
 export interface ListsDestroyParams {
@@ -260,11 +260,11 @@ export interface ListsDestroyParams {
   /**
   * The user ID of the user who owns the list being requested by a slug .
   */
-  owner_id?: number;
+  owner_id?: string | number;
   /**
   * The numerical id of the list.
   */
-  list_id: number;
+  list_id: string | number;
   /**
   * You can identify a list by its slug instead of its numerical id. If you decide to do so, note that you'll also have to specify the list owner using the owner_id or owner_screen_name parameters.
   */
@@ -275,7 +275,7 @@ export interface ListsMembersCreateParams {
   /**
   * The numerical id of the list.
   */
-  list_id: number;
+  list_id: string | number;
   /**
   * You can identify a list by its slug instead of its numerical id. If you decide to do so, note that you'll also have to specify the list owner using the owner_id or owner_screen_name parameters.
   */
@@ -283,7 +283,7 @@ export interface ListsMembersCreateParams {
   /**
   * The ID of the user for whom to return results. Helpful for disambiguating when a valid user ID is also a valid screen name.
   */
-  user_id: number;
+  user_id: string | number;
   /**
   * The screen name of the user for whom to return results. Helpful for disambiguating when a valid screen name is also a user ID.
   */
@@ -295,14 +295,14 @@ export interface ListsMembersCreateParams {
   /**
   * The user ID of the user who owns the list being requested by a slug.
   */
-  owner_id?: number;
+  owner_id?: string | number;
 }
 
 export interface ListsMembersCreateAllParams {
   /**
   * The numerical id of the list.
   */
-  list_id: number;
+  list_id: string | number;
   /**
   * You can identify a list by its slug instead of its numerical id. If you decide to do so, note that you'll also have to specify the list owner using the owner_id or owner_screen_name parameters.
   */
@@ -310,7 +310,7 @@ export interface ListsMembersCreateAllParams {
   /**
   * A comma separated list of user IDs, up to 100 are allowed in a single request.
   */
-  user_id?: number;
+  user_id?: string | number;
   /**
   * A comma separated list of screen names, up to 100 are allowed in a single request.
   */
@@ -322,14 +322,14 @@ export interface ListsMembersCreateAllParams {
   /**
   * The user ID of the user who owns the list being requested by a slug .
   */
-  owner_id?: number;
+  owner_id?: string | number;
 }
 
 export interface ListsMembersDestroyParams {
   /**
   * The numerical id of the list.
   */
-  list_id?: number;
+  list_id?: string | number;
   /**
   * You can identify a list by its slug instead of its numerical id. If you decide to do so, note that you'll also have to specify the list owner using the owner_id or owner_screen_name parameters.
   */
@@ -337,7 +337,7 @@ export interface ListsMembersDestroyParams {
   /**
   * The ID of the user to remove from the list. Helpful for disambiguating when a valid user ID is also a valid screen name.
   */
-  user_id?: number;
+  user_id?: string | number;
   /**
   * The screen name of the user for whom to remove from the list. Helpful for disambiguating when a valid screen name is also a user ID.
   */
@@ -349,14 +349,14 @@ export interface ListsMembersDestroyParams {
   /**
   * The user ID of the user who owns the list being requested by a slug .
   */
-  owner_id?: number;
+  owner_id?: string | number;
 }
 
 export interface ListsMembersDestroyAllParams {
   /**
   * The numerical id of the list.
   */
-  list_id: number;
+  list_id: string | number;
   /**
   * You can identify a list by its slug instead of its numerical id. If you decide to do so, note that you'll also have to specify the list owner using the owner_id or owner_screen_name parameters.
   */
@@ -364,7 +364,7 @@ export interface ListsMembersDestroyAllParams {
   /**
   * A comma separated list of user IDs, up to 100 are allowed in a single request.
   */
-  user_id?: number;
+  user_id?: string | number;
   /**
   * A comma separated list of screen names, up to 100 are allowed in a single request.
   */
@@ -376,7 +376,7 @@ export interface ListsMembersDestroyAllParams {
   /**
   * The user ID of the user who owns the list being requested by a slug .
   */
-  owner_id?: number;
+  owner_id?: string | number;
 }
 
 export interface ListsSubscribersCreateParams {
@@ -387,11 +387,11 @@ export interface ListsSubscribersCreateParams {
   /**
   * The user ID of the user who owns the list being requested by a slug .
   */
-  owner_id?: number;
+  owner_id?: string | number;
   /**
   * The numerical id of the list.
   */
-  list_id: number;
+  list_id: string | number;
   /**
   * You can identify a list by its slug instead of its numerical id. If you decide to do so, note that you'll also have to specify the list owner using the owner_id or owner_screen_name parameters.
   */
@@ -402,7 +402,7 @@ export interface ListsSubscribersDestroyParams {
   /**
   * The numerical id of the list.
   */
-  list_id: number;
+  list_id: string | number;
   /**
   * You can identify a list by its slug instead of its numerical id. If you decide to do so, note that you'll also have to specify the list owner using the owner_id or owner_screen_name parameters.
   */
@@ -414,14 +414,14 @@ export interface ListsSubscribersDestroyParams {
   /**
   * The user ID of the user who owns the list being requested by a slug .
   */
-  owner_id?: number;
+  owner_id?: string | number;
 }
 
 export interface ListsUpdateParams {
   /**
   * The numerical id of the list.
   */
-  list_id: number;
+  list_id: string | number;
   /**
   * You can identify a list by its slug instead of its numerical id. If you decide to do so, note that you'll also have to specify the list owner using the owner_id or owner_screen_name parameters.
   */
@@ -429,15 +429,15 @@ export interface ListsUpdateParams {
   /**
   * The name for the list.
   */
-  name?: number;
+  name?: string | number;
   /**
   * Whether your list is public or private. Values can be public or private . If no mode is specified the list will be public.
   */
-  mode?: number;
+  mode?: string | number;
   /**
   * The description to give the list.
   */
-  description?: number;
+  description?: string | number;
   /**
   * The screen name of the user who owns the list being requested by a slug .
   */
@@ -445,5 +445,5 @@ export interface ListsUpdateParams {
   /**
   * The user ID of the user who owns the list being requested by a slug .
   */
-  owner_id?: number;
+  owner_id?: string | number;
 }
