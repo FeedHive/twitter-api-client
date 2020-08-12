@@ -1,17 +1,139 @@
-export interface FriendshipsLookupParams {
+export interface FollowersIdsParams {
   /**
-  * A comma separated list of screen names, up to 100 are allowed in a single request.
+  * The ID of the user for whom to return results.
+  */
+  user_id?: string | number;
+  /**
+  * The screen name of the user for whom to return results.
   */
   screen_name?: string;
   /**
-  * A comma separated list of user IDs, up to 100 are allowed in a single request.
+  * Causes the list of connections to be broken into pages of no more than 5000 IDs at a time. The number of IDs returned is not guaranteed to be 5000 as suspended users are filtered out after connections are queried. If no cursor is provided, a value of -1 will be assumed, which is the first page.
   */
-  user_id?: string;
+  cursor?: string | number;
+  /**
+  * Some programming environments will not consume Twitter IDs due to their size. Provide this option to have IDs returned as strings instead.
+  */
+  stringify_ids?: boolean;
+  /**
+  * Specifies the number of IDs attempt retrieval of, up to a maximum of 5,000 per distinct request. The value of count is best thought of as a limit to the number of results to return. When using the count parameter with this method, it is wise to use a consistent count value across all requests to the same user's collection. Usage of this parameter is encouraged in environments where all 5,000 IDs constitutes too large of a response.
+  */
+  count?: string | number;
+}
+
+export interface FollowersListParams {
+  /**
+  * The ID of the user for whom to return results.
+  */
+  user_id?: string | number;
+  /**
+  * The screen name of the user for whom to return results.
+  */
+  screen_name?: string;
+  /**
+  * Causes the list of connections to be broken into pages of no more than 5000 IDs at a time. The number of IDs returned is not guaranteed to be 5000 as suspended users are filtered out after connections are queried. If no cursor is provided, a value of -1 will be assumed, which is the first page.
+  */
+  cursor?: string | number;
+  /**
+  * Specifies the number of IDs attempt retrieval of, up to a maximum of 5,000 per distinct request. The value of count is best thought of as a limit to the number of results to return. When using the count parameter with this method, it is wise to use a consistent count value across all requests to the same user's collection. Usage of this parameter is encouraged in environments where all 5,000 IDs constitutes too large of a response.
+  */
+  count?: string | number;
+  /**
+  * When set to either true, t or 1, statuses will not be included in the returned user objects. If set to any other value, statuses will be included.
+  */
+  skip_status?: boolean;
+  /**
+  * The user object entities node will not be included when set to false.
+  */
+  include_user_entities?: boolean;
+}
+
+export interface FriendsIdsParams {
+  /**
+  * The ID of the user for whom to return results.
+  */
+  user_id?: string | number;
+  /**
+  * The screen name of the user for whom to return results.
+  */
+  screen_name?: string;
+  /**
+  * Causes the list of connections to be broken into pages of no more than 5000 IDs at a time. The number of IDs returned is not guaranteed to be 5000 as suspended users are filtered out after connections are queried. If no cursor is provided, a value of -1 will be assumed, which is the first page.
+  */
+  cursor?: string | number;
+  /**
+  * Some programming environments will not consume Twitter IDs due to their size. Provide this option to have IDs returned as strings instead.
+  */
+  stringify_ids?: boolean;
+  /**
+  * Specifies the number of IDs attempt retrieval of, up to a maximum of 5,000 per distinct request. The value of count is best thought of as a limit to the number of results to return. When using the count parameter with this method, it is wise to use a consistent count value across all requests to the same user's collection. Usage of this parameter is encouraged in environments where all 5,000 IDs constitutes too large of a response.
+  */
+  count?: string | number;
+}
+
+export interface FriendsListParams {
+  /**
+  * The ID of the user for whom to return results.
+  */
+  user_id?: string | number;
+  /**
+  * The screen name of the user for whom to return results.
+  */
+  screen_name?: string;
+  /**
+  * Causes the list of connections to be broken into pages of no more than 5000 IDs at a time. The number of IDs returned is not guaranteed to be 5000 as suspended users are filtered out after connections are queried. If no cursor is provided, a value of -1 will be assumed, which is the first page.
+  */
+  cursor?: string | number;
+  /**
+  * Specifies the number of IDs attempt retrieval of, up to a maximum of 5,000 per distinct request. The value of count is best thought of as a limit to the number of results to return. When using the count parameter with this method, it is wise to use a consistent count value across all requests to the same user's collection. Usage of this parameter is encouraged in environments where all 5,000 IDs constitutes too large of a response.
+  */
+  count?: string | number;
+  /**
+  * When set to either true, t or 1, statuses will not be included in the returned user objects. If set to any other value, statuses will be included.
+  */
+  skip_status?: boolean;
+  /**
+  * The user object entities node will not be included when set to false.
+  */
+  include_user_entities?: boolean;
+}
+
+export interface FriendshipsIncomingParams {
+  /**
+  * Causes the list of connections to be broken into pages of no more than 5000 IDs at a time. The number of IDs returned is not guaranteed to be 5000 as suspended users are filtered out after connections are queried. If no cursor is provided, a value of -1 will be assumed, which is the first page.
+  */
+  cursor?: string | number;
+}
+
+export interface FriendshipsLookupParams {
+  /**
+  * The ID of the user for whom to return results.
+  */
+  user_id?: string | number;
+  /**
+  * The screen name of the user for whom to return results.
+  */
+  screen_name?: string;
 }
 
 export interface FriendshipsNoRetweetsIdsParams {
   /**
-  * Some programming environments will not consume Twitter IDs due to their size. Provide this option to have IDs returned as strings instead. Read more about Twitter IDs. This parameter is important to use in Javascript environments.
+  * Causes the list of connections to be broken into pages of no more than 5000 IDs at a time. The number of IDs returned is not guaranteed to be 5000 as suspended users are filtered out after connections are queried. If no cursor is provided, a value of -1 will be assumed, which is the first page.
+  */
+  cursor?: string | number;
+  /**
+  * Some programming environments will not consume Twitter IDs due to their size. Provide this option to have IDs returned as strings instead.
+  */
+  stringify_ids?: boolean;
+}
+
+export interface FriendshipsOutgoingParams {
+  /**
+  * Causes the list of connections to be broken into pages of no more than 5000 IDs at a time. The number of IDs returned is not guaranteed to be 5000 as suspended users are filtered out after connections are queried. If no cursor is provided, a value of -1 will be assumed, which is the first page.
+  */
+  cursor?: string | number;
+  /**
+  * Some programming environments will not consume Twitter IDs due to their size. Provide this option to have IDs returned as strings instead.
   */
   stringify_ids?: boolean;
 }

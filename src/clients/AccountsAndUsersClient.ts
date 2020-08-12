@@ -23,8 +23,14 @@ import {
 } from '../interfaces/params/CreateAndManageListsParams';
 
 import {
+  FollowersIdsParams,
+  FollowersListParams,
+  FriendsIdsParams,
+  FriendsListParams,
+  FriendshipsIncomingParams,
   FriendshipsLookupParams,
   FriendshipsNoRetweetsIdsParams,
+  FriendshipsOutgoingParams,
   FriendshipsShowParams,
   UsersLookupParams,
   UsersSearchParams,
@@ -309,45 +315,55 @@ class AccountsAndUsersClient {
    *  Returns a cursored collection of user IDs for every user following the specified user.At this time, results are ordered with the most recent following first — however, this ordering is subject to unannounced change and eventual consistency issues. Results are given in groups of 5,000 user IDs and multiple "pages" of results can be navigated through using the next_cursor value in subsequent requests. See Using cursors to navigate collections for more information.This method is especially powerful when used in conjunction with GET users / lookup, a method that allows you to convert user IDs into full user objects in bulk.
    *
    * @link https://developer.twitter.com/en/docs/accounts-and-users/follow-search-get-users/api-reference/get-followers-ids
+   * @param parameters
    */
-  public async followersIds() {
-    return await doGetRequest<FollowersIds>('https://api.twitter.com/1.1/followers/ids.json');
+  public async followersIds(parameters?: FollowersIdsParams) {
+    const params = createParams(parameters);
+    return await doGetRequest<FollowersIds>('https://api.twitter.com/1.1/followers/ids.json' + params);
   }
 
   /**
    *  Returns a cursored collection of user objects for users following the specified user.At this time, results are ordered with the most recent following first — however, this ordering is subject to unannounced change and eventual consistency issues. Results are given in groups of 20 users and multiple "pages" of results can be navigated through using the next_cursor value in subsequent requests. See Using cursors to navigate collections for more information.
    *
    * @link https://developer.twitter.com/en/docs/accounts-and-users/follow-search-get-users/api-reference/get-followers-list
+   * @param parameters
    */
-  public async followersList() {
-    return await doGetRequest<FollowersList>('https://api.twitter.com/1.1/followers/list.json');
+  public async followersList(parameters?: FollowersListParams) {
+    const params = createParams(parameters);
+    return await doGetRequest<FollowersList>('https://api.twitter.com/1.1/followers/list.json' + params);
   }
 
   /**
    *  Returns a cursored collection of user IDs for every user the specified user is following (otherwise known as their "friends").At this time, results are ordered with the most recent following first — however, this ordering is subject to unannounced change and eventual consistency issues. Results are given in groups of 5,000 user IDs and multiple "pages" of results can be navigated through using the next_cursor value in subsequent requests. See Using cursors to navigate collections for more information.This method is especially powerful when used in conjunction with GET users / lookup, a method that allows you to convert user IDs into full user objects in bulk.
    *
    * @link https://developer.twitter.com/en/docs/accounts-and-users/follow-search-get-users/api-reference/get-friends-ids
+   * @param parameters
    */
-  public async friendsIds() {
-    return await doGetRequest<FriendsIds>('https://api.twitter.com/1.1/friends/ids.json');
+  public async friendsIds(parameters?: FriendsIdsParams) {
+    const params = createParams(parameters);
+    return await doGetRequest<FriendsIds>('https://api.twitter.com/1.1/friends/ids.json' + params);
   }
 
   /**
    *  Returns a cursored collection of user objects for every user the specified user is following (otherwise known as their "friends").At this time, results are ordered with the most recent following first — however, this ordering is subject to unannounced change and eventual consistency issues. Results are given in groups of 20 users and multiple "pages" of results can be navigated through using the next_cursor value in subsequent requests. See Using cursors to navigate collections for more information.
    *
    * @link https://developer.twitter.com/en/docs/accounts-and-users/follow-search-get-users/api-reference/get-friends-list
+   * @param parameters
    */
-  public async friendsList() {
-    return await doGetRequest<FriendsList>('https://api.twitter.com/1.1/friends/list.json');
+  public async friendsList(parameters?: FriendsListParams) {
+    const params = createParams(parameters);
+    return await doGetRequest<FriendsList>('https://api.twitter.com/1.1/friends/list.json' + params);
   }
 
   /**
    *  Returns a collection of numeric IDs for every user who has a pending request to follow the authenticating user.
    *
    * @link https://developer.twitter.com/en/docs/accounts-and-users/follow-search-get-users/api-reference/get-friendships-incoming
+   * @param parameters
    */
-  public async friendshipsIncoming() {
-    return await doGetRequest<FriendshipsIncoming>('https://api.twitter.com/1.1/friendships/incoming.json');
+  public async friendshipsIncoming(parameters?: FriendshipsIncomingParams) {
+    const params = createParams(parameters);
+    return await doGetRequest<FriendshipsIncoming>('https://api.twitter.com/1.1/friendships/incoming.json' + params);
   }
 
   /**
@@ -376,9 +392,11 @@ class AccountsAndUsersClient {
    *  Returns a collection of numeric IDs for every protected user for whom the authenticating user has a pending follow request.
    *
    * @link https://developer.twitter.com/en/docs/accounts-and-users/follow-search-get-users/api-reference/get-friendships-outgoing
+   * @param parameters
    */
-  public async friendshipsOutgoing() {
-    return await doGetRequest<FriendshipsOutgoing>('https://api.twitter.com/1.1/friendships/outgoing.format');
+  public async friendshipsOutgoing(parameters?: FriendshipsOutgoingParams) {
+    const params = createParams(parameters);
+    return await doGetRequest<FriendshipsOutgoing>('https://api.twitter.com/1.1/friendships/outgoing.format' + params);
   }
 
   /**

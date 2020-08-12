@@ -10,6 +10,7 @@ export const createParams = (params?: { [key: string]: any }) => {
   Object.entries(params).forEach(([key, value]) => {
     if (typeof value === 'boolean') {
       searchParams.append(key, value ? 'true' : 'false');
+      return;
     }
 
     searchParams.append(key, `${value}`);

@@ -1,5 +1,5 @@
 import IClientOptions from '../base/IClientOptions';
-import { setOptions, updateOptions } from '../base/base';
+import { setOptions } from '../base/base';
 
 import BasicsClient from './BasicsClient';
 import AccountsAndUsersClient from './AccountsAndUsersClient';
@@ -29,15 +29,15 @@ class TwitterClient {
       throw Error('API SECRET needs to be provided.');
     }
 
-    setOptions(options);
-  }
+    if (!options.accessToken) {
+      throw Error('ACCESS TOKEN needs to be provided.');
+    }
 
-  /**
-   * Set or re-set options for the client
-   * @param options
-   */
-  public setOptions(options: Partial<IClientOptions>) {
-    updateOptions(options);
+    if (!options.accessTokenSecret) {
+      throw Error('ACCESS TOKEN SECRET needs to be provided.');
+    }
+
+    setOptions(options);
   }
 
   public get basics() {

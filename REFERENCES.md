@@ -429,47 +429,90 @@ Updates the specified list. The authenticated user must own the list to be able 
 #### Link
 https://developer.twitter.com/en/docs/accounts-and-users/create-manage-lists/api-reference/post-lists-update  
   
-### `TwitterClient.accountsAndUsers.followersIds()`
+### `TwitterClient.accountsAndUsers.followersIds(parameters)`
 #### Description
 
 Returns a cursored collection of user IDs for every user following the specified user.At this time, results are ordered with the most recent following first — however, this ordering is subject to unannounced change and eventual consistency issues. Results are given in groups of 5,000 user IDs and multiple "pages" of results can be navigated through using the next_cursor value in subsequent requests. See Using cursors to navigate collections for more information.This method is especially powerful when used in conjunction with GET users / lookup, a method that allows you to convert user IDs into full user objects in bulk.
 
+#### Parameters
+
+| Name | Required | type |
+| ---- | -------- | ---- |
+| user_id | false | number |
+| screen_name | false | string |
+| cursor | false | number |
+| stringify_ids | false | boolean |
+| count | false | number |
   
 #### Link
 https://developer.twitter.com/en/docs/accounts-and-users/follow-search-get-users/api-reference/get-followers-ids  
   
-### `TwitterClient.accountsAndUsers.followersList()`
+### `TwitterClient.accountsAndUsers.followersList(parameters)`
 #### Description
 
 Returns a cursored collection of user objects for users following the specified user.At this time, results are ordered with the most recent following first — however, this ordering is subject to unannounced change and eventual consistency issues. Results are given in groups of 20 users and multiple "pages" of results can be navigated through using the next_cursor value in subsequent requests. See Using cursors to navigate collections for more information.
 
+#### Parameters
+
+| Name | Required | type |
+| ---- | -------- | ---- |
+| user_id | false | number |
+| screen_name | false | string |
+| cursor | false | number |
+| count | false | number |
+| skip_status | false | boolean |
+| include_user_entities | false | boolean |
   
 #### Link
 https://developer.twitter.com/en/docs/accounts-and-users/follow-search-get-users/api-reference/get-followers-list  
   
-### `TwitterClient.accountsAndUsers.friendsIds()`
+### `TwitterClient.accountsAndUsers.friendsIds(parameters)`
 #### Description
 
 Returns a cursored collection of user IDs for every user the specified user is following (otherwise known as their "friends").At this time, results are ordered with the most recent following first — however, this ordering is subject to unannounced change and eventual consistency issues. Results are given in groups of 5,000 user IDs and multiple "pages" of results can be navigated through using the next_cursor value in subsequent requests. See Using cursors to navigate collections for more information.This method is especially powerful when used in conjunction with GET users / lookup, a method that allows you to convert user IDs into full user objects in bulk.
 
+#### Parameters
+
+| Name | Required | type |
+| ---- | -------- | ---- |
+| user_id | false | number |
+| screen_name | false | string |
+| cursor | false | number |
+| stringify_ids | false | boolean |
+| count | false | number |
   
 #### Link
 https://developer.twitter.com/en/docs/accounts-and-users/follow-search-get-users/api-reference/get-friends-ids  
   
-### `TwitterClient.accountsAndUsers.friendsList()`
+### `TwitterClient.accountsAndUsers.friendsList(parameters)`
 #### Description
 
 Returns a cursored collection of user objects for every user the specified user is following (otherwise known as their "friends").At this time, results are ordered with the most recent following first — however, this ordering is subject to unannounced change and eventual consistency issues. Results are given in groups of 20 users and multiple "pages" of results can be navigated through using the next_cursor value in subsequent requests. See Using cursors to navigate collections for more information.
 
+#### Parameters
+
+| Name | Required | type |
+| ---- | -------- | ---- |
+| user_id | false | number |
+| screen_name | false | string |
+| cursor | false | number |
+| count | false | number |
+| skip_status | false | boolean |
+| include_user_entities | false | boolean |
   
 #### Link
 https://developer.twitter.com/en/docs/accounts-and-users/follow-search-get-users/api-reference/get-friends-list  
   
-### `TwitterClient.accountsAndUsers.friendshipsIncoming()`
+### `TwitterClient.accountsAndUsers.friendshipsIncoming(parameters)`
 #### Description
 
 Returns a collection of numeric IDs for every user who has a pending request to follow the authenticating user.
 
+#### Parameters
+
+| Name | Required | type |
+| ---- | -------- | ---- |
+| cursor | false | number |
   
 #### Link
 https://developer.twitter.com/en/docs/accounts-and-users/follow-search-get-users/api-reference/get-friendships-incoming  
@@ -483,8 +526,8 @@ Returns the relationships of the authenticating user to the comma-separated list
 
 | Name | Required | type |
 | ---- | -------- | ---- |
+| user_id | false | number |
 | screen_name | false | string |
-| user_id | false | string |
   
 #### Link
 https://developer.twitter.com/en/docs/accounts-and-users/follow-search-get-users/api-reference/get-friendships-lookup  
@@ -498,16 +541,23 @@ Returns a collection of user_ids that the currently authenticated user does not 
 
 | Name | Required | type |
 | ---- | -------- | ---- |
+| cursor | false | number |
 | stringify_ids | false | boolean |
   
 #### Link
 https://developer.twitter.com/en/docs/accounts-and-users/follow-search-get-users/api-reference/get-friendships-no_retweets-ids  
   
-### `TwitterClient.accountsAndUsers.friendshipsOutgoing()`
+### `TwitterClient.accountsAndUsers.friendshipsOutgoing(parameters)`
 #### Description
 
 Returns a collection of numeric IDs for every protected user for whom the authenticating user has a pending follow request.
 
+#### Parameters
+
+| Name | Required | type |
+| ---- | -------- | ---- |
+| cursor | false | number |
+| stringify_ids | false | boolean |
   
 #### Link
 https://developer.twitter.com/en/docs/accounts-and-users/follow-search-get-users/api-reference/get-friendships-outgoing  

@@ -49,12 +49,12 @@ class BasicsClient {
    * @link https://developer.twitter.com/en/docs/basics/authentication/api-reference/invalidate_access_token
    */
   public async oauthInvalidateToken() {
-    return await doPostRequest<OauthInvalidateToken>(
-      'https://api.twitter.com/1.1/oauth/invalidate_token',
-    );
+    return await doPostRequest<OauthInvalidateToken>('https://api.twitter.com/1.1/oauth/invalidate_token');
   }
 
   /**
+   * undefined
+   *
    * @link https://developer.twitter.com/en/docs/basics/authentication/api-reference/request_token
    */
   public async oauthRequestToken() {
@@ -67,9 +67,7 @@ class BasicsClient {
    * @link https://developer.twitter.com/en/docs/basics/authentication/api-reference/invalidate_bearer_token
    */
   public async oauth2InvalidateToken() {
-    return await doPostRequest<Oauth2InvalidateToken>(
-      'https://api.twitter.com/oauth2/invalidate_token',
-    );
+    return await doPostRequest<Oauth2InvalidateToken>('https://api.twitter.com/oauth2/invalidate_token');
   }
 
   /**
@@ -82,6 +80,7 @@ class BasicsClient {
     const params = createParams(parameters);
     return await doPostRequest('https://api.twitter.com/oauth2/token' + params);
   }
+
 }
 
 export default BasicsClient;
