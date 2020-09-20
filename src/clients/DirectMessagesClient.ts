@@ -38,7 +38,7 @@ class DirectMessagesClient {
    */
   public async customProfilesById(parameters: CustomProfilesByIdParams) {
     const params = createParams(parameters);
-    return await doGetRequest<CustomProfilesById>('https://api.twitter.com/1.1/custom_profiles/:id.json' + params);
+    return await doGetRequest<CustomProfilesById>('https://api.twitter.com/1.1/custom_profiles/' + parameters.id + '.json' + params);
   }
 
   /**

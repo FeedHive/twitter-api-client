@@ -233,7 +233,7 @@ class TweetsClient {
    */
   public async statusesRetweetsById(parameters: StatusesRetweetsByIdParams) {
     const params = createParams(parameters);
-    return await doGetRequest<StatusesRetweetsById[]>('https://api.twitter.com/1.1/statuses/retweets/:id.json' + params);
+    return await doGetRequest<StatusesRetweetsById[]>('https://api.twitter.com/1.1/statuses/retweets/' + parameters.id + '.json' + params);
   }
 
   /**
@@ -288,7 +288,7 @@ class TweetsClient {
    */
   public async statusesDestroyById(parameters: StatusesDestroyByIdParams) {
     const params = createParams(parameters);
-    return await doPostRequest<StatusesDestroyById>('https://api.twitter.com/1.1/statuses/destroy/:id.json' + params);
+    return await doPostRequest<StatusesDestroyById>('https://api.twitter.com/1.1/statuses/destroy/' + parameters.id + '.json' + params);
   }
 
   /**
@@ -299,7 +299,7 @@ class TweetsClient {
    */
   public async statusesRetweetById(parameters: StatusesRetweetByIdParams) {
     const params = createParams(parameters);
-    return await doPostRequest('https://api.twitter.com/1.1/statuses/retweet/:id.json' + params);
+    return await doPostRequest('https://api.twitter.com/1.1/statuses/retweet/' + parameters.id + '.json' + params);
   }
 
   /**
@@ -310,7 +310,7 @@ class TweetsClient {
    */
   public async statusesUnretweetById(parameters: StatusesUnretweetByIdParams) {
     const params = createParams(parameters);
-    return await doPostRequest<StatusesUnretweetById>('https://api.twitter.com/1.1/statuses/unretweet/:id.json' + params);
+    return await doPostRequest<StatusesUnretweetById>('https://api.twitter.com/1.1/statuses/unretweet/' + parameters.id + '.json' + params);
   }
 
   /**
