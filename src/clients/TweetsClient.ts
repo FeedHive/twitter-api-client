@@ -30,6 +30,7 @@ import {
   StatusesDestroyByIdParams,
   StatusesRetweetByIdParams,
   StatusesUnretweetByIdParams,
+  StatusesUpdateParams
 } from '../interfaces/params/PostRetrieveAndEngageWithTweetsParams';
 
 import CollectionsEntries from '../interfaces/types/CollectionsEntriesTypes';
@@ -318,8 +319,9 @@ class TweetsClient {
    *
    * @link https://developer.twitter.com/en/docs/tweets/post-and-engage/api-reference/post-statuses-update
    */
-  public async statusesUpdate() {
-    return await doPostRequest('https://api.twitter.com/1.1/statuses/update.json');
+  public async statusesUpdate(parameters: StatusesUpdateParams) {
+    const params = createParams(parameters);
+    return await doPostRequest('https://api.twitter.com/1.1/statuses/update.json' + params);
   }
 
 }
