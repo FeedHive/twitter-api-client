@@ -176,3 +176,65 @@ export interface StatusesUnretweetByIdParams {
   trim_user?: boolean;
 }
 
+export interface StatusesUpdateParams {
+  /**
+  *   The text of the status update. URL encode as necessary. t.co link wrapping will affect character counts.
+  */
+  status: string;
+  /**
+  * The ID of an existing status that the update is in reply to.
+  */
+  in_reply_to_status_id?: string | number
+  /**
+  * If set to true and used with in_reply_to_status_id, leading @mentions will be looked up from the original Tweet, and added to the new Tweet from there.
+  */
+  auto_populate_reply_metadata?: boolean;
+  /**
+  * When used with auto_populate_reply_metadata, a comma-separated list of user ids which will be removed from the server-generated @mentions prefix on an extended Tweet.
+  */
+  exclude_reply_user_ids?: string;
+  /**
+  * In order for a URL to not be counted in the status body of an extended Tweet, provide a URL as a Tweet attachment. This URL must be a Tweet permalink, or Direct Message deep link.
+  */
+  attachment_url?: string;
+  /**
+  * A comma-delimited list of media_ids to associate with the Tweet.
+  */
+  media_ids?: string
+  /**
+  * If you upload Tweet media that might be considered sensitive content such as nudity, or medical procedures, you must set this value to true.
+  */
+  possibly_sensitive?: boolean;
+  /**
+  * The latitude of the location this Tweet refers to. This parameter will be ignored unless it is inside the range -90.0 to +90.0 (North is positive) inclusive.
+  */
+  lat?: number | string;
+  /**
+  * The longitude of the location this Tweet refers to. The valid ranges for longitude are -180.0 to +180.0 (East is positive) inclusive.
+  */
+  long?: number | string;
+  /**
+  * A place in the world.
+  */
+  place_id?: string;
+  /**
+  * Whether or not to put a pin on the exact coordinates a Tweet has been sent from.
+  */
+  display_coordinates?: boolean;
+  /**
+  * When set to either true, the response will include a user object including only the author's ID. Omit this parameter to receive the complete user object.
+  */
+  trim_user?: boolean;
+  /**
+  * When set to true, enables shortcode commands for sending Direct Messages as part of the status text to send a Direct Message to a user.
+  */
+  enable_dmcommands?: boolean;
+  /**
+  * When set to true, causes any status text that starts with shortcode commands to return an API error.
+  */
+  fail_dmcommands?: boolean;
+  /**
+  * Associate an ads card with the Tweet using the card_uri value from any ads card response.
+  */
+  card_uri?: string;
+}
