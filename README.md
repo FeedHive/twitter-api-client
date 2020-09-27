@@ -22,14 +22,15 @@ Node.js client for Twitter API
 ☑️ Includes 90% of the **official Twitter API** endpoints.  
 ☑️ **Promise-based!** No ugly callbacks.  
 ☑️ **Fully typed!** Both for query parameters and responses.  
-☑️ Inbuilt in-memory **cache** for rate-limit friendly usage.  
+☑️ Inbuilt in-memory **cache** for rate-limit friendly usage.
 
 ## Getting Started
 
 ### Get your Twitter credentials
+
 You will need to create a set of Twitter developer credentials from your Twitter Developer account.  
 If you don't have one already, apply for a developer account [here](https://developer.twitter.com/).  
-It takes about 5 minutes.  
+It takes about 5 minutes.
 
 ### Install
 
@@ -85,13 +86,12 @@ const twitterClient = new TwitterClient({
 
 ## License
 
-This project is licensed under the [MIT License](https://github.com/FeedHive/twitter-api-client/blob/master/LICENSE)
+This project is licensed under the [MIT License](https://github.com/Silind/twitter-api-client/blob/master/LICENSE)
 
 ## Get Help
 
 - Reach out on [Twitter](https://twitter.com/SimonHoiberg)
-- Reach out on [Discord](http://discord.gg/7daE6Ue)
-- Open an [issue on GitHub](https://github.com/FeedHive/twitter-api-client/issues)
+- Open an [issue on GitHub](https://github.com/Silind/twitter-api-client/issues/new)
 
 ## Contribute
 
@@ -102,3 +102,4 @@ In the case of a bug report, bugfix or a suggestions, please feel very free to o
 #### Pull request
 
 Pull requests are always welcome, and I'll do my best to do reviews as fast as I can.
+Please refer to the [contribution guide](https://github.com/Silind/twitter-api-client/blob/master/CONTRIBUTING.md) to see how to get started.

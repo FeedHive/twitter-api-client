@@ -1,0 +1,207 @@
+{
+  "created_at": "Tue Aug 11 05:14:08 +0000 2020",
+  "id": 1293053062353948673,
+  "id_str": "1293053062353948673",
+  "text": "An amazing giveaway from an amazing person! Good luck for the winner!\n\n(RT just for reach) https://t.co/8IAbWVkh4A",
+  "truncated": false,
+  "entities": {
+    "hashtags": [],
+    "symbols": [],
+    "user_mentions": [],
+    "urls": [
+      {
+        "url": "https://t.co/8IAbWVkh4A",
+        "expanded_url": "https://twitter.com/SimonHoiberg/status/1292831801648525314",
+        "display_url": "twitter.com/SimonHoiberg/s…",
+        "indices": [91, 114]
+      }
+    ]
+  },
+  "source": "<a href=\"http://twitter.com/download/android\" rel=\"nofollow\">Twitter for Android</a>",
+  "in_reply_to_status_id": null,
+  "in_reply_to_status_id_str": null,
+  "in_reply_to_user_id": null,
+  "in_reply_to_user_id_str": null,
+  "in_reply_to_screen_name": null,
+  "user": {
+    "id": 753911312468611072,
+    "id_str": "753911312468611072",
+    "name": "Deni Moka⚡",
+    "screen_name": "dmokafa",
+    "location": "visit my tech blog 👉 ",
+    "description": "I help you to build better and elegant software by using\n- #design principles\n- #development methodologies\n- #agile frameworks\n- #programming disciplines",
+    "url": "https://t.co/lCZW8wZs5C",
+    "entities": {
+      "url": {
+        "urls": [
+          {
+            "url": "https://t.co/lCZW8wZs5C",
+            "expanded_url": "https://www.danielmoka.com",
+            "display_url": "danielmoka.com",
+            "indices": [0, 23]
+          }
+        ]
+      },
+      "description": {
+        "urls": []
+      }
+    },
+    "protected": false,
+    "followers_count": 4585,
+    "friends_count": 1095,
+    "listed_count": 41,
+    "created_at": "Fri Jul 15 11:17:18 +0000 2016",
+    "favourites_count": 12831,
+    "utc_offset": null,
+    "time_zone": null,
+    "geo_enabled": false,
+    "verified": false,
+    "statuses_count": 3660,
+    "lang": null,
+    "contributors_enabled": false,
+    "is_translator": false,
+    "is_translation_enabled": false,
+    "profile_background_color": "F5F8FA",
+    "profile_background_image_url": null,
+    "profile_background_image_url_https": null,
+    "profile_background_tile": false,
+    "profile_image_url": "http://pbs.twimg.com/profile_images/1223174599090810880/0ifheaFc_normal.jpg",
+    "profile_image_url_https": "https://pbs.twimg.com/profile_images/1223174599090810880/0ifheaFc_normal.jpg",
+    "profile_banner_url": "https://pbs.twimg.com/profile_banners/753911312468611072/1576097062",
+    "profile_link_color": "1DA1F2",
+    "profile_sidebar_border_color": "C0DEED",
+    "profile_sidebar_fill_color": "DDEEF6",
+    "profile_text_color": "333333",
+    "profile_use_background_image": true,
+    "has_extended_profile": true,
+    "default_profile": true,
+    "default_profile_image": false,
+    "following": true,
+    "follow_request_sent": false,
+    "notifications": false,
+    "translator_type": "none"
+  },
+  "geo": null,
+  "coordinates": null,
+  "place": null,
+  "contributors": null,
+  "is_quote_status": true,
+  "quoted_status_id": 1292831801648525314,
+  "quoted_status_id_str": "1292831801648525314",
+  "quoted_status": {
+    "created_at": "Mon Aug 10 14:34:55 +0000 2020",
+    "id": 1292831801648525314,
+    "id_str": "1292831801648525314",
+    "text": "🎁 10K GIVEAWAY 🎁\n\nYou will get:\n📚 The entire @YDKJS book series by @getify \n📦 The complete freelancing bundle by… https://t.co/Y15RmFLHyK",
+    "truncated": true,
+    "entities": {
+      "hashtags": [],
+      "symbols": [],
+      "user_mentions": [
+        {
+          "screen_name": "YDKJS",
+          "name": "You Don't Know JS Yet",
+          "id": 2412232099,
+          "id_str": "2412232099",
+          "indices": [45, 51]
+        },
+        {
+          "screen_name": "getify",
+          "name": "getify",
+          "id": 16686076,
+          "id_str": "16686076",
+          "indices": [67, 74]
+        }
+      ],
+      "urls": [
+        {
+          "url": "https://t.co/Y15RmFLHyK",
+          "expanded_url": "https://twitter.com/i/web/status/1292831801648525314",
+          "display_url": "twitter.com/i/web/status/1…",
+          "indices": [114, 137]
+        }
+      ]
+    },
+    "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+    "in_reply_to_status_id": null,
+    "in_reply_to_status_id_str": null,
+    "in_reply_to_user_id": null,
+    "in_reply_to_user_id_str": null,
+    "in_reply_to_screen_name": null,
+    "user": {
+      "id": 875776212341329920,
+      "id_str": "875776212341329920",
+      "name": "Simon Høiberg",
+      "screen_name": "SimonHoiberg",
+      "location": "Copenhagen, Denmark",
+      "description": "Software Engineer ‧ Freelancer ‧ Starter.\nCreator → @sigmetic @direflowjs\n\n💡 Tips on how to become a better developer, and to start your own business.",
+      "url": "https://t.co/7tFaIY51dW",
+      "entities": {
+        "url": {
+          "urls": [
+            {
+              "url": "https://t.co/7tFaIY51dW",
+              "expanded_url": "http://www.silind.com",
+              "display_url": "silind.com",
+              "indices": [0, 23]
+            }
+          ]
+        },
+        "description": {
+          "urls": []
+        }
+      },
+      "protected": false,
+      "followers_count": 11226,
+      "friends_count": 268,
+      "listed_count": 65,
+      "created_at": "Fri Jun 16 18:04:54 +0000 2017",
+      "favourites_count": 9173,
+      "utc_offset": null,
+      "time_zone": null,
+      "geo_enabled": false,
+      "verified": false,
+      "statuses_count": 2969,
+      "lang": null,
+      "contributors_enabled": false,
+      "is_translator": false,
+      "is_translation_enabled": false,
+      "profile_background_color": "000000",
+      "profile_background_image_url": "http://abs.twimg.com/images/themes/theme1/bg.png",
+      "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme1/bg.png",
+      "profile_background_tile": false,
+      "profile_image_url": "http://pbs.twimg.com/profile_images/1082926208516530176/TsBWPhaf_normal.jpg",
+      "profile_image_url_https": "https://pbs.twimg.com/profile_images/1082926208516530176/TsBWPhaf_normal.jpg",
+      "profile_banner_url": "https://pbs.twimg.com/profile_banners/875776212341329920/1595152862",
+      "profile_link_color": "FF691F",
+      "profile_sidebar_border_color": "000000",
+      "profile_sidebar_fill_color": "000000",
+      "profile_text_color": "000000",
+      "profile_use_background_image": false,
+      "has_extended_profile": true,
+      "default_profile": false,
+      "default_profile_image": false,
+      "following": false,
+      "follow_request_sent": false,
+      "notifications": false,
+      "translator_type": "none"
+    },
+    "geo": null,
+    "coordinates": null,
+    "place": null,
+    "contributors": null,
+    "is_quote_status": false,
+    "retweet_count": 604,
+    "favorite_count": 2174,
+    "favorited": false,
+    "retweeted": false,
+    "possibly_sensitive": false,
+    "lang": "en"
+  },
+  "retweet_count": 0,
+  "favorite_count": 11,
+  "favorited": true,
+  "retweeted": false,
+  "possibly_sensitive": false,
+  "lang": "en"
+}

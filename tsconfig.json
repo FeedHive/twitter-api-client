@@ -14,6 +14,6 @@
     "moduleResolution": "node",
     "declaration": true
   },
-  "include": ["src"],
-  "exclude": ["node_modules", "dist"]
+  "include": ["generated"],
+  "exclude": ["node_modules", "dist", "src", ".github"]
 }

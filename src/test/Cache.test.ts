@@ -1,5 +1,5 @@
 import FakeTimers from '@sinonjs/fake-timers';
-import Cache from '../services/Cache';
+import Cache from '../base/Cache';
 
 const clock = FakeTimers.install();
 

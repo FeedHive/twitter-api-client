@@ -1,0 +1,152 @@
+{
+  "query": {
+    "params": {
+      "accuracy": 0,
+      "coordinates": {
+        "coordinates": [-122.42284884, 37.76893497],
+        "type": "Point"
+      },
+      "granularity": "neighborhood"
+    },
+    "type": "reverse_geocode",
+    "url": "https://api.twitter.com/1.1/geo/reverse_geocode.json?accuracy=0&granularity=neighborhood&lat=37.76893497&long=-122.42284884"
+  },
+  "result": {
+    "places": [
+      {
+        "attributes": {},
+        "bounding_box": {
+          "coordinates": [
+            [
+              [-122.42676492, 37.75983003],
+              [-122.420736, 37.75983003],
+              [-122.420736, 37.77226299],
+              [-122.42676492, 37.77226299]
+            ]
+          ],
+          "type": "Polygon"
+        },
+        "contained_within": [
+          {
+            "attributes": {},
+            "bounding_box": {
+              "coordinates": [
+                [
+                  [-122.51368188, 37.70813196],
+                  [-122.35845384, 37.70813196],
+                  [-122.35845384, 37.83245301],
+                  [-122.51368188, 37.83245301]
+                ]
+              ],
+              "type": "Polygon"
+            },
+            "country": "United States",
+            "country_code": "US",
+            "full_name": "San Francisco, CA",
+            "id": "5a110d312052166f",
+            "name": "San Francisco",
+            "place_type": "city",
+            "url": "https://api.twitter.com/1.1/geo/id/5a110d312052166f.json"
+          }
+        ],
+        "country": "United States",
+        "country_code": "US",
+        "full_name": "Mission Dolores, San Francisco",
+        "id": "cf7afb4ee6011bca",
+        "name": "Mission Dolores",
+        "place_type": "neighborhood",
+        "url": "https://api.twitter.com/1.1/geo/id/cf7afb4ee6011bca.json"
+      },
+      {
+        "attributes": {},
+        "bounding_box": {
+          "coordinates": [
+            [
+              [-122.51368188, 37.70813196],
+              [-122.35845384, 37.70813196],
+              [-122.35845384, 37.83245301],
+              [-122.51368188, 37.83245301]
+            ]
+          ],
+          "type": "Polygon"
+        },
+        "contained_within": [
+          {
+            "attributes": {},
+            "bounding_box": {
+              "coordinates": [
+                [
+                  [-124.482003, 32.528832],
+                  [-114.131211, 32.528832],
+                  [-114.131211, 42.009517],
+                  [-124.482003, 42.009517]
+                ]
+              ],
+              "type": "Polygon"
+            },
+            "country": "United States",
+            "country_code": "US",
+            "full_name": "California, US",
+            "id": "fbd6d2f5a4e4a15e",
+            "name": "California",
+            "place_type": "admin",
+            "url": "https://api.twitter.com/1.1/geo/id/fbd6d2f5a4e4a15e.json"
+          }
+        ],
+        "country": "United States",
+        "country_code": "US",
+        "full_name": "San Francisco, CA",
+        "id": "5a110d312052166f",
+        "name": "San Francisco",
+        "place_type": "city",
+        "url": "https://api.twitter.com/1.1/geo/id/5a110d312052166f.json"
+      },
+      {
+        "attributes": {},
+        "bounding_box": {
+          "coordinates": [
+            [
+              [-124.482003, 32.528832],
+              [-114.131211, 32.528832],
+              [-114.131211, 42.009517],
+              [-124.482003, 42.009517]
+            ]
+          ],
+          "type": "Polygon"
+        },
+        "contained_within": [
+          {
+            "attributes": {},
+            "bounding_box": null,
+            "country": "United States",
+            "country_code": "US",
+            "full_name": "United States",
+            "id": "96683cc9126741d1",
+            "name": "United States",
+            "place_type": "country",
+            "url": "https://api.twitter.com/1.1/geo/id/96683cc9126741d1.json"
+          }
+        ],
+        "country": "United States",
+        "country_code": "US",
+        "full_name": "California, US",
+        "id": "fbd6d2f5a4e4a15e",
+        "name": "California",
+        "place_type": "admin",
+        "url": "https://api.twitter.com/1.1/geo/id/fbd6d2f5a4e4a15e.json"
+      },
+      {
+        "attributes": {},
+        "bounding_box": null,
+        "contained_within": [],
+        "country": "United States",
+        "country_code": "US",
+        "full_name": "United States",
+        "id": "96683cc9126741d1",
+        "name": "United States",
+        "place_type": "country",
+        "url": "https://api.twitter.com/1.1/geo/id/96683cc9126741d1.json"
+      }
+    ]
+  }
+}

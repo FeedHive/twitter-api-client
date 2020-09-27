@@ -20,12 +20,13 @@ jobs:
         npm install
 
     - name: Test
-      run: |
-        npm test
+      run: npm test
+
+    - name: Generate
+      run: npm run generate
 
     - name: Build
-      run: |
-        npm run build
+      run: npm run build
   
     - name: Publish to NPM registry
       run: npm publish

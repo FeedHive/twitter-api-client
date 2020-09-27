@@ -1,20 +1,24 @@
-import { URLSearchParams } from 'url';
+export const createCamelCaseTitle = (slashedTitle: string) => {
+  const transformedSlashedTitle = slashedTitle
+    .trim()
+    .replace(/ /g, '/')
+    .replace(/:/g, 'By/')
+    .replace(/\(/g, '/')
+    .replace(/\)/g, '/')
+    .replace(/\/\//g, '/')
+    .replace(/_/g, '/')
+    .replace(/,/g, '/');
 
-export const createParams = (params?: { [key: string]: any }) => {
-  if (!params) {
-    return '';
-  }
+  const words = transformedSlashedTitle.split('/');
+  let title = '';
 
-  const searchParams = new URLSearchParams();
-
-  Object.entries(params).forEach(([key, value]) => {
-    if (typeof value === 'boolean') {
-      searchParams.append(key, value ? 'true' : 'false');
+  words.forEach((w) => {
+    if (!w) {
       return;
     }
 
-    searchParams.append(key, `${value}`);
+    title += w.replace(/^./, w[0].toUpperCase());
   });
 
-  return `?${searchParams.toString()}`;
+  return title;
 };

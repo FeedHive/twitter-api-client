@@ -1,7 +1,7 @@
 import OAuth from 'oauth';
 import IClientOptions from './IClientOptions';
-import { formatURL } from '../utils/formatURL';
-import Cache from '../services/Cache';
+import Cache from './Cache';
+import { formatURL } from './utils';
 
 let oauth: OAuth.OAuth;
 let cache: Cache;
