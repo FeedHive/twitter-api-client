@@ -2,7 +2,9 @@ import fs from 'fs';
 import yaml from 'js-yaml';
 import { resolve } from 'path';
 import writeParamsInterfaces from './generator/writeParamsInterfaces';
-import createFolderStructure, { copyBase } from './generator/createFolderStructure';
+import createFolderStructure, {
+  copyBase,
+} from './generator/createFolderStructure';
 import writeTypesInterfaces from './generator/writeTypesInterfaces';
 import writeClients from './generator/writeClients';
 import writeReferences from './generator/writeReferences';
@@ -12,7 +14,7 @@ import writeReferences from './generator/writeReferences';
  */
 (async function () {
   // Prepare folder structure for generated clients
-  createFolderStructure();
+  createFolderStructure(resolve(__dirname, '../'));
   copyBase();
 
   // Parse the twitter-api-spec.yml file

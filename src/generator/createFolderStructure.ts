@@ -1,16 +1,16 @@
 import fs from 'fs';
+import rimraf from 'rimraf';
 import { execSync } from 'child_process';
 import { resolve } from 'path';
 
-function createFolderStructure() {
-  execSync(`rm -rf ${resolve(__dirname, '../../generated')}`);
-
+function createFolderStructure(basePath: string) {
+  rimraf.sync(resolve(basePath, './generated'));
   const paths = [
-    resolve(__dirname, '../../generated'),
-    resolve(__dirname, '../../generated/interfaces'),
-    resolve(__dirname, '../../generated/interfaces/params'),
-    resolve(__dirname, '../../generated/interfaces/types'),
-    resolve(__dirname, '../../generated/clients'),
+    resolve(basePath, './generated'),
+    resolve(basePath, './generated/interfaces'),
+    resolve(basePath, './generated/interfaces/params'),
+    resolve(basePath, './generated/interfaces/types'),
+    resolve(basePath, './generated/clients'),
   ];
 
   for (const p of paths) {
