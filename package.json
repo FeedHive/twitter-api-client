@@ -29,10 +29,10 @@
   "homepage": "https://github.com/Silind/twitter-api-client#readme",
   "dependencies": {
     "oauth": "^0.9.15",
-    "object-sizeof": "^1.6.1",
-    "rimraf": "^3.0.2"
+    "object-sizeof": "^1.6.1"
   },
   "devDependencies": {
+    "rimraf": "^3.0.2",
     "@sinonjs/fake-timers": "^6.0.1",
     "@types/jest": "^26.0.5",
     "@types/js-yaml": "^3.12.5",
