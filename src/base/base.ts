@@ -81,7 +81,7 @@ class Transport {
     });
   }
   async doPostRequest<T>(url: string, body?: any): Promise<T> {
-    if (!oauth || !credentials) {
+    if (!this.oauth || !this.credentials) {
       throw Error(
         'Unable to make request. Authentication has not been established'
       );
