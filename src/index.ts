@@ -12,7 +12,7 @@ import writeReferences from './generator/writeReferences';
  */
 (async function () {
   // Prepare folder structure for generated clients
-  createFolderStructure();
+  createFolderStructure(resolve(__dirname, '../'));
   copyBase();
 
   // Parse the twitter-api-spec.yml file
