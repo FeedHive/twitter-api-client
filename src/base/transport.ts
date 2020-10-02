@@ -5,9 +5,9 @@ import { formatURL } from './utils';
 
 class Transport {
   private oauth: OAuth.OAuth;
-
   private cache?: Cache;
   private credentials: IClientOptions & { [key: string]: any };
+  
   constructor(options: IClientOptions) {
     this.credentials = options;
     this.oauth = new OAuth.OAuth(
@@ -19,11 +19,13 @@ class Transport {
       null,
       'HMAC-SHA1'
     );
+
     if (!options?.disableCache) {
       this.cache = new Cache(options?.ttl, options.maxByteSize);
     }
   }
-  updateOptions(options: Partial<IClientOptions>) {
+
+  public updateOptions(options: Partial<IClientOptions>) {
     const { apiKey, apiSecret, ...rest } = options;
     const cleanOptions = rest as { [key: string]: any };
 
@@ -33,7 +35,8 @@ class Transport {
       }
     });
   }
-  async doGetRequest<T>(url: string): Promise<T> {
+
+  public async doGetRequest<T>(url: string): Promise<T> {
     if (!this.oauth) {
       throw Error(
         'Unable to make request. Authentication has not been established'
@@ -81,7 +84,7 @@ class Transport {
       );
     });
   }
-  async doPostRequest<T>(url: string, body?: any): Promise<T> {
+  public async doPostRequest<T>(url: string, body?: any): Promise<T> {
     if (!this.oauth || !this.credentials) {
       throw Error(
         'Unable to make request. Authentication has not been established'

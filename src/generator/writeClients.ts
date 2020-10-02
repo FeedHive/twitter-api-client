@@ -93,10 +93,12 @@ function writeClients(dictionary: IReferenceDirectory[]) {
     clientFile += `\nclass ${fileName}Client {\n`;
     clientFile += `   
     private transport: Transport;
+
     constructor(transport: Transport) {
       if (!transport) {
         throw Error('Transport class needs to be provided.');
       }
+      
       this.transport = transport;
     }\n`
 
