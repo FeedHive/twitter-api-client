@@ -5,7 +5,8 @@ import { formatURL } from './utils';
 
 class Transport {
   private oauth: OAuth.OAuth;
-  private cache: Cache;
+
+  private cache?: Cache;
   private credentials: IClientOptions & { [key: string]: any };
   constructor(options: IClientOptions) {
     this.credentials = options;
