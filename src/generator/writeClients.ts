@@ -8,7 +8,7 @@ function writeClients(dictionary: IReferenceDirectory[]) {
   const clientsPath = `${generatedPath}/clients`;
 
   let superClientFile = `import IClientOptions from './base/IClientOptions';\n`;
-  superClientFile += `import Transport from './base/transport';\n\n`;
+  superClientFile += `import Transport from './base/Transport';\n\n`;
   const clients: string[] = [];
 
   dictionary.forEach((g) => {
@@ -89,7 +89,7 @@ function writeClients(dictionary: IReferenceDirectory[]) {
     interfacesTypesImports.forEach((type) => {
       clientFile += `import ${type} from '../interfaces/types/${type}Types';\n`;
     });
-    clientFile += `import Transport from '../base/transport'\n`
+    clientFile += `import Transport from '../base/Transport'\n`
     clientFile += `\nclass ${fileName}Client {\n`;
     clientFile += `   
     private transport: Transport;

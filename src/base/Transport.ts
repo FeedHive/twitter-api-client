@@ -84,6 +84,7 @@ class Transport {
       );
     });
   }
+
   public async doPostRequest<T>(url: string, body?: any): Promise<T> {
     if (!this.oauth || !this.credentials) {
       throw Error(
