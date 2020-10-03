@@ -1,12 +1,12 @@
-name: publish
+name: test
 
 on:
   push:
-    branches:
-    - master
+    branches-ignore:
+      - master
 
 jobs:
-  publish:
+  test:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
@@ -21,14 +21,3 @@ jobs:
 
     - name: Test
       run: npm test
-
-    - name: Generate
-      run: npm run generate
-
-    - name: Build
-      run: npm run build
-  
-    - name: Publish to NPM registry
-      run: npm publish
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
