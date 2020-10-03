@@ -8,7 +8,7 @@ function writeClients(dictionary: IReferenceDirectory[]) {
   const clientsPath = `${generatedPath}/clients`;
 
   let superClientFile = `import IClientOptions from './base/IClientOptions';\n`;
-  superClientFile += `import { setOptions } from './base/base';\n\n`;
+  superClientFile += `import Transport from './base/transport';\n\n`;
   const clients: string[] = [];
 
   dictionary.forEach((g) => {
@@ -19,7 +19,7 @@ function writeClients(dictionary: IReferenceDirectory[]) {
 
     clients.push(`${fileName}Client`);
 
-    let clientFile = `import { doGetRequest, doPostRequest } from '../base/base';\n`;
+    let clientFile = ``;
 
     g.subgroups.forEach((s) => {
       const interfacesParamsImports: string[] = [];
@@ -45,7 +45,7 @@ function writeClients(dictionary: IReferenceDirectory[]) {
         const optional = !e.parameters?.some((p) => p.required) ? '?' : '';
         const signature = e.parameters ? `(parameters${optional}: ${interfaceName}Params)` : '()';
         const queryParams = e.parameters ? ` + params` : '';
-        const doMethod = e.title.startsWith('GET') ? 'doGetRequest' : 'doPostRequest';
+        const doMethod = e.title.startsWith('GET') ? 'this.transport.doGetRequest' : 'this.transport.doPostRequest';
         const listed = e.exampleResponse?.startsWith('[') ? '[]' : '';
         const returnType = e.exampleResponse ? `<${interfaceName}${listed}>` : '';
         const resourceUrl = e.resourceUrl.replace(':id', `' + parameters.id + '`);
@@ -89,8 +89,18 @@ function writeClients(dictionary: IReferenceDirectory[]) {
     interfacesTypesImports.forEach((type) => {
       clientFile += `import ${type} from '../interfaces/types/${type}Types';\n`;
     });
-
+    clientFile += `import Transport from '../base/transport'\n`
     clientFile += `\nclass ${fileName}Client {\n`;
+    clientFile += `   
+    private transport: Transport;
+
+    constructor(transport: Transport) {
+      if (!transport) {
+        throw Error('Transport class needs to be provided.');
+      }
+      
+      this.transport = transport;
+    }\n`
 
     clientMethods.forEach((method) => (clientFile += method));
 
@@ -109,7 +119,7 @@ function writeClients(dictionary: IReferenceDirectory[]) {
     const clientName = client.replace(/^./, client[0].toLowerCase());
     superClientFile += `  private ${clientName}: ${client} | undefined;\n`;
   });
-
+  superClientFile +=`  private transport: Transport;\n`;
   superClientFile += `
   /**
    * Provide Twitter API Credentials and options
@@ -131,8 +141,7 @@ function writeClients(dictionary: IReferenceDirectory[]) {
     if (!options.accessTokenSecret) {
       throw Error('ACCESS TOKEN SECRET needs to be provided.');
     }
-
-    setOptions(options);
+    this.transport = new Transport(options);
   }\n`;
 
   clients.forEach((client) => {
@@ -140,7 +149,7 @@ function writeClients(dictionary: IReferenceDirectory[]) {
     superClientFile += `
   public get ${clientName.replace('Client', '')}() {
     if (!this.${clientName}) {
-      this.${clientName} = new ${client}();
+      this.${clientName} = new ${client}(this.transport);
     }
 
     return this.${clientName};

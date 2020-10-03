@@ -39,6 +39,7 @@
     "@types/mock-fs": "^4.10.0",
     "@types/node": "^13.11.1",
     "@types/oauth": "^0.9.1",
+    "@types/rimraf": "^3.0.0",
     "@types/sinonjs__fake-timers": "^6.0.1",
     "@typescript-eslint/eslint-plugin": "^2.27.0",
     "@typescript-eslint/parser": "^2.27.0",
