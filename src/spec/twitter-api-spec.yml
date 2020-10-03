@@ -1298,13 +1298,13 @@
               description: |
                 The ID of the user for whom to return results. Either an id or
                 screen_name is required for this method.
-              required: true
+              required: false
               type: number
             - name: screen_name
               description: |
                 The screen name of the user for whom to return results. Either
                 a id or screen_name is required for this method.
-              required: true
+              required: false
               type: string
             - name: include_entities
               description: The entities node will not be included when set to false.
