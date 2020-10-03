@@ -716,8 +716,8 @@ returned in the current_status field.
 
 | Name | Required | type |
 | ---- | -------- | ---- |
-| user_id | true | number |
-| screen_name | true | string |
+| user_id | false | number |
+| screen_name | false | string |
 | include_entities | false | boolean |
   
 #### Link
