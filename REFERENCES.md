@@ -1266,6 +1266,7 @@ See Working with Timelines for instructions on traversing timelines efficiently.
 | trim_user | false | boolean |
 | exclude_replies | false | boolean |
 | include_entities | false | boolean |
+| tweet_mode | false | string |
   
 #### Link
 https://developer.twitter.com/en/docs/tweets/timelines/api-reference/get-statuses-home_timeline  
@@ -1293,6 +1294,7 @@ See Working with Timelines for instructions on traversing timelines.
 | max_id | false | number |
 | trim_user | false | boolean |
 | include_entities | false | boolean |
+| tweet_mode | false | string |
   
 #### Link
 https://developer.twitter.com/en/docs/tweets/timelines/api-reference/get-statuses-mentions_timeline  
@@ -1329,6 +1331,7 @@ Tweets according to Display Requirements.
 | trim_user | false | boolean |
 | exclude_replies | false | boolean |
 | include_rts | false | boolean |
+| tweet_mode | false | string |
   
 #### Link
 https://developer.twitter.com/en/docs/tweets/timelines/api-reference/get-statuses-user_timeline  
@@ -1349,6 +1352,7 @@ Returns the 20 most recent Tweets liked by the authenticating or specified user.
 | since_id | false | number |
 | max_id | false | number |
 | include_entities | false | boolean |
+| tweet_mode | false | string |
   
 #### Link
 https://developer.twitter.com/en/docs/tweets/post-and-engage/api-reference/get-favorites-list  
@@ -1373,6 +1377,7 @@ You are strongly encouraged to use a POST for larger requests.
 | map | false | boolean |
 | include_ext_alt_text | false | boolean |
 | include_card_uri | false | boolean |
+| tweet_mode | false | string |
   
 #### Link
 https://developer.twitter.com/en/docs/tweets/post-and-engage/api-reference/get-statuses-lookup  
@@ -1408,6 +1413,7 @@ Returns a collection of the 100 most recent retweets of the Tweet specified by t
 | id | true | number |
 | count | false | number |
 | trim_user | false | boolean |
+| tweet_mode | false | string |
   
 #### Link
 https://developer.twitter.com/en/docs/tweets/post-and-engage/api-reference/get-statuses-retweets-id  
@@ -1429,6 +1435,7 @@ the user's GET statuses / user_timeline.
 | trim_user | false | boolean |
 | include_entities | false | boolean |
 | include_user_entities | false | boolean |
+| tweet_mode | false | string |
   
 #### Link
 https://developer.twitter.com/en/docs/tweets/post-and-engage/api-reference/get-statuses-retweets_of_me  
@@ -1460,6 +1467,7 @@ a latitude then a longitude), eg: "geo":
 | include_entities | false | boolean |
 | include_ext_alt_text | false | boolean |
 | include_card_uri | false | boolean |
+| tweet_mode | false | string |
   
 #### Link
 https://developer.twitter.com/en/docs/tweets/post-and-engage/api-reference/get-statuses-show-id  
@@ -1480,6 +1488,7 @@ will indicate whether the intended action was successful or not.
 | ---- | -------- | ---- |
 | id | true | number |
 | include_entities | false | boolean |
+| tweet_mode | false | string |
   
 #### Link
 https://developer.twitter.com/en/docs/tweets/post-and-engage/api-reference/post-favorites-create  
@@ -1499,6 +1508,7 @@ A 200 OK response from this method will indicate whether the intended action was
 | ---- | -------- | ---- |
 | id | true | number |
 | include_entities | false | boolean |
+| tweet_mode | false | string |
   
 #### Link
 https://developer.twitter.com/en/docs/tweets/post-and-engage/api-reference/post-favorites-destroy  
@@ -1516,6 +1526,7 @@ Returns the destroyed status if successful.
 | ---- | -------- | ---- |
 | id | true | number |
 | trim_user | false | boolean |
+| tweet_mode | false | string |
   
 #### Link
 https://developer.twitter.com/en/docs/tweets/post-and-engage/api-reference/post-statuses-destroy-id  
@@ -1553,6 +1564,7 @@ When passing a source status ID instead of the retweet status ID a HTTP 200 resp
 | ---- | -------- | ---- |
 | id | true | number |
 | trim_user | false | boolean |
+| tweet_mode | false | string |
   
 #### Link
 https://developer.twitter.com/en/docs/tweets/post-and-engage/api-reference/post-statuses-unretweet-id  
@@ -1605,6 +1617,7 @@ user settings page. Currently there is no method to remove geotags from individu
 | enable_dmcommands | false | boolean |
 | fail_dmcommands | false | boolean |
 | card_uri | false | string |
+| tweet_mode | false | string |
   
 #### Link
 https://developer.twitter.com/en/docs/tweets/post-and-engage/api-reference/post-statuses-update  

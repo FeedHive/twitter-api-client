@@ -2168,6 +2168,11 @@
               description: The entities node will not be included when set to false.
               required: false
               type: boolean
+            - name: tweet_mode
+              description: This parameter enables developers to request a series of different extended fields introduced in the years since statuses/show and statuses/lookup were introduced. It has been replaced with the fields and expansions functionality.
+              required: false
+              type: string
+
           exampleResponse: |
             {tweet-object}
         - title: GET statuses/mentions_timeline
@@ -2220,6 +2225,10 @@
               description: The entities node will not be included when set to false.
               required: false
               type: boolean
+            - name: tweet_mode
+              description: This parameter enables developers to request a series of different extended fields introduced in the years since statuses/show and statuses/lookup were introduced. It has been replaced with the fields and expansions functionality.
+              required: false
+              type: string
           exampleResponse: |
             [ {mention-object} ]
         - title: GET statuses/user_timeline
@@ -2299,6 +2308,10 @@
                 contain a full user object.
               required: false
               type: boolean
+            - name: tweet_mode
+              description: This parameter enables developers to request a series of different extended fields introduced in the years since statuses/show and statuses/lookup were introduced. It has been replaced with the fields and expansions functionality.
+              required: false
+              type: string
           exampleResponse: |
             [ {tweet-object} ]
     - title: Post, retrieve, and engage with Tweets
@@ -2345,6 +2358,10 @@
                 The entities node will be omitted when set to false .
               required: false
               type: boolean
+            - name: tweet_mode
+              description: This parameter enables developers to request a series of different extended fields introduced in the years since statuses/show and statuses/lookup were introduced. It has been replaced with the fields and expansions functionality.
+              required: false
+              type: string
           exampleResponse: |
             [ {tweet-object} ]
         - title: GET statuses/lookup
@@ -2396,6 +2413,10 @@
                 when that card was attached using the card_uri value.
               required: false
               type: boolean
+            - name: tweet_mode
+              description: This parameter enables developers to request a series of different extended fields introduced in the years since statuses/show and statuses/lookup were introduced. It has been replaced with the fields and expansions functionality.
+              required: false
+              type: string
           exampleResponse: |
             [ {tweet-object} ]
         - title: GET statuses/retweeters/ids
@@ -2461,6 +2482,10 @@
                 Omit this parameter to receive the complete user object.
               required: false
               type: boolean
+            - name: tweet_mode
+              description: This parameter enables developers to request a series of different extended fields introduced in the years since statuses/show and statuses/lookup were introduced. It has been replaced with the fields and expansions functionality.
+              required: false
+              type: string
           exampleResponse: |
             [ {tweet-object} ]
         - title: GET statuses/retweets_of_me
@@ -2506,6 +2531,10 @@
               description: The user entities node will not be included when set to false.
               required: false
               type: boolean
+            - name: tweet_mode
+              description: This parameter enables developers to request a series of different extended fields introduced in the years since statuses/show and statuses/lookup were introduced. It has been replaced with the fields and expansions functionality.
+              required: false
+              type: string
           exampleResponse: |
             [ {tweet-object} ]
         - title: GET statuses/show/:id
@@ -2561,6 +2590,10 @@
                 when that card was attached using the card_uri value.
               required: false
               type: boolean
+            - name: tweet_mode
+              description: This parameter enables developers to request a series of different extended fields introduced in the years since statuses/show and statuses/lookup were introduced. It has been replaced with the fields and expansions functionality.
+              required: false
+              type: string
           exampleResponse: |
             {tweet-object}
         - title: POST favorites/create
@@ -2582,6 +2615,10 @@
               description: The entities node will be omitted when set to false .
               required: false
               type: boolean
+            - name: tweet_mode
+              description: This parameter enables developers to request a series of different extended fields introduced in the years since statuses/show and statuses/lookup were introduced. It has been replaced with the fields and expansions functionality.
+              required: false
+              type: string
           exampleResponse: |
             {tweet-object}
         - title: POST favorites/destroy
@@ -2602,6 +2639,10 @@
               description: The entities node will be omitted when set to false .
               required: false
               type: boolean
+            - name: tweet_mode
+              description: This parameter enables developers to request a series of different extended fields introduced in the years since statuses/show and statuses/lookup were introduced. It has been replaced with the fields and expansions functionality.
+              required: false
+              type: string
           exampleResponse: |
             {tweet-object}
         - title: POST statuses/destroy/:id
@@ -2622,6 +2663,10 @@
                 Omit this parameter to receive the complete user object.
               required: false
               type: boolean
+            - name: tweet_mode
+              description: This parameter enables developers to request a series of different extended fields introduced in the years since statuses/show and statuses/lookup were introduced. It has been replaced with the fields and expansions functionality.
+              required: false
+              type: string
           exampleResponse: |
             {tweet-object}
         - title: POST statuses/retweet/:id
@@ -2664,6 +2709,10 @@
                 Omit this parameter to receive the complete user object.
               required: false
               type: boolean
+            - name: tweet_mode
+              description: This parameter enables developers to request a series of different extended fields introduced in the years since statuses/show and statuses/lookup were introduced. It has been replaced with the fields and expansions functionality.
+              required: false
+              type: string
           exampleResponse: |
             {tweet-object}
         - title: POST statuses/update
@@ -2793,6 +2842,10 @@
               type: boolean
             - name: card_uri
               description: Associate an ads card with the Tweet using the card_uri value from any ads card response.
+              required: false
+              type: string
+            - name: tweet_mode
+              description: This parameter enables developers to request a series of different extended fields introduced in the years since statuses/show and statuses/lookup were introduced. It has been replaced with the fields and expansions functionality.
               required: false
               type: string
           exampleResponse: |
