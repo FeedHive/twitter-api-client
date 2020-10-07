@@ -1,0 +1,945 @@
+title: Tweets
+subgroups:
+  - title: Curate a collection of Tweets
+    endpoints:
+      - title: GET collections/entries
+        url: https://developer.twitter.com/en/docs/tweets/curate-a-collection/api-reference/get-collections-entries
+        resourceUrl: https://api.twitter.com/1.1/collections/entries.json
+        description: |
+          Retrieve the identified Collection, presented as a list of the Tweets curated within.
+          The response structure of this method differs significantly from timelines you 
+          may be used to working with elsewhere in the Twitter API.To navigate a Collection, 
+          use the position object of a response, which includes attributes for max_position, 
+          min_position, and was_truncated. was_truncated indicates whether additional 
+          Tweets exist in the collection outside of the range of the current request. 
+          To retrieve Tweets further back in time, use the value of min_position found 
+          in the current response as the max_position parameter in the next call to this endpoint.
+        parameters:
+          - name: id
+            description: The identifier of the Collection for which to return results.
+            required: true
+            type: string
+          - name: count
+            description: |
+              Specifies the maximum number of results to include in the response.
+              Specify a count between 1 and 200. A next_cursor value will be provided
+              in the response if additional results are available.
+            required: false
+            type: number
+          - name: max_position
+            description: |
+              Returns results with a position value less than or equal to the
+              specified position.
+            required: false
+            type: number
+          - name: min_position
+            description: Returns results with a position greater than the specified position.
+            required: false
+            type: number
+        exampleResponse: |
+          {collection-object}
+      - title: GET collections/list
+        url: https://developer.twitter.com/en/docs/tweets/curate-a-collection/api-reference/get-collections-list
+        resourceUrl: https://api.twitter.com/1.1/collections/list.json
+        description: |
+          Find Collections created by a specific user or containing a 
+          specific curated Tweet.Results are organized in a cursored collection.
+        parameters:
+          - name: user_id
+            description: The ID of the user for whom to return results.
+            required: true
+            type: number
+          - name: screen_name
+            description: The screen name of the user for whom to return results.
+            required: true
+            type: string
+          - name: tweet_id
+            description: The identifier of the Tweet for which to return results.
+            required: false
+            type: number
+          - name: count
+            description: |
+              Specifies the maximum number of results to include in the response.
+              Specify a count between 1 and 200. A next_cursor value will be provided
+              in the response if additional results are available.
+            required: false
+            type: number
+          - name: cursor
+            description: |
+              A string identifying the segment of the current result set to
+              retrieve. Values for this parameter are yielded in the cursors node attached
+              to response objects. Usage of the count parameter affects cursoring.
+            required: false
+            type: string
+        exampleResponse: |
+          {collection-object}
+      - title: GET collections/show
+        url: https://developer.twitter.com/en/docs/tweets/curate-a-collection/api-reference/get-collections-show
+        resourceUrl: https://api.twitter.com/1.1/collections/show.json
+        description: |
+          Retrieve information associated with a specific Collection.
+        parameters:
+          - name: id
+            description: The identifier of the Collection for which to return results.
+            required: true
+            type: string
+        exampleResponse: |
+          {collection-object}
+      - title: POST collections/create
+        url: https://developer.twitter.com/en/docs/tweets/curate-a-collection/api-reference/post-collections-create
+        resourceUrl: https://api.twitter.com/1.1/collections/create.json
+        description: |
+          Create a Collection owned by the currently authenticated user.
+          The API endpoint may refuse to complete the request if the authenticated 
+          user has exceeded the total number of allowed collections for their account.
+        parameters:
+          - name: name
+            description: The title of the collection being created, in 25 characters or less.
+            required: true
+            type: string
+          - name: description
+            description: A brief description of this collection in 160 characters or fewer.
+            required: false
+            type: string
+          - name: url
+            description: A fully-qualified URL to associate with this collection.
+            required: false
+            type: string
+          - name: timeline_order
+            description: |
+              Order Tweets chronologically or in the order they are added to
+              a Collection. curation_reverse_chron - order added (default) tweet_chron
+              - oldest first tweet_reverse_chron - most recent first
+            required: false
+            type: string
+        exampleResponse: |
+          {collection-object}
+      - title: POST collections/destroy
+        url: https://developer.twitter.com/en/docs/tweets/curate-a-collection/api-reference/post-collections-destroy
+        resourceUrl: https://api.twitter.com/1.1/collections/destroy.json
+        description: |
+          Permanently delete a Collection owned by the currently authenticated user.
+        parameters:
+          - name: id
+            description: The identifier of the Collection to destroy.
+            required: true
+            type: string
+        exampleResponse: |
+          { "destroyed": true }
+      - title: POST collections/entries/add
+        url: https://developer.twitter.com/en/docs/tweets/curate-a-collection/api-reference/post-collections-entries-add
+        resourceUrl: https://api.twitter.com/1.1/collections/entries/add.json
+        description: |
+          Add a specified Tweet to a Collection.A collection will store up 
+          to a few thousand Tweets. Adding a Tweet to a collection beyond its 
+          allowed capacity will remove the oldest Tweet in the collection based 
+          on the time it was added to the collection.Use POST collections / entries / curate 
+          to add Tweets to a Collection in bulk.
+        parameters:
+          - name: id
+            description: The identifier of the Collection receiving the Tweet.
+            required: true
+            type: string
+          - name: tweet_id
+            description: The identifier of the Tweet to add to the Collection.
+            required: true
+            type: number
+          - name: relative_to
+            description: |
+              The identifier of the Tweet used for relative positioning in
+              a curation_reverse_chron ordered collection.
+            required: false
+            type: number
+          - name: above
+            description: |
+              Set to false to insert the specified tweet_id below the relative_to
+              Tweet in the collection. Default: true
+            required: false
+            type: boolean
+      - title: POST collections/entries/curate
+        url: https://developer.twitter.com/en/docs/tweets/curate-a-collection/api-reference/post-collections-entries-curate
+        resourceUrl: https://api.twitter.com/1.1/collections/entries/curate.json
+        description: |
+          Curate a Collection by adding or removing Tweets in bulk. 
+          Updates must be limited to 100 cumulative additions or removals per request.
+          Use POST collections / entries / add and POST collections / entries / remove 
+          to add or remove a single Tweet.
+      - title: POST collections/entries/move
+        url: https://developer.twitter.com/en/docs/tweets/curate-a-collection/api-reference/post-collections-entries-move
+        resourceUrl: https://api.twitter.com/1.1/collections/entries/move.json
+        description: |
+          Move a specified Tweet to a new position in a curation_reverse_chron ordered collection.
+        parameters:
+          - name: id
+            description: The identifier of the Collection receiving the Tweet.
+            required: true
+            type: string
+          - name: tweet_id
+            description: The identifier of the Tweet to add to the Collection.
+            required: true
+            type: number
+          - name: relative_to
+            description: The identifier of the Tweet used for relative positioning.
+            required: true
+            type: number
+          - name: above
+            description: |
+              Set to false to insert the specified tweet_id below the relative_to
+              Tweet in the collection. Default: true
+            required: false
+            type: boolean
+      - title: POST collections/entries/remove
+        url: https://developer.twitter.com/en/docs/tweets/curate-a-collection/api-reference/post-collections-entries-remove
+        resourceUrl: https://api.twitter.com/1.1/collections/entries/remove.json
+        description: |
+          Remove the specified Tweet from a Collection.Use POST 
+          collections / entries / curate to remove Tweets from a Collection in bulk.
+        parameters:
+          - name: id
+            description: The identifier of the target Collection.
+            required: true
+            type: string
+          - name: tweet_id
+            description: The identifier of the Tweet to remove.
+            required: true
+            type: number
+      - title: POST collections/update
+        url: https://developer.twitter.com/en/docs/tweets/curate-a-collection/api-reference/post-collections-update
+        resourceUrl: https://api.twitter.com/1.1/collections/update.json
+        description: |
+          Update information concerning a Collection owned by the currently authenticated user.
+          Partial updates are not currently supported: please provide name, description, 
+          and url whenever using this method. Omitted description or url parameters will 
+          be treated as if an empty string was passed, overwriting 
+          any previously stored value for the Collection.
+        parameters:
+          - name: id
+            description: The identifier of the Collection to modify.
+            required: true
+            type: string
+          - name: name
+            description: |
+              The title of the Collection being created, in 25 characters or fewer.
+            required: false
+            type: string
+          - name: description
+            description: A brief description of this Collection in 160 characters or fewer.
+            required: false
+            type: string
+          - name: url
+            description: A fully-qualified URL to associate with this Collection.
+            required: false
+            type: string
+        exampleResponse: |
+          {collection-object}
+  - title: Get Tweet timelines
+    endpoints:
+      - title: GET statuses/home_timeline
+        url: https://developer.twitter.com/en/docs/tweets/timelines/api-reference/get-statuses-home_timeline
+        resourceUrl: https://api.twitter.com/1.1/statuses/home_timeline.json
+        description: |
+          Returns a collection of the most recent Tweets and Retweets posted 
+          by the authenticating user and the users they follow. The home timeline is 
+          central to how most users interact with the Twitter service.Up to 800 
+          Tweets are obtainable on the home timeline. It is more volatile for 
+          users that follow many users or follow users who Tweet frequently.
+          See Working with Timelines for instructions on traversing timelines efficiently.
+        parameters:
+          - name: count
+            description: |
+              Specifies the number of records to retrieve. Must be less than
+              or equal to 200. Defaults to 20. The value of count is best thought of as
+              a limit to the number of tweets to return because suspended or deleted content
+              is removed after the count has been applied.
+            required: false
+            type: number
+          - name: since_id
+            description: |
+              Returns results with an ID greater than (that is, more recent
+              than) the specified ID. There are limits to the number of Tweets which can
+              be accessed through the API. If the limit of Tweets has occured since the
+              since_id, the since_id will be forced to the oldest ID available.
+            required: false
+            type: number
+          - name: max_id
+            description: |
+              Returns results with an ID less than (that is, older than) or
+              equal to the specified ID.
+            required: false
+            type: number
+          - name: trim_user
+            description: |
+              When set to either true , t or 1 , each Tweet returned in a timeline
+              will include a user object including only the status authors numerical ID.
+              Omit this parameter to receive the complete user object.
+            required: false
+            type: boolean
+          - name: exclude_replies
+            description: |
+              This parameter will prevent replies from appearing in the returned
+              timeline. Using exclude_replies with the count parameter will mean you will
+              receive up-to count Tweets — this is because the count parameter retrieves
+              that many Tweets before filtering out retweets and replies.
+            required: false
+            type: boolean
+          - name: include_entities
+            description: The entities node will not be included when set to false.
+            required: false
+            type: boolean
+        exampleResponse: |
+          {tweet-object}
+      - title: GET statuses/mentions_timeline
+        url: https://developer.twitter.com/en/docs/tweets/timelines/api-reference/get-statuses-mentions_timeline
+        resourceUrl: https://api.twitter.com/1.1/statuses/mentions_timeline.json
+        description: |
+          Important notice: On June 19, 2019, we began enforcing a 
+          limit of 100,000 requests per day to the /statuses/mentions_timeline endpoint. 
+          This is in addition to existing user-level rate limits (75 requests / 15-minutes). 
+          This limit is enforced on a per-application basis, meaning that a 
+          single developer app can make up to 100,000 calls during any 
+          single 24-hour period.Returns the 20 most recent mentions 
+          (Tweets containing a users's @screen_name) for the authenticating user.
+          The timeline returned is the equivalent of the one seen when you view 
+          your mentions on twitter.com.This method can only return up to 800 tweets.
+          See Working with Timelines for instructions on traversing timelines.
+        parameters:
+          - name: count
+            description: |
+              Specifies the number of Tweets to try and retrieve, up to a maximum
+              of 200. The value of count is best thought of as a limit to the number of
+              tweets to return because suspended or deleted content is removed after the
+              count has been applied. We include retweets in the count, even if include_rts
+              is not supplied. It is recommended you always send include_rts=1 when using
+              this API method.
+            required: false
+            type: number
+          - name: since_id
+            description: |
+              Returns results with an ID greater than (that is, more recent
+              than) the specified ID. There are limits to the number of Tweets which can
+              be accessed through the API. If the limit of Tweets has occured since the
+              since_id, the since_id will be forced to the oldest ID available.
+            required: false
+            type: number
+          - name: max_id
+            description: |
+              Returns results with an ID less than (that is, older than) or
+              equal to the specified ID.
+            required: false
+            type: number
+          - name: trim_user
+            description: |
+              When set to either true , t or 1 , each tweet returned in a timeline
+              will include a user object including only the status authors numerical ID.
+              Omit this parameter to receive the complete user object.
+            required: false
+            type: boolean
+          - name: include_entities
+            description: The entities node will not be included when set to false.
+            required: false
+            type: boolean
+        exampleResponse: |
+          [ {mention-object} ]
+      - title: GET statuses/user_timeline
+        url: https://developer.twitter.com/en/docs/tweets/timelines/api-reference/get-statuses-user_timeline
+        resourceUrl: https://api.twitter.com/1.1/statuses/user_timeline.json
+        description: |
+          Important notice: On June 19, 2019, we began enforcing a limit of 
+          100,000 requests per day to the /statuses/user_timeline endpoint, 
+          in addition to existing user-level and app-level rate limits.
+          This limit is applied on a per-application basis, meaning that a single developer app 
+          can make up to 100,000 calls during any single 24-hour period.Returns a collection 
+          of the most recent Tweets posted by the user indicated by the screen_name or
+          user_id parameters.User timelines belonging to protected users may only be 
+          requested when the authenticated user either "owns" the timeline or is an 
+          approved follower of the owner.The timeline returned is the equivalent of 
+          the one seen as a user's profile on Twitter.This method can only return up 
+          to 3,200 of a user's most recent Tweets. Native retweets of other statuses 
+          by the user is included in this total, regardless of whether include_rts 
+          is set to false when requesting this resource.See Working with Timelines 
+          for instructions on traversing timelines.See Embedded Timelines, 
+          Embedded Tweets, and GET statuses/oembed for tools to render 
+          Tweets according to Display Requirements.
+        parameters:
+          - name: user_id
+            description: The ID of the user for whom to return results.
+            required: false
+            type: number
+          - name: screen_name
+            description: The screen name of the user for whom to return results.
+            required: false
+            type: string
+          - name: since_id
+            description: |
+              Returns results with an ID greater than (that is, more recent
+              than) the specified ID. There are limits to the number of Tweets that can
+              be accessed through the API. If the limit of Tweets has occured since the
+              since_id, the since_id will be forced to the oldest ID available.
+            required: false
+            type: number
+          - name: count
+            description: |
+              Specifies the number of Tweets to try and retrieve, up to a maximum
+              of 200 per distinct request. The value of count is best thought of as a
+              limit to the number of Tweets to return because suspended or deleted content
+              is removed after the count has been applied. We include retweets in the
+              count, even if include_rts is not supplied. It is recommended you always
+              send include_rts=1 when using this API method.
+            required: false
+            type: number
+          - name: max_id
+            description: |
+              Returns results with an ID less than (that is, older than) or
+              equal to the specified ID.
+            required: false
+            type: number
+          - name: trim_user
+            description: |
+              When set to either true , t or 1 , each Tweet returned in a timeline
+              will include a user object including only the status authors numerical ID.
+              Omit this parameter to receive the complete user object.
+            required: false
+            type: boolean
+          - name: exclude_replies
+            description: |
+              This parameter will prevent replies from appearing in the returned
+              timeline. Using exclude_replies with the count parameter will mean you will
+              receive up-to count tweets — this is because the count parameter retrieves
+              that many Tweets before filtering out retweets and replies.
+            required: false
+            type: boolean
+          - name: include_rts
+            description: |
+              When set to false , the timeline will strip any native retweets
+              (though they will still count toward both the maximal length of the timeline
+              and the slice selected by the count parameter). Note: If you''re using the
+              trim_user parameter in conjunction with include_rts, the retweets will still
+              contain a full user object.
+            required: false
+            type: boolean
+        exampleResponse: |
+          [ {tweet-object} ]
+  - title: Post, retrieve, and engage with Tweets
+    endpoints:
+      - title: GET favorites/list
+        url: https://developer.twitter.com/en/docs/tweets/post-and-engage/api-reference/get-favorites-list
+        resourceUrl: https://api.twitter.com/1.1/favorites/list.json
+        description: |
+          Note: favorites are now known as likes.
+          Returns the 20 most recent Tweets liked by the authenticating or specified user.
+        parameters:
+          - name: user_id
+            description: The ID of the user for whom to return results.
+            required: false
+            type: number
+          - name: screen_name
+            description: The screen name of the user for whom to return results.
+            required: false
+            type: string
+          - name: count
+            description: |
+              Specifies the number of records to retrieve. Must be less than
+              or equal to 200; defaults to 20. The value of count is best thought of as
+              a limit to the number of Tweets to return because suspended or deleted content
+              is removed after the count has been applied.
+            required: false
+            type: number
+          - name: since_id
+            description: |
+              Returns results with an ID greater than (that is, more recent
+              than) the specified ID. There are limits to the number of Tweets which can
+              be accessed through the API. If the limit of Tweets has occured since the
+              since_id, the since_id will be forced to the oldest ID available.
+            required: false
+            type: number
+          - name: max_id
+            description: |
+              Returns results with an ID less than (that is, older than) or
+              equal to the specified ID.
+            required: false
+            type: number
+          - name: include_entities
+            description: |
+              The entities node will be omitted when set to false .
+            required: false
+            type: boolean
+        exampleResponse: |
+          [ {tweet-object} ]
+      - title: GET statuses/lookup
+        url: https://developer.twitter.com/en/docs/tweets/post-and-engage/api-reference/get-statuses-lookup
+        resourceUrl: https://api.twitter.com/1.1/statuses/lookup.json
+        description: |
+          Returns fully-hydrated Tweet objects for up to 100 Tweets per request, as specified by comma-separated values passed to the id parameter.This method is especially useful to get the details (hydrate) a collection of Tweet IDs.GET statuses / show / :id is used to retrieve a single Tweet object.There are a few things to note when using this method.
+          You must be following a protected user to be able to see their most recent Tweets. If you don't follow a protected user their status will be removed.
+          The order of Tweet IDs may not match the order of Tweets in the returned array.
+          If a requested Tweet is unknown or deleted, then that Tweet will not be returned in the results list, unless the map parameter is set to true, in which case it will be returned with a value of null.
+          If none of your lookup criteria matches valid Tweet IDs an empty array will be returned for map=false.
+          You are strongly encouraged to use a POST for larger requests.
+        parameters:
+          - name: id
+            description: A comma separated list of Tweet IDs, up to 100 are allowed in a single request.
+            required: true
+            type: string
+          - name: include_entities
+            description: |
+              The entities node that may appear within embedded statuses will
+              not be included when set to false.
+            required: false
+            type: boolean
+          - name: trim_user
+            description: |
+              When set to either true , t or 1 , each Tweet returned in a timeline
+              will include a user object including only the status authors numerical ID.
+              Omit this parameter to receive the complete user object.
+            required: false
+            type: boolean
+          - name: map
+            description: |
+              When using the map parameter, Tweets that do not exist or cannot
+              be viewed by the current user will still have their key represented but
+              with an explicitly null value paired with it
+            required: false
+            type: boolean
+          - name: include_ext_alt_text
+            description: |
+              If alt text has been added to any attached media entities, this
+              parameter will return an ext_alt_text value in the top-level key for the
+              media entity. If no value has been set, this will be returned as null
+            required: false
+            type: boolean
+          - name: include_card_uri
+            description: |
+              When set to either true , t or 1 , each Tweet returned will include
+              a card_uri attribute when there is an ads card attached to the Tweet and
+              when that card was attached using the card_uri value.
+            required: false
+            type: boolean
+        exampleResponse: |
+          [ {tweet-object} ]
+      - title: GET statuses/retweeters/ids
+        url: https://developer.twitter.com/en/docs/tweets/post-and-engage/api-reference/get-statuses-retweeters-ids
+        resourceUrl: https://api.twitter.com/1.1/statuses/retweeters/ids.json
+        description: |
+          Returns a collection of up to 100 user IDs belonging to users
+          who have retweeted the Tweet specified by the id parameter.
+          This method offers similar data to GET statuses / retweets / :id.
+        parameters:
+          - name: id
+            description: The numerical ID of the desired status.
+            required: true
+            type: number
+          - name: count
+            description: Specifies the number of records to retrieve. Must be less than or equal to 100.
+            required: false
+            type: number
+          - name: cursor
+            description: |
+              Causes the list of IDs to be broken into pages of no more than 100 IDs at a time. 
+              The number of IDs returned is not guaranteed to be 100 as suspended users are 
+              filtered out after connections are queried. If no cursor is provided, a value 
+              of -1 will be assumed, which is the first "page." The response from the API 
+              will include a previous_cursor and next_cursor to allow paging back and forth. 
+              See our cursor docs for more information. While this method supports the cursor parameter, 
+              the entire result set can be returned in a single cursored collection. Using the count 
+              parameter with this method will not provide segmented cursors for use with this parameter.
+            required: false
+            type: number
+          - name: stringify_ids
+            description: |
+              Many programming environments will not consume Tweet ids due to their size.
+              Provide this option to have ids returned as strings instead.
+            required: false
+            type: boolean
+        exampleResponse: |
+          { 
+            "previous_cursor": 0, 
+            "ids": [ "1387875991" ],
+            "previous_cursor_str": "0",
+            "next_cursor": 0,
+            "next_cursor_str": "0"
+          }
+      - title: GET statuses/retweets/:id
+        url: https://developer.twitter.com/en/docs/tweets/post-and-engage/api-reference/get-statuses-retweets-id
+        resourceUrl: https://api.twitter.com/1.1/statuses/retweets/:id.json
+        description: |
+          Returns a collection of the 100 most recent retweets of the Tweet specified by the id parameter.
+        parameters:
+          - name: id
+            description: The numerical ID of the desired status.
+            required: true
+            type: number
+          - name: count
+            description: Specifies the number of records to retrieve. Must be less than or equal to 100.
+            required: false
+            type: number
+          - name: trim_user
+            description: |
+              When set to either true, t or 1 , each tweet returned in a timeline
+              will include a user object including only the status authors numerical ID.
+              Omit this parameter to receive the complete user object.
+            required: false
+            type: boolean
+        exampleResponse: |
+          [ {tweet-object} ]
+      - title: GET statuses/retweets_of_me
+        url: https://developer.twitter.com/en/docs/tweets/post-and-engage/api-reference/get-statuses-retweets_of_me
+        resourceUrl: https://api.twitter.com/1.1/statuses/retweets_of_me.json
+        description: |
+          Returns the most recent Tweets authored by the authenticating user 
+          that have been retweeted by others. This timeline is a subset of
+          the user's GET statuses / user_timeline.
+        parameters:
+          - name: count
+            description: |
+              Specifies the number of records to retrieve. Must be less than
+              or equal to 100. If omitted, 20 will be assumed.
+            required: false
+            type: number
+          - name: since_id
+            description: |
+              Returns results with an ID greater than (that is, more recent
+              than) the specified ID. There are limits to the number of Tweets which can
+              be accessed through the API. If the limit of Tweets has occured since the
+              since_id, the since_id will be forced to the oldest ID available.
+            required: false
+            type: number
+          - name: max_id
+            description: Returns results with an ID less than (that is, older than) or
+              equal to the specified ID.
+            required: false
+            type: number
+          - name: trim_user
+            description: |
+              When set to either true , t or 1 , each tweet returned in a timeline
+              will include a user object including only the status authors numerical ID.
+              Omit this parameter to receive the complete user object.
+            required: false
+            type: boolean
+          - name: include_entities
+            description: The tweet entities node will not be included when set to false
+              .
+            required: false
+            type: boolean
+          - name: include_user_entities
+            description: The user entities node will not be included when set to false.
+            required: false
+            type: boolean
+        exampleResponse: |
+          [ {tweet-object} ]
+      - title: GET statuses/show/:id
+        url: https://developer.twitter.com/en/docs/tweets/post-and-engage/api-reference/get-statuses-show-id
+        resourceUrl: https://api.twitter.com/1.1/statuses/show.json
+        description: |
+          Returns a single Tweet, specified by the id parameter.
+          The Tweet's author will also be embedded within the Tweet.
+          See GET statuses / lookup for getting Tweets in bulk (up to 100 per call).
+          See also Embedded Timelines, Embedded Tweets, and GET statuses/oembed for tools
+          to render Tweets according to Display Requirements.
+          About GeoIf there is no geotag for a status, then there will be an 
+          empty <geo></geo> or "geo" : {}. 
+          This can only be populated if the user has used the Geotagging API to send a statuses/update.
+          The JSON response mostly uses conventions laid out in GeoJSON. 
+          The coordinates that Twitter renders are reversed from the GeoJSON specification 
+          (GeoJSON specifies a longitude then a latitude, whereas Twitter represents it as 
+          a latitude then a longitude), eg: "geo": 
+          { "type":"Point", "coordinates":[37.78029, -122.39697] }
+        parameters:
+          - name: id
+            description: The numerical ID of the desired Tweet.
+            required: true
+            type: number
+          - name: trim_user
+            description: |
+              When set to either true , t or 1 , each Tweet returned in a timeline
+              will include a user object including only the status authors numerical ID.
+              Omit this parameter to receive the complete user object.
+            required: false
+            type: boolean
+          - name: include_my_retweet
+            description: |
+              When set to either true , t or 1 , any Tweets returned that have
+              been retweeted by the authenticating user will include an additional current_user_retweet
+              node, containing the ID of the source status for the retweet.
+            required: false
+            type: boolean
+          - name: include_entities
+            description: The entities node will not be included when set to false.
+            required: false
+            type: boolean
+          - name: include_ext_alt_text
+            description: |
+              If alt text has been added to any attached media entities, this
+              parameter will return an ext_alt_text value in the top-level key for the
+              media entity. If no value has been set, this will be returned as null
+            required: false
+            type: boolean
+          - name: include_card_uri
+            description: When set to either true , t or 1 , the retrieved Tweet will include
+              a card_uri attribute when there is an ads card attached to the Tweet and
+              when that card was attached using the card_uri value.
+            required: false
+            type: boolean
+        exampleResponse: |
+          {tweet-object}
+      - title: POST favorites/create
+        url: https://developer.twitter.com/en/docs/tweets/post-and-engage/api-reference/post-favorites-create
+        resourceUrl: https://api.twitter.com/1.1/favorites/create.json
+        description: |
+          Note: favorites are now known as likes.Favorites (likes) the Tweet 
+          specified in the ID parameter as the authenticating user. 
+          Returns the favorite Tweet when successful.The process invoked by 
+          this method is asynchronous. The immediately returned Tweet object may not indicate 
+          the resultant favorited status of the Tweet. A 200 OK response from this method 
+          will indicate whether the intended action was successful or not.
+        parameters:
+          - name: id
+            description: The numerical ID of the Tweet to like.
+            required: true
+            type: number
+          - name: include_entities
+            description: The entities node will be omitted when set to false .
+            required: false
+            type: boolean
+        exampleResponse: |
+          {tweet-object}
+      - title: POST favorites/destroy
+        url: https://developer.twitter.com/en/docs/tweets/post-and-engage/api-reference/post-favorites-destroy
+        resourceUrl: https://api.twitter.com/1.1/favorites/destroy.json
+        description: |
+          Note: favorites are now known as likes.Unfavorites (un-likes) the Tweet 
+          specified in the ID parameter as the authenticating user. 
+          Returns the un-liked Tweet when successful.The process invoked by this method is asynchronous. 
+          The immediately returned Tweet object may not indicate the resultant favorited status of the Tweet. 
+          A 200 OK response from this method will indicate whether the intended action was successful or not.
+        parameters:
+          - name: id
+            description: The numerical ID of the Tweet to un-like
+            required: true
+            type: number
+          - name: include_entities
+            description: The entities node will be omitted when set to false .
+            required: false
+            type: boolean
+        exampleResponse: |
+          {tweet-object}
+      - title: POST statuses/destroy/:id
+        url: https://developer.twitter.com/en/docs/tweets/post-and-engage/api-reference/post-statuses-destroy-id
+        resourceUrl: https://api.twitter.com/1.1/statuses/destroy/:id.json
+        description: |
+          Destroys the status specified by the required ID parameter.
+          The authenticating user must be the author of the specified status.
+          Returns the destroyed status if successful.
+        parameters:
+          - name: id
+            description: The numerical ID of the desired status.
+            required: true
+            type: number
+          - name: trim_user
+            description: When set to either true, t or 1, each tweet returned in a timeline
+              will include a user object including only the status authors numerical ID.
+              Omit this parameter to receive the complete user object.
+            required: false
+            type: boolean
+        exampleResponse: |
+          {tweet-object}
+      - title: POST statuses/retweet/:id
+        url: https://developer.twitter.com/en/docs/tweets/post-and-engage/api-reference/post-statuses-retweet-id
+        resourceUrl: https://api.twitter.com/1.1/statuses/retweet/:id.json
+        description: |
+          Retweets a tweet. Returns the original Tweet with Retweet details embedded.Usage Notes:
+          This method is subject to update limits. A HTTP 403 will be returned if this limit as been hit.
+          Twitter will ignore attempts to perform duplicate retweets.
+          The retweet_count will be current as of when the payload is generated and may not reflect the exact count. It is intended as an approximation.
+        parameters:
+          - name: id
+            description: The numerical ID of the desired status.
+            required: true
+            type: number
+          - name: trim_user
+            description: |
+              When set to either true , t or 1 , each tweet returned in a timeline
+              will include a user object including only the status authors numerical ID.
+              Omit this parameter to receive the complete user object.
+            required: false
+            type: boolean
+      - title: POST statuses/unretweet/:id
+        url: https://developer.twitter.com/en/docs/tweets/post-and-engage/api-reference/post-statuses-unretweet-id
+        resourceUrl: https://api.twitter.com/1.1/statuses/unretweet/:id.json
+        description: |
+          Untweets a retweeted status. Returns the original Tweet with Retweet details embedded.Usage Notes:
+          This method is subject to update limits. A HTTP 429 will be returned if this limit has been hit.
+          The untweeted retweet status ID must be authored by the user backing the authentication token.
+          An application must have write privileges to POST. A HTTP 401 will be returned for read-only applications.
+          When passing a source status ID instead of the retweet status ID a HTTP 200 response will be returned with the same Tweet object but no action.
+        parameters:
+          - name: id
+            description: The numerical ID of the desired status.
+            required: true
+            type: number
+          - name: trim_user
+            description: When set to either true , t or 1 , each Tweet returned in a timeline
+              will include a user object including only the status authors numerical ID.
+              Omit this parameter to receive the complete user object.
+            required: false
+            type: boolean
+        exampleResponse: |
+          {tweet-object}
+      - title: POST statuses/update
+        url: https://developer.twitter.com/en/docs/tweets/post-and-engage/api-reference/post-statuses-update
+        resourceUrl: https://api.twitter.com/1.1/statuses/update.json
+        description: |
+          Updates the authenticating user's current status, also known as Tweeting.
+          For each update attempt, the update text is compared with the authenticating 
+          user's recent Tweets. Any attempt that would result in duplication will be 
+          blocked, resulting in a 403 error. A user cannot submit the same status twice in a row.
+          While not rate limited by the API, a user is limited in the number of Tweets they 
+          can create at a time. If the number of updates posted by the user reaches the current 
+          allowed limit this method will return an HTTP 403 error.About Geo
+          Any geo-tagging parameters in the update will be ignored if geo_enabled for the user 
+          is false (this is the default setting for all users, unless the user has enabled geolocation in their settings)
+          The number of digits after the decimal separator passed to lat (up to 8) is tracked so that 
+          when the lat is returned in a status object it will have the same number of digits 
+          after the decimal separator.
+          Use a decimal point as the separator (and not a decimal comma) for the latitude and the longitude 
+          - usage of a decimal comma will cause the geo-tagged portion of the status update to be dropped.
+          For JSON, the response mostly uses conventions described in GeoJSON. However, 
+          the geo object coordinates that Twitter renders are reversed from the GeoJSON specification. 
+          GeoJSON specifies a longitude then a latitude, whereas Twitter represents it as a latitude then 
+          a longitude: "geo": { "type":"Point", "coordinates":[37.78217, -122.40062] }
+          The coordinates object is replacing the geo object (no deprecation date has been set for the geo 
+          object yet) -- the difference is that the coordinates object, in JSON, is now rendered correctly in GeoJSON.
+          If a place_id is passed into the status update, then that place will be attached 
+          to the status. If no place_id was explicitly provided, but latitude and longitude 
+          are, the API attempts to implicitly provide a place by calling geo/reverse_geocode.
+          Users have the ability to remove all geotags from all their Tweets en masse via the 
+          user settings page. Currently there is no method to remove geotags from individual Tweets.
+        parameters:
+          - name: status
+            description: The text of the status update. URL encode as necessary. t.co link wrapping will affect character counts.
+            required: true
+            type: string
+          - name: in_reply_to_status_id
+            description: The text of the status update. URL encode as necessary. t.co link wrapping will affect character counts.
+            required: false
+            type: number
+          - name: auto_populate_reply_metadata
+            description: |
+              If set to true and used with in_reply_to_status_id, leading @mentions will be looked
+              up from the original Tweet, and added to the new Tweet from there. 
+              This wil append @mentions into the metadata of an extended Tweet as a reply chain grows, 
+              until the limit on @mentions is reached. In cases where the original 
+              Tweet has been deleted, the reply will fail.
+            required: false
+            type: boolean
+          - name: exclude_reply_user_ids
+            description: |
+              When used with auto_populate_reply_metadata, a comma-separated list of user 
+              ids which will be removed from the server-generated @mentions prefix on an 
+              extended Tweet. Note that the leading @mention cannot be removed as it would 
+              break the in-reply-to-status-id semantics. Attempting to remove it will be 
+              silently ignored.
+            required: false
+            type: number
+          - name: attachment_url
+            description: |
+              In order for a URL to not be counted in the status body of an extended Tweet, 
+              provide a URL as a Tweet attachment. This URL must be a Tweet permalink, or Direct Message deep link. 
+              Arbitrary, non-Twitter URLs must remain in the status text. URLs passed to the 
+              attachment_url parameter not matching either a Tweet permalink or Direct Message 
+              deep link will fail at Tweet creation and cause an exception.
+            required: false
+            type: string
+          - name: media_ids
+            description: |
+              A comma-delimited list of media_ids to associate with the Tweet. 
+              You may include up to 4 photos or 1 animated GIF or 1 video in a Tweet. 
+              See Uploading Media for further details on uploading media.
+            required: false
+            type: number
+          - name: possibly_sensitive
+            description: |
+              If you upload Tweet media that might be considered sensitive 
+              content such as nudity, or medical procedures, you must set this value 
+              to true. See Media setting and best practices for more context.
+            required: false
+            type: boolean
+          - name: lat
+            description: |
+              The latitude of the location this Tweet refers to. 
+              This parameter will be ignored unless it is inside the range 
+              -90.0 to +90.0 (North is positive) inclusive. It will also be 
+              ignored if there is no corresponding long parameter.
+            required: false
+            type: number
+          - name: long
+            description: |
+              The longitude of the location this Tweet refers to. 
+              The valid ranges for longitude are -180.0 to +180.0 (East is positive) inclusive. 
+              This parameter will be ignored if outside that range, if it is not a number, 
+              if geo_enabled is disabled, or if there no corresponding lat parameter.
+            required: false
+            type: number
+          - name: place_id
+            description: A place in the world.
+            required: false
+            type: string
+          - name: display_coordinates
+            description: Whether or not to put a pin on the exact coordinates a Tweet has been sent from.
+            required: false
+            type: boolean
+          - name: trim_user
+            description: |
+              When set to either true , t or 1 , the response will include a user 
+              object including only the author's ID. Omit this parameter 
+              to receive the complete user object.
+            required: false
+            type: boolean
+          - name: enable_dmcommands
+            description: |
+              When set to true, enables shortcode commands for sending Direct Messages 
+              as part of the status text to send a Direct Message to a user. When set 
+              to false, disables this behavior and includes any leading characters in 
+              the status text that is posted
+            required: false
+            type: boolean
+          - name: fail_dmcommands
+            description: |
+              When set to true, causes any status text that starts with shortcode commands 
+              to return an API error. When set to false, allows shortcode commands 
+              to be sent in the status text and acted on by the API.
+            required: false
+            type: boolean
+          - name: card_uri
+            description: Associate an ads card with the Tweet using the card_uri value from any ads card response.
+            required: false
+            type: string
+        exampleResponse: |
+          {tweet-object}
+  - title: GET Search Tweets
+    endpoints:
+      - title: Standard search API
+        url: https://developer.twitter.com/en/docs/tweets/search/api-reference/get-search-tweets
+        resourceUrl: https://api.twitter.com/1.1/search/tweets.json
+        description: |
+          Returns a collection of relevant Tweets matching a specified query.
+          Please note that Twitter's search service and, by extension, the 
+          Search API is not meant to be an exhaustive source of Tweets. 
+          Not all Tweets will be indexed or made available via the search interface.
+          To learn how to use Twitter Search effectively, please see the Standard search 
+          operators page for a list of available filter operators. Also, see the Working with 
+          Timelines page to learn best practices for navigating results by since_id and max_id.
+        exampleResponse: |
+          {
+            "statuses": [{tweet-object}],
+            "search_metadata": {
+              "completed_in": 0.047,
+              "max_id": 1125490788736032770,
+              "max_id_str": "1125490788736032770",
+              "next_results": "?max_id=1124690280777699327&q=from%3Atwitterdev&count=2&include_entities=1&result_type=mixed",
+              "query": "from%3Atwitterdev",
+              "refresh_url": "?since_id=1125490788736032770&q=from%3Atwitterdev&result_type=mixed&include_entities=1",
+              "count": 2,
+              "since_id": 0,
+              "since_id_str": "0"
+            }
+          }
