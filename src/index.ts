@@ -29,9 +29,6 @@ import writeReferences from './generator/writeReferences';
 let dictionary: any;
 
 async function parseDictionary() {
-  dictionary = yaml.safeLoad(
-    fs.readFileSync(resolve(__dirname, './spec/twitter-api-spec.yml'), 'utf8'),
-  );
   dictionary = await $RefParser.dereference(resolve(__dirname, './specs/twitter-api-spec.yml'));
 }
 
