@@ -286,6 +286,11 @@ subgroups:
             description: The entities node will not be included when set to false.
             required: false
             type: boolean
+          - name: tweet_mode
+            description: This parameter enables developers to request a series of different extended fields introduced in the years since statuses/show and statuses/lookup were introduced. It has been replaced with the fields and expansions functionality.
+            required: false
+            type: string
+
         exampleResponse: |
           {tweet-object}
       - title: GET statuses/mentions_timeline
@@ -338,6 +343,10 @@ subgroups:
             description: The entities node will not be included when set to false.
             required: false
             type: boolean
+          - name: tweet_mode
+            description: This parameter enables developers to request a series of different extended fields introduced in the years since statuses/show and statuses/lookup were introduced. It has been replaced with the fields and expansions functionality.
+            required: false
+            type: string
         exampleResponse: |
           [ {mention-object} ]
       - title: GET statuses/user_timeline
@@ -349,7 +358,7 @@ subgroups:
           in addition to existing user-level and app-level rate limits.
           This limit is applied on a per-application basis, meaning that a single developer app 
           can make up to 100,000 calls during any single 24-hour period.Returns a collection 
-          of the most recent Tweets posted by the user indicated by the screen_name or
+          of the most recent Tweets posted by the user indicated by the screen_name or 
           user_id parameters.User timelines belonging to protected users may only be 
           requested when the authenticated user either "owns" the timeline or is an 
           approved follower of the owner.The timeline returned is the equivalent of 
@@ -417,6 +426,10 @@ subgroups:
               contain a full user object.
             required: false
             type: boolean
+          - name: tweet_mode
+            description: This parameter enables developers to request a series of different extended fields introduced in the years since statuses/show and statuses/lookup were introduced. It has been replaced with the fields and expansions functionality.
+            required: false
+            type: string
         exampleResponse: |
           [ {tweet-object} ]
   - title: Post, retrieve, and engage with Tweets
@@ -463,6 +476,10 @@ subgroups:
               The entities node will be omitted when set to false .
             required: false
             type: boolean
+          - name: tweet_mode
+            description: This parameter enables developers to request a series of different extended fields introduced in the years since statuses/show and statuses/lookup were introduced. It has been replaced with the fields and expansions functionality.
+            required: false
+            type: string
         exampleResponse: |
           [ {tweet-object} ]
       - title: GET statuses/lookup
@@ -514,6 +531,10 @@ subgroups:
               when that card was attached using the card_uri value.
             required: false
             type: boolean
+          - name: tweet_mode
+            description: This parameter enables developers to request a series of different extended fields introduced in the years since statuses/show and statuses/lookup were introduced. It has been replaced with the fields and expansions functionality.
+            required: false
+            type: string
         exampleResponse: |
           [ {tweet-object} ]
       - title: GET statuses/retweeters/ids
@@ -579,6 +600,10 @@ subgroups:
               Omit this parameter to receive the complete user object.
             required: false
             type: boolean
+          - name: tweet_mode
+            description: This parameter enables developers to request a series of different extended fields introduced in the years since statuses/show and statuses/lookup were introduced. It has been replaced with the fields and expansions functionality.
+            required: false
+            type: string
         exampleResponse: |
           [ {tweet-object} ]
       - title: GET statuses/retweets_of_me
@@ -624,6 +649,10 @@ subgroups:
             description: The user entities node will not be included when set to false.
             required: false
             type: boolean
+          - name: tweet_mode
+            description: This parameter enables developers to request a series of different extended fields introduced in the years since statuses/show and statuses/lookup were introduced. It has been replaced with the fields and expansions functionality.
+            required: false
+            type: string
         exampleResponse: |
           [ {tweet-object} ]
       - title: GET statuses/show/:id
@@ -679,6 +708,10 @@ subgroups:
               when that card was attached using the card_uri value.
             required: false
             type: boolean
+          - name: tweet_mode
+            description: This parameter enables developers to request a series of different extended fields introduced in the years since statuses/show and statuses/lookup were introduced. It has been replaced with the fields and expansions functionality.
+            required: false
+            type: string
         exampleResponse: |
           {tweet-object}
       - title: POST favorites/create
@@ -700,6 +733,10 @@ subgroups:
             description: The entities node will be omitted when set to false .
             required: false
             type: boolean
+          - name: tweet_mode
+            description: This parameter enables developers to request a series of different extended fields introduced in the years since statuses/show and statuses/lookup were introduced. It has been replaced with the fields and expansions functionality.
+            required: false
+            type: string
         exampleResponse: |
           {tweet-object}
       - title: POST favorites/destroy
@@ -720,6 +757,10 @@ subgroups:
             description: The entities node will be omitted when set to false .
             required: false
             type: boolean
+          - name: tweet_mode
+            description: This parameter enables developers to request a series of different extended fields introduced in the years since statuses/show and statuses/lookup were introduced. It has been replaced with the fields and expansions functionality.
+            required: false
+            type: string
         exampleResponse: |
           {tweet-object}
       - title: POST statuses/destroy/:id
@@ -740,6 +781,10 @@ subgroups:
               Omit this parameter to receive the complete user object.
             required: false
             type: boolean
+          - name: tweet_mode
+            description: This parameter enables developers to request a series of different extended fields introduced in the years since statuses/show and statuses/lookup were introduced. It has been replaced with the fields and expansions functionality.
+            required: false
+            type: string
         exampleResponse: |
           {tweet-object}
       - title: POST statuses/retweet/:id
@@ -782,6 +827,10 @@ subgroups:
               Omit this parameter to receive the complete user object.
             required: false
             type: boolean
+          - name: tweet_mode
+            description: This parameter enables developers to request a series of different extended fields introduced in the years since statuses/show and statuses/lookup were introduced. It has been replaced with the fields and expansions functionality.
+            required: false
+            type: string
         exampleResponse: |
           {tweet-object}
       - title: POST statuses/update
@@ -913,11 +962,15 @@ subgroups:
             description: Associate an ads card with the Tweet using the card_uri value from any ads card response.
             required: false
             type: string
+          - name: tweet_mode
+            description: This parameter enables developers to request a series of different extended fields introduced in the years since statuses/show and statuses/lookup were introduced. It has been replaced with the fields and expansions functionality.
+            required: false
+            type: string
         exampleResponse: |
           {tweet-object}
-  - title: GET Search Tweets
+  - title: Search Tweets
     endpoints:
-      - title: Standard search API
+      - title: GET search
         url: https://developer.twitter.com/en/docs/tweets/search/api-reference/get-search-tweets
         resourceUrl: https://api.twitter.com/1.1/search/tweets.json
         description: |
@@ -928,6 +981,75 @@ subgroups:
           To learn how to use Twitter Search effectively, please see the Standard search 
           operators page for a list of available filter operators. Also, see the Working with 
           Timelines page to learn best practices for navigating results by since_id and max_id.
+        parameters:
+          - name: q
+            description: A UTF-8, URL-encoded search query of 500 characters maximum, including operators. Queries may additionally be limited by complexity.
+            required: true
+            type: string
+          - name: geocode
+            description: |
+              Returns tweets by users located within a given radius of the given latitude/longitude. 
+              The location is preferentially taking from the Geotagging API, but will fall back to their Twitter profile. 
+              The parameter value is specified by " latitude,longitude,radius ", where radius units must be specified 
+              as either " mi " (miles) or " km " (kilometers). Note that you cannot use the near operator via 
+              the API to geocode arbitrary locations; however you can use this geocode parameter to search near 
+              geocodes directly. A maximum of 1,000 distinct "sub-regions" will be 
+              considered when using the radius modifier.
+            required: false
+            type: string
+          - name: lang
+            description: |
+              Restricts tweets to the given language, given by an ISO 639-1 code. Language detection is best-effort.
+            required: false
+            type: string
+          - name: locale
+            description: |
+              Specify the language of the query you are sending (only ja is currently effective). 
+              This is intended for language-specific consumers and the default should work in the majority of cases.
+            required: false
+            type: string
+          - name: result_type
+            description: |
+              Optional. Specifies what type of search results you would prefer to receive. 
+              The current default is "mixed." Valid values include:
+
+              * mixed : Include both popular and real time results in the response.
+
+              * recent : return only the most recent results in the response
+
+              * popular : return only the most popular results in the response.
+            required: false
+            type: string
+          - name: count
+            description: |
+              The number of tweets to return per page, up to a maximum of 100. Defaults to 15. 
+              This was formerly the "rpp" parameter in the old Search API.
+            required: false
+            type: number
+          - name: until
+            description: |
+              Returns tweets created before the given date. Date should be formatted as YYYY-MM-DD. 
+              Keep in mind that the search index has a 7-day limit. In other words, no tweets will 
+              be found for a date older than one week.
+            required: false
+            type: string
+          - name: since_id
+            description: |
+              Returns results with an ID greater than (that is, more recent than) the specified ID.
+              There are limits to the number of Tweets which can be accessed through the API.
+              If the limit of Tweets has occured since the since_id, the since_id will be forced to the oldest ID available.
+            required: false
+            type: number
+          - name: max_id
+            description: |
+              Returns results with an ID less than (that is, older than) or equal to the specified ID.
+            required: false
+            type: number
+          - name: include_entities
+            description: |
+              The entities node will not be included when set to false.
+            required: false
+            type: boolean
         exampleResponse: |
           {
             "statuses": [{tweet-object}],

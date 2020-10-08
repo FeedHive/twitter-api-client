@@ -28,6 +28,7 @@ subgroups:
             type: string
   - title: Sending and receiving events
     endpoints:
+      # TODO: Support for DELETE verb
       - title: DELETE direct_messages/events/destroy
         url: https://developer.twitter.com/en/docs/direct-messages/sending-and-receiving/api-reference/delete-message-event
         resourceUrl: https://api.twitter.com/1.1/direct_messages/events/destroy.json
