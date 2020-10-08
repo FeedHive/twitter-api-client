@@ -27,6 +27,7 @@ function writeClients(dictionary: IReferenceDirectory[]) {
 
       s.endpoints.forEach((e) => {
         if (!e.title.startsWith('GET') && !e.title.startsWith('POST')) {
+          console.log(`❌ "${e.title}" not added. Verb is missing`);
           return;
         }
 
@@ -67,6 +68,7 @@ function writeClients(dictionary: IReferenceDirectory[]) {
         method += '  }\n\n';
 
         clientMethods.push(method);
+        console.log(`✅ "${e.title}" added.`);
       });
 
       if (interfacesParamsImports.length) {
@@ -91,7 +93,7 @@ function writeClients(dictionary: IReferenceDirectory[]) {
     });
     clientFile += `import Transport from '../base/Transport'\n`
     clientFile += `\nclass ${fileName}Client {\n`;
-    clientFile += `   
+    clientFile += `
     private transport: Transport;
 
     constructor(transport: Transport) {
