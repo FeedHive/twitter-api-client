@@ -1622,6 +1622,35 @@ user settings page. Currently there is no method to remove geotags from individu
 #### Link
 https://developer.twitter.com/en/docs/tweets/post-and-engage/api-reference/post-statuses-update  
   
+### `TwitterClient.tweets.search(parameters)`
+#### Description
+Returns a collection of relevant Tweets matching a specified query.
+Please note that Twitter's search service and, by extension, the 
+Search API is not meant to be an exhaustive source of Tweets. 
+Not all Tweets will be indexed or made available via the search interface.
+To learn how to use Twitter Search effectively, please see the Standard search 
+operators page for a list of available filter operators. Also, see the Working with 
+Timelines page to learn best practices for navigating results by since_id and max_id.
+
+
+#### Parameters
+
+| Name | Required | type |
+| ---- | -------- | ---- |
+| q | true | string |
+| geocode | false | string |
+| lang | false | string |
+| locale | false | string |
+| result_type | false | string |
+| count | false | number |
+| until | false | string |
+| since_id | false | number |
+| max_id | false | number |
+| include_entities | false | boolean |
+  
+#### Link
+https://developer.twitter.com/en/docs/tweets/search/api-reference/get-search-tweets  
+  
 ## DirectMessages
 ### `TwitterClient.directMessages.customProfilesById(parameters)`
 #### Description
