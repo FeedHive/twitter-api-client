@@ -1,6 +1,7 @@
 import fs from 'fs';
 import yaml from 'js-yaml';
 import { resolve } from 'path';
+import $RefParser from '@apidevtools/json-schema-ref-parser';
 import writeParamsInterfaces from './generator/writeParamsInterfaces';
 import createFolderStructure, { copyBase } from './generator/createFolderStructure';
 import writeTypesInterfaces from './generator/writeTypesInterfaces';
@@ -16,7 +17,7 @@ import writeReferences from './generator/writeReferences';
   copyBase();
 
   // Parse the twitter-api-spec.yml file
-  parseDictionary();
+  await parseDictionary();
 
   // Generate clients based on the twitter-api-spec.yml file
   createParamsInterfaces();
@@ -27,10 +28,8 @@ import writeReferences from './generator/writeReferences';
 
 let dictionary: any;
 
-function parseDictionary() {
-  dictionary = yaml.safeLoad(
-    fs.readFileSync(resolve(__dirname, './spec/twitter-api-spec.yml'), 'utf8'),
-  );
+async function parseDictionary() {
+  dictionary = await $RefParser.dereference(resolve(__dirname, './specs/twitter-api-spec.yml'));
 }
 
 function createParamsInterfaces() {
