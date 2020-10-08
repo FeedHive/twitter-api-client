@@ -1,0 +1,96 @@
+title: Basics
+subgroups:
+  - title: Authentication
+    endpoints:
+      - title: GET oauth/authenticate
+        url: https://developer.twitter.com/en/docs/basics/authentication/api-reference/authenticate
+        resourceUrl: https://api.twitter.com/oauth/authenticate
+        description: |
+          Allows a Consumer application to use an OAuth request_token to request user authorization. 
+          This method is a replacement of Section 6.2 of the OAuth 1.0 authentication flow for applications 
+          using the callback authentication flow. The method will use the currently logged in user as the account 
+          for access authorization unless the force_login parameter is set to true.This method differs from 
+          GET oauth / authorize in that if the user has already granted the application permission, 
+          the redirect will occur without the user having to re-approve the application. 
+          To realize this behavior, you must enable the Use Sign in with Twitter setting on your application record.
+        parameters:
+          - name: force_login
+            description: Forces the user to enter their credentials to ensure the correct users account is authorized.
+            required: false
+            type: boolean
+          - name: screen_name
+            description: Prefills the username input box of the OAuth login screen with the given value.
+            required: false
+            type: string
+      - title: GET oauth/authorize
+        url: https://developer.twitter.com/en/docs/basics/authentication/api-reference/authorize
+        resourceUrl: https://api.twitter.com/oauth/authorize
+        description: |
+          Allows a Consumer application to use an OAuth Request Token to request user authorization. 
+          This method fulfills Section 6.2 of the OAuth 1.0 authentication flow. 
+          Desktop applications must use this method (and cannot use GET oauth / authenticate).
+          Usage Note: An oauth_callback is never sent to this method, provide it to POST oauth / request_token instead.
+        parameters:
+          - name: force_login
+            description: Forces the user to enter their credentials to ensure the correct users account is authorized.
+            required: false
+            type: boolean
+          - name: screen_name
+            description: Prefills the username input box of the OAuth login screen with the given value.
+            required: false
+            type: string
+      - title: POST oauth/access_token
+        url: https://developer.twitter.com/en/docs/basics/authentication/api-reference/access_token
+        resourceUrl: https://api.twitter.com/oauth/access_token
+        description: |
+          Allows a Consumer application to exchange the OAuth Request Token for an
+          OAuth Access Token. This method fulfills Section 6.3 of the OAuth 1.0 authentication flow.
+      - title: POST oauth/invalidate_token
+        url: https://developer.twitter.com/en/docs/basics/authentication/api-reference/invalidate_access_token
+        resourceUrl: https://api.twitter.com/1.1/oauth/invalidate_token
+        description: |
+          Allows a registered application to revoke an issued OAuth access_token 
+          by presenting its client credentials. Once an access_token has been invalidated, 
+          new creation attempts will yield a different Access Token and usage of 
+          the invalidated token will no longer be allowed.
+        exampleResponse: |
+          { "access_token":"ACCESS_TOKEN" }
+      - title: POST oauth/request_token
+        url: https://developer.twitter.com/en/docs/basics/authentication/api-reference/request_token
+        resourceUrl: https://api.twitter.com/oauth/request_token
+        exampleResponse: |
+          { "access_token": "ACCESS_TOKEN" }
+      - title: POST oauth2/invalidate_token
+        url: https://developer.twitter.com/en/docs/basics/authentication/api-reference/invalidate_bearer_token
+        resourceUrl: https://api.twitter.com/oauth2/invalidate_token
+        description: |
+          Allows a registered application to revoke an issued oAuth 2.0 Bearer Token by presenting 
+          its client credentials. Once a Bearer Token has been invalidated, new creation 
+          attempts will yield a different Bearer Token and usage of the invalidated 
+          token will no longer be allowed.Successful responses include a 
+          JSON-structure describing the revoked Bearer Token.
+        exampleResponse: |
+          { "access_token": "ACCESS_TOKEN" }
+      - title: POST oauth2/token
+        url: https://developer.twitter.com/en/docs/basics/authentication/api-reference/token
+        resourceUrl: https://api.twitter.com/oauth2/token
+        description: |
+          Allows a registered application to obtain an OAuth 2 Bearer Token, 
+          which can be used to make API requests on an application's own behalf, 
+          without a user context. This is called Application-only authentication.
+          A Bearer Token may be invalidated using oauth2/invalidate_token. 
+          Once a Bearer Token has been invalidated, new creation attempts will yield a different Bearer Token and 
+          usage of the previous token will no longer be allowed.
+          Only one bearer token may exist outstanding for an application, and repeated requests to this method 
+          will yield the same already-existent token until it has been invalidated.
+          Successful responses include a JSON-structure describing the awarded Bearer Token.
+          Tokens received by this method should be cached. 
+          If attempted too frequently, requests will be rejected with a HTTP 403 with code 99.
+        parameters:
+          - name: grant_type
+            description: |
+              Specifies the type of grant being requested by the application.
+              At this time, only client_credentials is allowed. See Application-Only Authentication
+              for more information.
+            required: true
+            type: string
