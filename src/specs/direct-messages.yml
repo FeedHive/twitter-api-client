@@ -1,0 +1,222 @@
+title: Direct Messages
+subgroups:
+  - title: Custom profiles
+    endpoints:
+      - title: GET custom_profiles/:id
+        url: https://developer.twitter.com/en/docs/direct-messages/custom-profiles/api-reference/get-profile
+        resourceUrl: https://api.twitter.com/1.1/custom_profiles/:id.json
+        description: Returns a custom profile that was created with POST custom_profiles/new.json.
+        exampleResponse: |
+          {
+            "custom_profile": {
+              "id": "100001",
+              "created_timestamp": "1479767168196",
+              "name": "Jon C, Partner Engineer",
+              "avatar": {
+                "media": {
+                  "url": "https://pbs.twimg.com/media/Cr7HZpvVYAAYZIX.jpg"
+                }
+              }
+            }
+          }
+        parameters:
+          - name: id
+            description: |
+              The string ID of the custom profile that should be returned.
+              Provided in resource URL.
+            required: true
+            type: string
+  - title: Sending and receiving events
+    endpoints:
+      # TODO: Support for DELETE verb
+      - title: DELETE direct_messages/events/destroy
+        url: https://developer.twitter.com/en/docs/direct-messages/sending-and-receiving/api-reference/delete-message-event
+        resourceUrl: https://api.twitter.com/1.1/direct_messages/events/destroy.json
+        description: |
+          Deletes the direct message specified in the required ID parameter. 
+          The authenticating user must be the recipient of the specified direct message. 
+          Direct Messages are only removed from the interface of the user context provided. 
+          Other members of the conversation can still access the Direct Messages. 
+          A successful delete will return a 204 http response code with no body content.
+          Important: This method requires an access token with RWD 
+          (read, write & direct message) permissions.
+        parameters:
+          - name: id
+            description: The id of the Direct Message event that should be deleted.
+            required: true
+            type: string
+      - title: GET direct_messages/events/show
+        url: https://developer.twitter.com/en/docs/direct-messages/sending-and-receiving/api-reference/get-event
+        resourceUrl: https://api.twitter.com/1.1/direct_messages/events/show.json
+        description: Returns a single Direct Message event by the given id.
+        exampleResponse: |
+          {
+            "event": {
+              "id": "110",
+              "created_timestamp": "5300",
+              "type": "message_create",
+              "message_create": {}
+            }
+          }
+        parameters:
+          - name: id
+            description: The id of the Direct Message event that should be returned.
+            required: true
+            type: string
+      - title: POST direct_messages/events/new (message_create)
+        url: https://developer.twitter.com/en/docs/direct-messages/sending-and-receiving/api-reference/new-event
+        resourceUrl: https://api.twitter.com/1.1/direct_messages/events/new.json
+        description: |
+          Publishes a new message_create event resulting in a Direct Message sent to a 
+          specified user from the authenticating user. Returns an event if successful. 
+          Supports publishing Direct Messages with optional Quick Reply and media attachment. 
+          Replaces behavior currently provided by POST direct_messages/new.Requires a 
+          JSON POST body and Content-Type header to be set to application/json. 
+          Setting Content-Length may also be required if it is not automatically.
+        exampleResponse: |
+          {
+            "event": {
+              "type": "message_create",
+              "message_create": {
+                "target": {
+                  "recipient_id": "RECIPIENT_USER_ID"
+                },
+                "message_data": {
+                  "text": "Hello World!"
+                }
+              }
+            }
+          }
+        parameters:
+          - name: id
+            description: The ID of the user who should receive the direct message.
+            required: true
+            type: string
+          - name: data
+            description: The Message Data Object defining the content to deliver to the
+              reciepient.
+            required: true
+            type: string
+  - title: Typing indicator and read receipts
+    endpoints:
+      - title: POST direct_messages/indicate_typing
+        url: https://developer.twitter.com/en/docs/direct-messages/typing-indicator-and-read-receipts/api-reference/new-typing-indicator
+        resourceUrl: https://api.twitter.com/1.1/direct_messages/indicate_typing.json
+        description: |
+          Displays a visual typing indicator in the recipient’s 
+          Direct Message conversation view with the sender. 
+          Each request triggers a typing indicator animation 
+          with a duration of ~3 seconds.
+        parameters:
+          - name: recipient_id
+            description: The user ID of the user to receive the typing indicator.
+            required: true
+            type: string
+  - title: Welcome Messages
+    endpoints:
+      - title: GET direct_messages/welcome_messages/rules/show
+        url: https://developer.twitter.com/en/docs/direct-messages/welcome-messages/api-reference/get-welcome-message-rule
+        resourceUrl: https://api.twitter.com/1.1/direct_messages/welcome_messages/rules/show.json
+        description: Returns a Welcome Message Rule by the given id.
+        exampleResponse: |
+          {
+            "welcome_message_rule" : {
+              "id": "9910934913490319",
+              "created_timestamp": "1470182394258",
+              "welcome_message_id": "844385345234"
+            }
+          }
+        parameters:
+          - name: id
+            description: The id of the Welcome Message Rule that should be returned.
+            required: true
+            type: string
+      - title: GET direct_messages/welcome_messages/show
+        url: https://developer.twitter.com/en/docs/direct-messages/welcome-messages/api-reference/get-welcome-message
+        resourceUrl: https://api.twitter.com/1.1/direct_messages/welcome_messages/show.json
+        description: Returns a Welcome Message by the given id.
+        exampleResponse: |
+          {
+            "welcome_message" : {
+              "id": "844385345234",
+              "created_timestamp": "1470182274821",
+              "message_data": {
+                "text": "Welcome!",
+                "attachment": {
+                  "type": "media",
+                  "media": {}
+                }
+              }
+            }
+          }
+        parameters:
+          - name: id
+            description: The id of the Welcome Message that should be returned.
+            required: true
+            type: string
+      - title: POST direct_messages/welcome_messages/new
+        url: https://developer.twitter.com/en/docs/direct-messages/welcome-messages/api-reference/new-welcome-message
+        resourceUrl: https://api.twitter.com/1.1/direct_messages/welcome_messages/new.json
+        description: |
+          Creates a new Welcome Message that will be stored and sent in the future 
+          from the authenticating user in defined circumstances. 
+          Returns the message template if successful. Supports publishing with the same 
+          elements as Direct Messages (e.g. Quick Replies, media attachments).
+          Requires a JSON POST body and Content-Type header to be set to application/json. 
+          Setting Content-Length may also be required if it is not automatically.
+          See the Welcome Messages overview to learn how to work with Welcome Messages.
+        exampleResponse: |
+          {
+            "welcome_message" : {
+              "id": "844385345234",
+              "created_timestamp": "1470182274821",
+              "message_data": {
+                "text": "Welcome!",
+                "attachment": {
+                  "type": "media",
+                  "media": {}
+                }
+              }
+            },
+            "name": "simple_welcome-message 01"
+          }
+        parameters:
+          - name: message_data
+            description: |
+              The Message Data Object defining the content of the message template.
+              See POST direct_messages/events/new (message_create) for Message Data object
+              details.
+            required: true
+            type: string
+          - name: name
+            description: |
+              A human readable name for the Welcome Message. This is not displayed
+              to the user. Max length of 100 alpha numeric characters including hyphens,
+              underscores, spaces, hashes and at signs.
+            required: false
+            type: string
+      - title: POST direct_messages/welcome_messages/rules/new
+        url: https://developer.twitter.com/en/docs/direct-messages/welcome-messages/api-reference/new-welcome-message-rule
+        resourceUrl: https://api.twitter.com/1.1/direct_messages/welcome_messages/rules/new.json
+        description: |
+          Creates a new Welcome Message Rule that determines which Welcome Message will be 
+          shown in a given conversation. Returns the created rule if successful.
+          Requires a JSON POST body and Content-Type header to be set to application/json. 
+          Setting Content-Length may also be required if it is not automatically.
+          Additional rule configurations are forthcoming. For the initial beta release,
+          the most recently created Rule will always take precedence, and the assigned 
+          Welcome Message will be displayed in the conversation.See the Welcome Messages 
+          overview to learn how to work with Welcome Messages.
+        exampleResponse: |
+          {
+            "welcome_message_rule" : {
+              "id": "9910934913490319",
+              "created_timestamp": "1470182394258",
+              "welcome_message_id": "844385345234"
+            }
+          }
+        parameters:
+          - name: welcome_message_id
+            description: The ID of the Welcome Message that will be sent when this Rule is triggered.
+            required: true
+            type: string

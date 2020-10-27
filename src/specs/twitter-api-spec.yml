@@ -1,0 +1,17 @@
+# BASICS
+- $ref: basic.yml
+
+# ACCOUNTS AND USERS
+- $ref: accounts-and-users.yml
+
+# TWEETS
+- $ref: tweets.yml
+
+# DIRECT MESSAGS
+- $ref: direct-messages.yml
+
+# TRENDS
+- $ref: trends.yml
+
+# GEO
+- $ref: geo.yml

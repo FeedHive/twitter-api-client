@@ -1,0 +1,109 @@
+title: Trends
+subgroups:
+  - title: Get locations with trending topics
+    endpoints:
+      - title: GET trends/available
+        url: https://developer.twitter.com/en/docs/trends/locations-with-trending-topics/api-reference/get-trends-available
+        resourceUrl: https://api.twitter.com/1.1/trends/available.json
+        description: |
+          Returns the locations that Twitter has trending topic information for.The response is an array of "locations" that encode the location's WOEID and some other human-readable information such as a canonical name and country the location belongs in.A WOEID is a Yahoo! Where On Earth ID.
+        exampleResponse: |
+          [
+            {
+              "country": "Sweden",
+              "countryCode": "SE",
+              "name": "Sweden",
+              "parentid": 1,
+              "placeType": { "code": 12, "name": "Country" },
+              "url": "http://where.yahooapis.com/v1/place/23424954",
+              "woeid": 23424954
+            }
+          ]
+      - title: GET trends/closest
+        url: https://developer.twitter.com/en/docs/trends/locations-with-trending-topics/api-reference/get-trends-closest
+        resourceUrl: https://api.twitter.com/1.1/trends/closest.json
+        description: |
+          Returns the locations that Twitter has trending topic information for, 
+          closest to a specified location.The response is an array of "locations" 
+          that encode the location's WOEID and some other human-readable information 
+          such as a canonical name and country the location belongs in.A WOEID is a Yahoo! 
+          Where On Earth ID.
+        parameters:
+          - name: lat
+            description: |
+              If provided with a long parameter the available trend locations
+              will be sorted by distance, nearest to furthest, to the co-ordinate pair.
+              The valid ranges for longitude is -180.0 to +180.0 (West is negative, East
+              is positive) inclusive.
+            required: true
+            type: number
+          - name: long
+            description: |
+              If provided with a lat parameter the available trend locations
+              will be sorted by distance, nearest to furthest, to the co-ordinate pair.
+              The valid ranges for longitude is -180.0 to +180.0 (West is negative, East
+              is positive) inclusive.
+            required: true
+            type: number
+        exampleResponse: |
+          [
+            {
+              "country": "Australia",
+              "countryCode": "AU",
+              "name": "Australia",
+              "parentid": 1,
+              "placeType": {
+                "code": 12,
+                "name": "Country"
+              },
+              "url": "http://where.yahooapis.com/v1/place/23424748",
+              "woeid": 23424748
+            }
+          ]
+  - title: Get trends near a location
+    endpoints:
+      - title: GET trends/place
+        url: https://developer.twitter.com/en/docs/trends/trends-for-location/api-reference/get-trends-place
+        resourceUrl: https://api.twitter.com/1.1/trends/place.json
+        description: |
+          Returns the top 50 trending topics for a specific WOEID, if trending 
+          information is available for it.The response is an array of trend 
+          objects that encode the name of the trending topic, the query 
+          parameter that can be used to search for the topic on Twitter Search,
+          and the Twitter Search URL.This information is cached for 5 minutes. 
+          Requesting more frequently than that will not return any more data, and 
+          will count against rate limit usage.The tweet_volume for the last 24 hours 
+          is also returned for many trends if this is available.
+        parameters:
+          - name: id
+            description: |
+              The Yahoo! Where On Earth ID of the location to return trending
+              information for. Global information is available by using 1 as the WOEID.
+            required: true
+            type: number
+          - name: exclude
+            description: Setting this equal to hashtags will remove all hashtags from the trends list.
+            required: false
+            type: number
+        exampleResponse: |
+          [
+            {
+              "trends": [
+                {
+                  "name": "#ChainedToTheRhythm",
+                  "url": "http://twitter.com/search?q=%23ChainedToTheRhythm",
+                  "promoted_content": null,
+                  "query": "%23ChainedToTheRhythm",
+                  "tweet_volume": 48857
+                }
+              ],
+              "as_of": "2017-02-08T16:18:18Z",
+              "created_at": "2017-02-08T16:10:33Z",
+              "locations": [
+                {
+                  "name": "Worldwide",
+                  "woeid": 1
+                }
+              ]
+            }
+          ]
