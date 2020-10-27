@@ -1,13 +1,13 @@
 import OAuth from 'oauth';
 import IClientOptions from './IClientOptions';
 import Cache from './Cache';
-import { formatURL } from './utils';
+import { formatURL, parse } from './utils';
 
 class Transport {
   private oauth: OAuth.OAuth;
   private cache?: Cache;
   private credentials: IClientOptions & { [key: string]: any };
-  
+
   constructor(options: IClientOptions) {
     this.credentials = options;
     this.oauth = new OAuth.OAuth(
@@ -17,7 +17,7 @@ class Transport {
       this.credentials.apiSecret,
       '1.0A',
       null,
-      'HMAC-SHA1'
+      'HMAC-SHA1',
     );
 
     if (!options?.disableCache) {
@@ -38,9 +38,7 @@ class Transport {
 
   public async doGetRequest<T>(url: string): Promise<T> {
     if (!this.oauth) {
-      throw Error(
-        'Unable to make request. Authentication has not been established'
-      );
+      throw Error('Unable to make request. Authentication has not been established');
     }
 
     if (this.cache?.has(url)) {
@@ -48,15 +46,8 @@ class Transport {
     }
 
     return new Promise((resolve, reject) => {
-      if (
-        !this.credentials.accessToken ||
-        !this.credentials.accessTokenSecret
-      ) {
-        reject(
-          new Error(
-            'Unable to make request. Authentication has not been established'
-          )
-        );
+      if (!this.credentials.accessToken || !this.credentials.accessTokenSecret) {
+        reject(new Error('Unable to make request. Authentication has not been established'));
         return;
       }
 
@@ -76,32 +67,23 @@ class Transport {
             return;
           }
 
-          const result = JSON.parse(body.toString());
+          const result = parse<T>(body.toString());
 
           this.cache?.add(url, result);
           resolve(result);
-        }
+        },
       );
     });
   }
 
   public async doPostRequest<T>(url: string, body?: any): Promise<T> {
     if (!this.oauth || !this.credentials) {
-      throw Error(
-        'Unable to make request. Authentication has not been established'
-      );
+      throw Error('Unable to make request. Authentication has not been established');
     }
 
     return new Promise((resolve, reject) => {
-      if (
-        !this.credentials.accessToken ||
-        !this.credentials.accessTokenSecret
-      ) {
-        reject(
-          new Error(
-            'Unable to make request. Authentication has not been established'
-          )
-        );
+      if (!this.credentials.accessToken || !this.credentials.accessTokenSecret) {
+        reject(new Error('Unable to make request. Authentication has not been established'));
         return;
       }
 
@@ -123,9 +105,9 @@ class Transport {
             return;
           }
 
-          const result = JSON.parse(body.toString());
+          const result = parse<T>(body.toString());
           resolve(result);
-        }
+        },
       );
     });
   }

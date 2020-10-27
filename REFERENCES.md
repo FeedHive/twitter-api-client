@@ -40,17 +40,22 @@ Usage Note: An oauth_callback is never sent to this method, provide it to POST o
 #### Link
 https://developer.twitter.com/en/docs/basics/authentication/api-reference/authorize  
   
-### `TwitterClient.basics.oauthAccessToken()`
+### `TwitterClient.basics.oauthAccessToken(parameters)`
 #### Description
 Allows a Consumer application to exchange the OAuth Request Token for an
 OAuth Access Token. This method fulfills Section 6.3 of the OAuth 1.0 authentication flow.
 
 
+#### Parameters
+
+| Name | Required | type |
+| ---- | -------- | ---- |
+| oauth_verifier | false | string |
   
 #### Link
 https://developer.twitter.com/en/docs/basics/authentication/api-reference/access_token  
   
-### `TwitterClient.basics.oauthInvalidateToken()`
+### `TwitterClient.basics.oauthInvalidateToken(parameters)`
 #### Description
 Allows a registered application to revoke an issued OAuth access_token 
 by presenting its client credentials. Once an access_token has been invalidated, 
@@ -58,19 +63,30 @@ new creation attempts will yield a different Access Token and usage of
 the invalidated token will no longer be allowed.
 
 
+#### Parameters
+
+| Name | Required | type |
+| ---- | -------- | ---- |
+| access_token | true | string |
+| access_token_secret | true | string |
   
 #### Link
 https://developer.twitter.com/en/docs/basics/authentication/api-reference/invalidate_access_token  
   
-### `TwitterClient.basics.oauthRequestToken()`
+### `TwitterClient.basics.oauth2InvalidateToken(parameters)`
 #### Description
 undefined
 
+#### Parameters
+
+| Name | Required | type |
+| ---- | -------- | ---- |
+| access_token | true | string |
   
 #### Link
-https://developer.twitter.com/en/docs/basics/authentication/api-reference/request_token  
+https://developer.twitter.com/en/docs/basics/authentication/api-reference/invalidate_bearer_token  
   
-### `TwitterClient.basics.oauth2InvalidateToken()`
+### `TwitterClient.basics.oauthRequestToken(parameters)`
 #### Description
 Allows a registered application to revoke an issued oAuth 2.0 Bearer Token by presenting 
 its client credentials. Once a Bearer Token has been invalidated, new creation 
@@ -79,9 +95,15 @@ token will no longer be allowed.Successful responses include a
 JSON-structure describing the revoked Bearer Token.
 
 
+#### Parameters
+
+| Name | Required | type |
+| ---- | -------- | ---- |
+| oauth_callback | false | string |
+| x_auth_access_type | false | string |
   
 #### Link
-https://developer.twitter.com/en/docs/basics/authentication/api-reference/invalidate_bearer_token  
+https://developer.twitter.com/en/docs/basics/authentication/api-reference/request_token  
   
 ### `TwitterClient.basics.oauth2Token(parameters)`
 #### Description

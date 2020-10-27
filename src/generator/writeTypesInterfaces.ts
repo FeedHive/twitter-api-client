@@ -27,18 +27,18 @@ function writeTypesInterfaces(dictionary: IReferenceDirectory[]) {
         const fileName = createCamelCaseTitle(titleWithoutVerb);
         let interfacesContent = '';
 
-        try {
-          const exampleResponse = e.exampleResponse
-            .replace(/\n/g, '')
-            .replace(/\{user-object\}/g, JSON.stringify(userTemplate))
-            .replace(/\{tweet-object\}/g, JSON.stringify(tweetTemplate))
-            .replace(/\{list-object\}/g, JSON.stringify(listTemplate))
-            .replace(/\{size-object\}/g, JSON.stringify(sizeTemplate))
-            .replace(/\{collection-object\}/g, JSON.stringify(collectionTemplate))
-            .replace(/\{mention-object\}/g, JSON.stringify(mentionTemplate))
-            .replace(/\{geo-object\}/g, JSON.stringify(geoTemplate))
-            .replace(/\{geo-reverse-object\}/g, JSON.stringify(geoReverseTemplate));
+        const exampleResponse = e.exampleResponse
+          .replace(/\n/g, '')
+          .replace(/\{user-object\}/g, JSON.stringify(userTemplate))
+          .replace(/\{tweet-object\}/g, JSON.stringify(tweetTemplate))
+          .replace(/\{list-object\}/g, JSON.stringify(listTemplate))
+          .replace(/\{size-object\}/g, JSON.stringify(sizeTemplate))
+          .replace(/\{collection-object\}/g, JSON.stringify(collectionTemplate))
+          .replace(/\{mention-object\}/g, JSON.stringify(mentionTemplate))
+          .replace(/\{geo-object\}/g, JSON.stringify(geoTemplate))
+          .replace(/\{geo-reverse-object\}/g, JSON.stringify(geoReverseTemplate));
 
+        try {
           const parsed = JSON.parse(exampleResponse);
           JsonToTS(parsed).forEach((interfaceContent: string) => {
             const [, name] = interfaceContent.split(' ');
@@ -53,8 +53,8 @@ function writeTypesInterfaces(dictionary: IReferenceDirectory[]) {
             }
           });
         } catch (error) {
-          console.log(e.title, 'failed');
-          console.log(error);
+          interfacesContent += `type ${fileName} = string;\n`;
+          interfacesContent += `export default ${fileName};`;
         }
 
         if (!interfacesContent) {

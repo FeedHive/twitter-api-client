@@ -22,6 +22,8 @@ subgroups:
             description: Prefills the username input box of the OAuth login screen with the given value.
             required: false
             type: string
+        exampleResponse: |
+          https://api.twitter.com/oauth/authenticate?oauth_token=Z6eEdO8MOmk394WozF5oKyuAv855l4Mlqo7hhlSLik
       - title: GET oauth/authorize
         url: https://developer.twitter.com/en/docs/basics/authentication/api-reference/authorize
         resourceUrl: https://api.twitter.com/oauth/authorize
@@ -39,12 +41,29 @@ subgroups:
             description: Prefills the username input box of the OAuth login screen with the given value.
             required: false
             type: string
+        exampleResponse: |
+          https://api.twitter.com/oauth/authenticate?oauth_token=Z6eEdO8MOmk394WozF5oKyuAv855l4Mlqo7hhlSLik
       - title: POST oauth/access_token
         url: https://developer.twitter.com/en/docs/basics/authentication/api-reference/access_token
         resourceUrl: https://api.twitter.com/oauth/access_token
         description: |
           Allows a Consumer application to exchange the OAuth Request Token for an
           OAuth Access Token. This method fulfills Section 6.3 of the OAuth 1.0 authentication flow.
+        parameters:
+          - name: oauth_verifier
+            description: |
+              If using the OAuth web-flow, set this parameter to the value of the oauth_verifier
+              returned in the callback URL. If you are using out-of-band OAuth, set this value to the pin-code.
+              For OAuth 1.0a compliance this parameter is required. OAuth 1.0a is strictly enforced
+              and applications not using the oauth_verifier will fail to complete the OAuth flow.
+            required: false
+            type: string
+        exampleResponse: |
+          {
+            oauth_token: '1234',
+            oauth_token_secret: '1234',
+            oauth_callback_confirmed: 'true'
+          }
       - title: POST oauth/invalidate_token
         url: https://developer.twitter.com/en/docs/basics/authentication/api-reference/invalidate_access_token
         resourceUrl: https://api.twitter.com/1.1/oauth/invalidate_token
@@ -53,24 +72,61 @@ subgroups:
           by presenting its client credentials. Once an access_token has been invalidated, 
           new creation attempts will yield a different Access Token and usage of 
           the invalidated token will no longer be allowed.
+        parameters:
+          - name: access_token
+            description: The access_token of user to be invalidated
+            required: true
+            type: string
+          - name: access_token_secret
+            description: The access_token_secret of user to be invalidated
+            required: true
+            type: string
         exampleResponse: |
           { "access_token":"ACCESS_TOKEN" }
-      - title: POST oauth/request_token
-        url: https://developer.twitter.com/en/docs/basics/authentication/api-reference/request_token
-        resourceUrl: https://api.twitter.com/oauth/request_token
-        exampleResponse: |
-          { "access_token": "ACCESS_TOKEN" }
       - title: POST oauth2/invalidate_token
         url: https://developer.twitter.com/en/docs/basics/authentication/api-reference/invalidate_bearer_token
         resourceUrl: https://api.twitter.com/oauth2/invalidate_token
+        parameters:
+          - name: access_token
+            description: The value of the bearer token to revoke
+            required: true
+            type: string
+        exampleResponse: |
+          { "access_token": "ACCESS_TOKEN" }
+      - title: POST oauth/request_token
+        url: https://developer.twitter.com/en/docs/basics/authentication/api-reference/request_token
+        resourceUrl: https://api.twitter.com/oauth/request_token
         description: |
           Allows a registered application to revoke an issued oAuth 2.0 Bearer Token by presenting 
           its client credentials. Once a Bearer Token has been invalidated, new creation 
           attempts will yield a different Bearer Token and usage of the invalidated 
           token will no longer be allowed.Successful responses include a 
           JSON-structure describing the revoked Bearer Token.
+        parameters:
+          - name: oauth_callback
+            description: |
+              For OAuth 1.0a compliance this parameter is required.
+              The value you specify here will be used as the URL a user is redirected to should they approve
+              your application's access to their account. Set this to oob for out-of-band pin mode.
+              This is also how you specify custom callbacks for use in desktop/mobile applications.
+              Always send an oauth_callback on this step, regardless of a pre-registered callback.
+              We require that any callback URL used with this endpoint will have to be
+              whitelisted within the app settings on developer.twitter.com*
+            required: false
+            type: string
+          - name: x_auth_access_type
+            description: |
+              Overrides the access level an application requests to a users account.
+              Supported values are read or write. This parameter is intended to allow a developer to
+              register a read/write application but also request read only access when appropriate.
+            required: false
+            type: string
         exampleResponse: |
-          { "access_token": "ACCESS_TOKEN" }
+          {
+            "oauth_token": "1234",
+            "oauth_token_secret": "1234",
+            "oauth_callback_confirmed": "true"
+          }
       - title: POST oauth2/token
         url: https://developer.twitter.com/en/docs/basics/authentication/api-reference/token
         resourceUrl: https://api.twitter.com/oauth2/token
@@ -94,3 +150,5 @@ subgroups:
               for more information.
             required: true
             type: string
+        exampleResponse: |
+          {"token_type":"bearer","access_token":"AAAA%2FAAA%3DAAAAAAAA"}

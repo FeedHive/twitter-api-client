@@ -43,3 +43,27 @@ export const formatURL = (url: string): string => {
     .replace(/\)/g, '%29')
     .replace(/\*/g, '%2A');
 };
+
+export const parse = <T>(body: string): T => {
+  let parsed = undefined;
+
+  try {
+    parsed = JSON.parse(body);
+  } catch (error) {}
+
+  if (parsed) {
+    return parsed;
+  }
+
+  try {
+    parsed = JSON.parse(
+      '{"' + decodeURI(body).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g, '":"') + '"}',
+    );
+  } catch (error) {}
+
+  if (parsed) {
+    return parsed;
+  }
+
+  return (body as any) as T;
+};
