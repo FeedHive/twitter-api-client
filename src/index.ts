@@ -1,5 +1,3 @@
-import fs from 'fs';
-import yaml from 'js-yaml';
 import { resolve } from 'path';
 import $RefParser from '@apidevtools/json-schema-ref-parser';
 import writeParamsInterfaces from './generator/writeParamsInterfaces';
