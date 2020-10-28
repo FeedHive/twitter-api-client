@@ -46,7 +46,9 @@ function writeClients(dictionary: IReferenceDirectory[]) {
         const optional = !e.parameters?.some((p) => p.required) ? '?' : '';
         const signature = e.parameters ? `(parameters${optional}: ${interfaceName}Params)` : '()';
         const queryParams = e.parameters ? ` + params` : '';
-        const doMethod = e.title.startsWith('GET') ? 'this.transport.doGetRequest' : 'this.transport.doPostRequest';
+        const doMethod = e.title.startsWith('GET')
+          ? 'this.transport.doGetRequest'
+          : 'this.transport.doPostRequest';
         const listed = e.exampleResponse?.startsWith('[') ? '[]' : '';
         const returnType = e.exampleResponse ? `<${interfaceName}${listed}>` : '';
         const resourceUrl = e.resourceUrl.replace(':id', `' + parameters.id + '`);
@@ -85,13 +87,20 @@ function writeClients(dictionary: IReferenceDirectory[]) {
         clientFile += `import {\n`;
         imports.forEach((param) => (clientFile += `  ${param},\n`));
         clientFile += `} from '../interfaces/params/${file}Params';\n\n`;
+
+        superClientFile += `export {\n`;
+        imports.forEach((param) => (superClientFile += `  ${param},\n`));
+        superClientFile += `} from './interfaces/params/${file}Params';\n\n`;
       }
     });
 
     interfacesTypesImports.forEach((type) => {
       clientFile += `import ${type} from '../interfaces/types/${type}Types';\n`;
+      superClientFile += `import ${type} from './interfaces/types/${type}Types';\n`;
+      superClientFile += `export { ${type} };\n`;
     });
-    clientFile += `import Transport from '../base/Transport'\n`
+
+    clientFile += `import Transport from '../base/Transport'\n`;
     clientFile += `\nclass ${fileName}Client {\n`;
     clientFile += `
     private transport: Transport;
@@ -102,7 +111,7 @@ function writeClients(dictionary: IReferenceDirectory[]) {
       }
       
       this.transport = transport;
-    }\n`
+    }\n`;
 
     clientMethods.forEach((method) => (clientFile += method));
 
@@ -121,7 +130,7 @@ function writeClients(dictionary: IReferenceDirectory[]) {
     const clientName = client.replace(/^./, client[0].toLowerCase());
     superClientFile += `  private ${clientName}: ${client} | undefined;\n`;
   });
-  superClientFile +=`  private transport: Transport;\n`;
+  superClientFile += `  private transport: Transport;\n`;
   superClientFile += `
   /**
    * Provide Twitter API Credentials and options
