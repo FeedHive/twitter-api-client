@@ -60,9 +60,10 @@ subgroups:
             type: string
         exampleResponse: |
           {
-            oauth_token: '1234',
-            oauth_token_secret: '1234',
-            oauth_callback_confirmed: 'true'
+            "oauth_token": "1234",
+            "oauth_token_secret": "1234",
+            "user_id": "1234",
+            "screen_name": "testDev"
           }
       - title: POST oauth/invalidate_token
         url: https://developer.twitter.com/en/docs/basics/authentication/api-reference/invalidate_access_token
