@@ -1,7 +1,7 @@
 import fs from 'fs';
 import { resolve } from 'path';
 import IReferenceDirectory from '../interfaces/IReferenceDirectory';
-import { createCamelCaseTitle } from '../utils/utils';
+import { createCamelCaseTitle, removeHttpVerbs, } from '../utils/utils';
 
 function writeParamsInterfaces(dictionary: IReferenceDirectory[]) {
   const generatedPath = resolve(__dirname, '../../generated');
@@ -17,7 +17,7 @@ function writeParamsInterfaces(dictionary: IReferenceDirectory[]) {
           return;
         }
 
-        const titleWithoutVerb = e.title.replace('GET', '').replace('POST', '');
+        const titleWithoutVerb = removeHttpVerbs(e.title);
         const interfaceName = createCamelCaseTitle(titleWithoutVerb);
 
         let params = '';

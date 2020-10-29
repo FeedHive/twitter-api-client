@@ -1,7 +1,7 @@
 import fs from 'fs';
 import { resolve } from 'path';
 import IReferenceDirectory from '../interfaces/IReferenceDirectory';
-import { createCamelCaseTitle } from '../utils/utils';
+import { createCamelCaseTitle, removeHttpVerbs,startWithHttpVerb } from '../utils/utils';
 
 function writeClients(dictionary: IReferenceDirectory[]) {
   const generatedPath = resolve(__dirname, '../../generated');
@@ -26,13 +26,11 @@ function writeClients(dictionary: IReferenceDirectory[]) {
       const subgroupFileName = createCamelCaseTitle(s.title);
 
       s.endpoints.forEach((e) => {
-        if (!e.title.startsWith('GET') && !e.title.startsWith('POST')) {
+        if (!startWithHttpVerb(e.title)) {
           console.log(`❌ "${e.title}" not added. Verb is missing`);
           return;
         }
-
-        const titleWithoutVerb = e.title.replace('GET', '').replace('POST', '');
-        const interfaceName = createCamelCaseTitle(titleWithoutVerb);
+        const interfaceName = createCamelCaseTitle(removeHttpVerbs(e.title));
         const methodName = interfaceName.replace(/^./, interfaceName[0].toLowerCase());
 
         if (e.parameters) {
