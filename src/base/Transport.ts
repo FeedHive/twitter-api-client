@@ -35,7 +35,39 @@ class Transport {
       }
     });
   }
+  public async doDeleteRequest<T>(url:string): Promise<T> {
+    if (!this.oauth) {
+      throw Error('Unable to make request. Authentication has not been established');
+    }
+    return new Promise((resolve, reject) => {
+      if (!this.credentials.accessToken || !this.credentials.accessTokenSecret) {
+        reject(new Error('Unable to make request. Authentication has not been established'));
+        return;
+      }
 
+      const formattedUrl = formatURL(url);
+
+      this.oauth.delete(
+        formattedUrl,
+        this.credentials.accessToken,
+        this.credentials.accessTokenSecret,
+        (err: { statusCode: number; data?: any }, body?: string | Buffer) => {
+          if (err) {
+            reject(err);
+            return;
+          }
+
+          if (!body) {
+            return;
+          }
+
+          const result = parse<T>(body.toString());
+          resolve(result);
+        },
+      );
+    });
+
+  }
   public async doGetRequest<T>(url: string): Promise<T> {
     if (!this.oauth) {
       throw Error('Unable to make request. Authentication has not been established');

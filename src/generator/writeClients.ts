@@ -1,7 +1,8 @@
 import fs from 'fs';
 import { resolve } from 'path';
 import IReferenceDirectory from '../interfaces/IReferenceDirectory';
-import { createCamelCaseTitle, removeHttpVerbs,startWithHttpVerb } from '../utils/utils';
+import { createCamelCaseTitle } from '../utils/utils';
+import {removeHttpVerbs,startWithHttpVerb,getMethodName} from '../base/httpVerbs'
 
 function writeClients(dictionary: IReferenceDirectory[]) {
   const generatedPath = resolve(__dirname, '../../generated');
@@ -44,9 +45,7 @@ function writeClients(dictionary: IReferenceDirectory[]) {
         const optional = !e.parameters?.some((p) => p.required) ? '?' : '';
         const signature = e.parameters ? `(parameters${optional}: ${interfaceName}Params)` : '()';
         const queryParams = e.parameters ? ` + params` : '';
-        const doMethod = e.title.startsWith('GET')
-          ? 'this.transport.doGetRequest'
-          : 'this.transport.doPostRequest';
+        const doMethod = getMethodName(e.title);
         const listed = e.exampleResponse?.startsWith('[') ? '[]' : '';
         const returnType = e.exampleResponse ? `<${interfaceName}${listed}>` : '';
         const resourceUrl = e.resourceUrl.replace(':id', `' + parameters.id + '`);

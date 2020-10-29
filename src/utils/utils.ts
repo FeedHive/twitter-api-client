@@ -1,5 +1,3 @@
-const supportedHttpVerbs = ["POST", "GET", "DELETE"];
-
 export const createCamelCaseTitle = (slashedTitle: string) => {
   const transformedSlashedTitle = slashedTitle
     .trim()
@@ -24,11 +22,3 @@ export const createCamelCaseTitle = (slashedTitle: string) => {
 
   return title;
 };
-
-export const removeHttpVerbs = (text: string) => {
-  const httpVerbsPattern = new RegExp(supportedHttpVerbs.join("|"));
-  return text.replace(httpVerbsPattern,'').trim()};
-
-export const startWithHttpVerb = (text:string)=> {
-  const httpVerbsPattern = new RegExp(`^(${supportedHttpVerbs.join("|")})`);
-  return httpVerbsPattern.test(text)}

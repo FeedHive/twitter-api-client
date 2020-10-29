@@ -1,7 +1,8 @@
 import fs from 'fs';
 import { resolve } from 'path';
 import IReferenceDirectory from '../interfaces/IReferenceDirectory';
-import { createCamelCaseTitle, removeHttpVerbs, } from '../utils/utils';
+import { createCamelCaseTitle } from '../utils/utils';
+import { removeHttpVerbs } from '../base/httpVerbs'
 
 function writeParamsInterfaces(dictionary: IReferenceDirectory[]) {
   const generatedPath = resolve(__dirname, '../../generated');
