@@ -97,7 +97,7 @@ This project is licensed under the [MIT License](https://github.com/Silind/twitt
 
 #### Issues
 
-In the case of a bug report, bugfix or a suggestions, please feel very free to open an issue.
+In the case of any bug report, bugfix or a suggestions, please feel very free to open an issue.
 
 #### Pull request
 
