@@ -35,6 +35,7 @@ class Transport {
       }
     });
   }
+
   public async doDeleteRequest<T>(url:string): Promise<T> {
     if (!this.oauth) {
       throw Error('Unable to make request. Authentication has not been established');
@@ -66,8 +67,8 @@ class Transport {
         },
       );
     });
-
   }
+
   public async doGetRequest<T>(url: string): Promise<T> {
     if (!this.oauth) {
       throw Error('Unable to make request. Authentication has not been established');
