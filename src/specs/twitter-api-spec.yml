@@ -10,6 +10,9 @@
 # DIRECT MESSAGS
 - $ref: direct-messages.yml
 
+# MEDIA
+- $ref: media.yml
+
 # TRENDS
 - $ref: trends.yml
 

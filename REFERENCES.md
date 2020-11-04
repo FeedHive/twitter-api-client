@@ -1805,6 +1805,142 @@ overview to learn how to work with Welcome Messages.
 #### Link
 https://developer.twitter.com/en/docs/direct-messages/welcome-messages/api-reference/new-welcome-message-rule  
   
+## Media
+### `TwitterClient.media.mediaUploadInit(parameters)`
+#### Description
+The INIT command request is used to initiate a file upload session.
+It returns a media_id which should be used to execute all subsequent requests.
+The next step after a successful return from INIT command is the APPEND command.
+See the Uploading media guide for constraints and requirements on media files.
+
+
+#### Parameters
+
+| Name | Required | type |
+| ---- | -------- | ---- |
+| command | true | string |
+| total_bytes | true | number |
+| media_type | true | string |
+| media_category | false | string |
+| additional_owners | false | string |
+  
+#### Link
+https://developer.twitter.com/en/docs/twitter-api/v1/media/upload-media/api-reference/post-media-upload-init  
+  
+### `TwitterClient.media.mediaUploadAppend(parameters)`
+#### Description
+The APPEND command is used to upload a chunk (consecutive byte range) of the media file.
+For example, a 3 MB file could be split into 3 chunks of size 1 MB,
+and uploaded using 3 APPEND command requests.
+After the entire file is uploaded, the next step is to call the FINALIZE command.
+
+
+#### Parameters
+
+| Name | Required | type |
+| ---- | -------- | ---- |
+| command | true | string |
+| media_id | true | string |
+| media | true | string |
+| media_data | true | string |
+| segment_index | true | string |
+  
+#### Link
+https://developer.twitter.com/en/docs/twitter-api/v1/media/upload-media/api-reference/post-media-upload-append  
+  
+### `TwitterClient.media.mediaUploadStatus(parameters)`
+#### Description
+The STATUS command is used to periodically poll for updates of media processing operation.
+After the STATUS command response returns succeeded,
+you can move on to the next step which is usually create Tweet with media_id.
+
+
+#### Parameters
+
+| Name | Required | type |
+| ---- | -------- | ---- |
+| command | true | string |
+| media_id | true | string |
+  
+#### Link
+https://developer.twitter.com/en/docs/twitter-api/v1/media/upload-media/api-reference/get-media-upload-status  
+  
+### `TwitterClient.media.mediaUploadFinalize(parameters)`
+#### Description
+The FINALIZE command should be called after the entire media file is uploaded
+using APPEND commands. If and (only if) the response of the FINALIZE command
+contains a processing_info field, it may also be necessary to use a STATUS
+command and wait for it to return success before proceeding to Tweet creation.
+
+
+#### Parameters
+
+| Name | Required | type |
+| ---- | -------- | ---- |
+| command | true | string |
+| media_id | true | string |
+  
+#### Link
+https://developer.twitter.com/en/docs/twitter-api/v1/media/upload-media/api-reference/post-media-upload-finalize  
+  
+### `TwitterClient.media.mediaUpload(parameters)`
+#### Description
+Use this endpoint to upload images to Twitter.
+This endpoint returns a media_id by default and can optionally return a media_key
+when a media_category is specified. These values are used by Twitter endpoints that accept images.
+For example, a media_id value can be used to create a Tweet with an
+attached photo using the POST statuses/update endpoint.
+All Ads API endpoints require a media_key.
+For example, a media_key value can be used to create a Draft Tweet
+with a photo using the POST accounts/:account_id/draft_tweets endpoint.
+
+
+#### Parameters
+
+| Name | Required | type |
+| ---- | -------- | ---- |
+| media | true | string |
+| media_category | false | string |
+  
+#### Link
+https://developer.twitter.com/en/docs/twitter-api/v1/media/upload-media/api-reference/post-media-upload  
+  
+### `TwitterClient.media.mediaMetadataCreate()`
+#### Description
+This endpoint can be used to provide additional information about the uploaded media_id.
+This feature is currently only supported for images and GIFs.
+
+
+  
+#### Link
+https://developer.twitter.com/en/docs/twitter-api/v1/media/upload-media/api-reference/post-media-metadata-create  
+  
+### `TwitterClient.media.mediaSubtitlesDelete()`
+#### Description
+Use this endpoint to dissociate subtitles from a video and delete the subtitles.
+You can dissociate subtitles from a video before or after Tweeting.
+
+
+  
+#### Link
+https://developer.twitter.com/en/docs/twitter-api/v1/media/upload-media/api-reference/post-media-subtitles-delete  
+  
+### `TwitterClient.media.mediaSubtitlesCreate()`
+#### Description
+Use this endpoint to associate uploaded subtitles to an uploaded video.
+You can associate subtitles to video before or after Tweeting.
+Request flow for associating subtitle to video before the video is Tweeted : 1.
+Upload video using the chunked upload endpoint and get the video media_id. 2.
+Upload subtitle using the chunked upload endpoint with media category set to “Subtitles”
+and get the subtitle media_id. 
+3. Call this endpoint to associate the subtitle to the video.
+4. Create Tweet with the video media_id.
+
+
+  
+#### Link
+https://developer.twitter.com/en/docs/twitter-api/v1/media/upload-media/api-reference/post-media-subtitles-create  
+  
 ## Trends
 ### `TwitterClient.trends.trendsAvailable()`
 #### Description

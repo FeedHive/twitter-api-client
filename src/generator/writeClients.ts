@@ -2,6 +2,7 @@ import fs from 'fs';
 import { resolve } from 'path';
 import IReferenceDirectory from '../interfaces/IReferenceDirectory';
 import { createCamelCaseTitle } from '../utils/utils';
+import {removeHttpVerbs,startWithHttpVerb,getMethodName} from '../base/httpVerbs'
 
 function writeClients(dictionary: IReferenceDirectory[]) {
   const generatedPath = resolve(__dirname, '../../generated');
@@ -26,13 +27,11 @@ function writeClients(dictionary: IReferenceDirectory[]) {
       const subgroupFileName = createCamelCaseTitle(s.title);
 
       s.endpoints.forEach((e) => {
-        if (!e.title.startsWith('GET') && !e.title.startsWith('POST')) {
+        if (!startWithHttpVerb(e.title)) {
           console.log(`❌ "${e.title}" not added. Verb is missing`);
           return;
         }
-
-        const titleWithoutVerb = e.title.replace('GET', '').replace('POST', '');
-        const interfaceName = createCamelCaseTitle(titleWithoutVerb);
+        const interfaceName = createCamelCaseTitle(removeHttpVerbs(e.title));
         const methodName = interfaceName.replace(/^./, interfaceName[0].toLowerCase());
 
         if (e.parameters) {
@@ -46,9 +45,7 @@ function writeClients(dictionary: IReferenceDirectory[]) {
         const optional = !e.parameters?.some((p) => p.required) ? '?' : '';
         const signature = e.parameters ? `(parameters${optional}: ${interfaceName}Params)` : '()';
         const queryParams = e.parameters ? ` + params` : '';
-        const doMethod = e.title.startsWith('GET')
-          ? 'this.transport.doGetRequest'
-          : 'this.transport.doPostRequest';
+        const doMethod = getMethodName(e.title);
         const listed = e.exampleResponse?.startsWith('[') ? '[]' : '';
         const returnType = e.exampleResponse ? `<${interfaceName}${listed}>` : '';
         const resourceUrl = e.resourceUrl.replace(':id', `' + parameters.id + '`);
