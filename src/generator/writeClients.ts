@@ -2,7 +2,7 @@ import fs from 'fs';
 import { resolve } from 'path';
 import IReferenceDirectory from '../interfaces/IReferenceDirectory';
 import { createCamelCaseTitle } from '../utils/utils';
-import {removeHttpVerbs,startWithHttpVerb,getMethodName} from '../base/httpVerbs'
+import { removeHttpVerbs, startWithHttpVerb, getMethodName } from '../base/httpVerbs';
 
 function writeClients(dictionary: IReferenceDirectory[]) {
   const generatedPath = resolve(__dirname, '../../generated');
@@ -44,7 +44,6 @@ function writeClients(dictionary: IReferenceDirectory[]) {
 
         const optional = !e.parameters?.some((p) => p.required) ? '?' : '';
         const signature = e.parameters ? `(parameters${optional}: ${interfaceName}Params)` : '()';
-        const queryParams = e.parameters ? ` + params` : '';
         const doMethod = getMethodName(e.title);
         const listed = e.exampleResponse?.startsWith('[') ? '[]' : '';
         const returnType = e.exampleResponse ? `<${interfaceName}${listed}>` : '';
@@ -59,11 +58,18 @@ function writeClients(dictionary: IReferenceDirectory[]) {
 
         method += `  public async ${methodName}${signature} {\n`;
 
-        if (e.parameters) {
+        let requestParams = '';
+
+        if (e.parameters && e.title.startsWith('GET')) {
           method += `    const params = createParams(parameters);\n`;
+          requestParams = ' + params';
         }
 
-        method += `    return await ${doMethod}${returnType}('${resourceUrl}'${queryParams});\n`;
+        if (e.parameters && e.title.startsWith('POST')) {
+          requestParams = ', parameters';
+        }
+
+        method += `    return await ${doMethod}${returnType}('${resourceUrl}'${requestParams});\n`;
         method += '  }\n\n';
 
         clientMethods.push(method);
@@ -76,7 +82,7 @@ function writeClients(dictionary: IReferenceDirectory[]) {
     });
 
     if (Object.keys(interfacesParamsImportMap).length) {
-      clientFile += `import { createParams } from '../base/utils';\n\n`;
+      clientFile += `import { createParams } from '../base/utils';\n`;
     }
 
     Object.entries(interfacesParamsImportMap).forEach(([file, imports]) => {
