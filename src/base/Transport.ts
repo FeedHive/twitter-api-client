@@ -59,7 +59,7 @@ class Transport {
           }
 
           if (!body) {
-            resolve(null);
+            resolve();
             return;
           }
 
@@ -98,7 +98,7 @@ class Transport {
           }
 
           if (!body) {
-            resolve(null);
+            resolve();
             return;
           }
 
@@ -137,7 +137,7 @@ class Transport {
           }
 
           if (!body) {
-            resolve(null);
+            resolve();
             return;
           }
 
