@@ -171,7 +171,7 @@ function writeClients(dictionary: IReferenceDirectory[]) {
 `;
   });
 
-  superClientFile += '}\n\nexport default TwitterClient;\n';
+  superClientFile += '}\n\nexport { TwitterClient };\n';
   fs.writeFileSync(`${generatedPath}/index.ts`, superClientFile);
 }
 

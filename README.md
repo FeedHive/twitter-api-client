@@ -41,7 +41,7 @@ npm i twitter-api-client
 ## Usage
 
 ```javascript
-import TwitterClient from 'twitter-api-client';
+import { TwitterClient } from 'twitter-api-client';
 
 const twitterClient = new TwitterClient({
   apiKey: '<YOUR-TWITTER-API-KEY>',

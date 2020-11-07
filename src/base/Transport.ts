@@ -36,7 +36,7 @@ class Transport {
     });
   }
 
-  public async doDeleteRequest<T>(url:string): Promise<T> {
+  public async doDeleteRequest<T>(url: string): Promise<T> {
     if (!this.oauth) {
       throw Error('Unable to make request. Authentication has not been established');
     }
@@ -59,6 +59,7 @@ class Transport {
           }
 
           if (!body) {
+            resolve();
             return;
           }
 
@@ -97,6 +98,7 @@ class Transport {
           }
 
           if (!body) {
+            resolve();
             return;
           }
 
@@ -135,6 +137,7 @@ class Transport {
           }
 
           if (!body) {
+            resolve();
             return;
           }
 
