@@ -1899,7 +1899,8 @@ with a photo using the POST accounts/:account_id/draft_tweets endpoint.
 
 | Name | Required | type |
 | ---- | -------- | ---- |
-| media | true | string |
+| media | false | string |
+| media_data | false | string |
 | media_category | false | string |
   
 #### Link
