@@ -164,8 +164,13 @@ subgroups:
         parameters:
           - name: media
             description: |
-              The raw binary file content being uploaded. Cannot be used with media_data.
-            required: true
+              The raw binary file content being uploaded.
+            required: false
+            type: string
+          - name: media_data
+            description: |
+              The base64 encoded file content being uploaded.
+            required: false
             type: string
           - name: media_category
             description: |
