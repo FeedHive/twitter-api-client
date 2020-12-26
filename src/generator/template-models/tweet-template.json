@@ -17,6 +17,43 @@
       }
     ]
   },
+  "extended_entities": {
+    "media": [
+      {
+        "id": 861627472244162561,
+        "id_str": "861627472244162561",
+        "indices": [68, 91],
+        "media_url": "http://pbs.twimg.com/media/C_UdnvPUwAE3Dnn.jpg",
+        "media_url_https": "https://pbs.twimg.com/media/C_UdnvPUwAE3Dnn.jpg",
+        "url": "https://t.co/9r69akA484",
+        "display_url": "pic.twitter.com/9r69akA484",
+        "expanded_url": "https://twitter.com/FloodSocial/status/861627479294746624/photo/1",
+        "type": "photo",
+        "sizes": {
+          "medium": {
+            "w": 1200,
+            "h": 900,
+            "resize": "fit"
+          },
+          "small": {
+            "w": 680,
+            "h": 510,
+            "resize": "fit"
+          },
+          "thumb": {
+            "w": 150,
+            "h": 150,
+            "resize": "crop"
+          },
+          "large": {
+            "w": 2048,
+            "h": 1536,
+            "resize": "fit"
+          }
+        }
+      }
+    ]
+  },
   "source": "<a href=\"http://twitter.com/download/android\" rel=\"nofollow\">Twitter for Android</a>",
   "in_reply_to_status_id": null,
   "in_reply_to_status_id_str": null,

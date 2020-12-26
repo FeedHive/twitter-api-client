@@ -1,6 +1,6 @@
 {
   "name": "twitter-api-client",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Node.js / JavaScript client for Twitter API",
   "main": "dist/index.js",
   "scripts": {
@@ -13,7 +13,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Silind/twitter-api-client.git"
+    "url": "git+https://github.com/FeedHive/twitter-api-client.git"
   },
   "keywords": [
     "node.js",
@@ -21,12 +21,12 @@
     "twitter",
     "api"
   ],
-  "author": "Silind",
-  "license": "ISC",
+  "author": "FeedHive",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Silind/twitter-api-client/issues"
+    "url": "https://github.com/FeedHive/twitter-api-client/issues"
   },
-  "homepage": "https://github.com/Silind/twitter-api-client#readme",
+  "homepage": "https://github.com/FeedHive/twitter-api-client#readme",
   "dependencies": {
     "oauth": "^0.9.15",
     "object-sizeof": "^1.6.1"

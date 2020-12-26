@@ -74,13 +74,13 @@ subgroups:
           - name: media
             description: |
               The raw binary file content being uploaded. It must be <= 5 MB, and cannot be used with media_data.
-            required: true
+            required: false
             type: string
           - name: media_data
             description: |
               The base64-encoded chunk of media file. It must be <= 5 MB and cannot be 
               used with media. Use raw binary (media parameter) when possible.
-            required: true
+            required: false
             type: string
           - name: segment_index
             description: |
@@ -146,6 +146,11 @@ subgroups:
             "expires_after_secs": 86400,
             "video": {
               "video_type": "video/mp4"
+            }
+            "processing_info":{
+              "state": "in_progress",
+              "check_after_secs": 10,
+              "progress_percent": 8
             }
           }
 
