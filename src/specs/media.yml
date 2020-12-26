@@ -146,7 +146,7 @@ subgroups:
             "expires_after_secs": 86400,
             "video": {
               "video_type": "video/mp4"
-            }
+            },
             "processing_info":{
               "state": "in_progress",
               "check_after_secs": 10,
