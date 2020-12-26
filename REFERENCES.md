@@ -1841,8 +1841,8 @@ After the entire file is uploaded, the next step is to call the FINALIZE command
 | ---- | -------- | ---- |
 | command | true | string |
 | media_id | true | string |
-| media | true | string |
-| media_data | true | string |
+| media | false | string |
+| media_data | false | string |
 | segment_index | true | string |
   
 #### Link
