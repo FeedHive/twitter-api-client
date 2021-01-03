@@ -44,6 +44,49 @@ subgroups:
         description: |
           members/*
           Returns the members of the specified list. Private list members will only be shown if the authenticated user owns the specified list.
+        parameters:
+          - name: list_id
+            description: The numerical id of the list.
+            required: true
+            type: number
+          - name: slug
+            description: You can identify a list by its slug instead of its numerical
+              id. If you decide to do so, note that you'll also have to specify the list
+              owner using the owner_id or owner_screen_name parameters.
+            required: true
+            type: string
+          - name: owner_screen_name
+            description: The screen name of the user who owns the list being requested
+              by a slug.
+            required: false
+            type: string
+          - name: owner_id
+            description: The user ID of the user who owns the list being requested by
+              a slug.
+            required: false
+            type: number
+          - name: count
+            description: Specifies the number of results to return per page (see cursor below). 
+              The default is 20, with a maximum of 5,000.
+            required: false
+            type: number
+          - name: cursor
+            description: |
+              Causes the collection of list members to be broken into "pages" of consistent sizes (specified by the count parameter). 
+              If no cursor is provided, a value of -1 will be assumed, which is the first "page."
+              The response from the API will include a previous_cursor and next_cursor to allow paging back and forth. 
+              See Using cursors to navigate collections for more information.
+            required: false
+            type: number
+          - name: include_entities
+            description: |
+              The entities node will not be included when set to false.
+            required: false
+            type: boolean
+          - name: skip_status
+            description: When set to either true, t or 1 statuses will not be included in the returned user objects.
+            required: false
+            type: boolean
         exampleResponse: |
           {
             "users": [ {user-object} ],

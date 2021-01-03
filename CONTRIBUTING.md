@@ -16,6 +16,8 @@ For general issues, please use the following labels:
 Start by forking the repository.  
 Clone your forked repository to your local machine.
 
+When creating a PR, please use the `development` branch as the base branch.
+
 ### Install
 
 Install the client by using
