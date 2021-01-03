@@ -7,9 +7,14 @@ import writeClients from './generator/writeClients';
 import writeReferences from './generator/writeReferences';
 
 /**
+ * Entry point
+ */
+start();
+
+/**
  * Generate a new Twitter API Client
  */
-(async function () {
+async function start() {
   // Prepare folder structure for generated clients
   createFolderStructure(resolve(__dirname, '../'));
   copyBase();
@@ -22,7 +27,7 @@ import writeReferences from './generator/writeReferences';
   createTypesInterfaces();
   createClients();
   createReadme();
-})();
+}
 
 let dictionary: any;
 

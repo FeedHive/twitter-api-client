@@ -6,7 +6,8 @@ Please add a reference to the related issue, if relevant.
 Please describe your methods of testing your changes.
 
 **Example**  
-Please describe how we can try out your changes  
+Please describe how we can try out your changes
+
 1. Create a new '...'
 2. Build with '...'
 3. See '...'
@@ -15,4 +16,12 @@ Please describe how we can try out your changes
 If applicable, add screenshots to demonstrate your changes.
 
 **Version**  
-Which version is your changes included in?  
+Which version is your changes included in?
+
+**PR Checklist**
+Please verify that you:
+
+- [ ] Ran all unit tests, and they are passing
+- [ ] Wrote new unit tests if appropriate
+- [ ] Installed the client locally and tested it manually
+- [ ] Updated the version in `package.json`
