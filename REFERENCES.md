@@ -154,12 +154,24 @@ use GET lists / ownerships and/or GET lists / subscriptions instead.
 #### Link
 https://developer.twitter.com/en/docs/accounts-and-users/create-manage-lists/api-reference/get-lists-list  
   
-### `TwitterClient.accountsAndUsers.listsMembers()`
+### `TwitterClient.accountsAndUsers.listsMembers(parameters)`
 #### Description
 members/*
 Returns the members of the specified list. Private list members will only be shown if the authenticated user owns the specified list.
 
 
+#### Parameters
+
+| Name | Required | type |
+| ---- | -------- | ---- |
+| list_id | true | number |
+| slug | true | string |
+| owner_screen_name | false | string |
+| owner_id | false | number |
+| count | false | number |
+| cursor | false | number |
+| include_entities | false | boolean |
+| skip_status | false | boolean |
   
 #### Link
 https://developer.twitter.com/en/docs/accounts-and-users/create-manage-lists/api-reference/get-lists-members  
