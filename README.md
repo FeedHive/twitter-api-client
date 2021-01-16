@@ -47,7 +47,7 @@ const twitterClient = new TwitterClient({
   apiKey: '<YOUR-TWITTER-API-KEY>',
   apiSecret: '<YOUR-TWITTER-API-SECRET>',
   accessToken: '<YOUR-TWITTER-ACCESS-TOKEN>',
-  accessTokenSecret: '<YOUR-TWITTER-ACCESS-TOKEN-SECERT>',
+  accessTokenSecret: '<YOUR-TWITTER-ACCESS-TOKEN-SECRET>',
 });
 
 // Search for a user
@@ -77,7 +77,7 @@ const twitterClient = new TwitterClient({
   apiKey: '<YOUR-TWITTER-API-KEY>',
   apiSecret: '<YOUR-TWITTER-API-SECRET>',
   accessToken: '<YOUR-TWITTER-ACCESS-TOKEN>',
-  accessTokenSecret: '<YOUR-TWITTER-ACCESS-TOKEN-SECERT>',
+  accessTokenSecret: '<YOUR-TWITTER-ACCESS-TOKEN-SECRET>',
   ttl: 120, // seconds. Defaults to 360
   disableCache: true, // Disables the caching behavior. Defaults to 'false'
   maxByteSize: 32000000, // Maximum (approximated) memory size for cache store. Defaults to 16000000.
