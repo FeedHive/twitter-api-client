@@ -4,7 +4,6 @@ Node.js client for Twitter API
 
 ![](https://i.imgur.com/NfnLHIM.png)
 
-[![](https://nodei.co/npm/twitter-api-client.png?mini=true)](https://www.npmjs.com/package/twitter-api-client)
 [![NPM Version](https://img.shields.io/npm/v/twitter-api-client)](https://www.npmjs.com/package/twitter-api-client)
 ![Build Status](https://github.com/FeedHive/twitter-api-client/workflows/build/badge.svg)
 

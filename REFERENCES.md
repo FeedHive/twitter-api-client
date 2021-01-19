@@ -1920,12 +1920,18 @@ with a photo using the POST accounts/:account_id/draft_tweets endpoint.
 #### Link
 https://developer.twitter.com/en/docs/twitter-api/v1/media/upload-media/api-reference/post-media-upload  
   
-### `TwitterClient.media.mediaMetadataCreate()`
+### `TwitterClient.media.mediaMetadataCreate(parameters)`
 #### Description
 This endpoint can be used to provide additional information about the uploaded media_id.
 This feature is currently only supported for images and GIFs.
 
 
+#### Parameters
+
+| Name | Required | type |
+| ---- | -------- | ---- |
+| media_id | true | string |
+| alt_text | true | { text: string } |
   
 #### Link
 https://developer.twitter.com/en/docs/twitter-api/v1/media/upload-media/api-reference/post-media-metadata-create  
