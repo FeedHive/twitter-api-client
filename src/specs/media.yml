@@ -213,13 +213,6 @@ subgroups:
               An object containing { text: "the-alt-text" }
             required: true
             type: '{ text: string }'
-        exampleResponse: |
-          {
-            "media_id":"692797692624265216",
-            "alt_text": {
-              "text":"dancing cat" // Must be <= 1000 chars
-            }
-          }
 
       - title: POST media/subtitles/delete
         url: https://developer.twitter.com/en/docs/twitter-api/v1/media/upload-media/api-reference/post-media-subtitles-delete
