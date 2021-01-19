@@ -75,7 +75,12 @@ https://developer.twitter.com/en/docs/basics/authentication/api-reference/invali
   
 ### `TwitterClient.basics.oauth2InvalidateToken(parameters)`
 #### Description
-undefined
+Allows a registered application to revoke an issued oAuth 2.0 Bearer Token by presenting 
+its client credentials. Once a Bearer Token has been invalidated, new creation 
+attempts will yield a different Bearer Token and usage of the invalidated 
+token will no longer be allowed.Successful responses include a 
+JSON-structure describing the revoked Bearer Token.
+
 
 #### Parameters
 
@@ -88,11 +93,8 @@ https://developer.twitter.com/en/docs/basics/authentication/api-reference/invali
   
 ### `TwitterClient.basics.oauthRequestToken(parameters)`
 #### Description
-Allows a registered application to revoke an issued oAuth 2.0 Bearer Token by presenting 
-its client credentials. Once a Bearer Token has been invalidated, new creation 
-attempts will yield a different Bearer Token and usage of the invalidated 
-token will no longer be allowed.Successful responses include a 
-JSON-structure describing the revoked Bearer Token.
+Allows a Consumer application to obtain an OAuth Request Token to request user authorization. 
+This method fulfills Section 6.1 of the OAuth 1.0 authentication flow.
 
 
 #### Parameters
@@ -1918,12 +1920,18 @@ with a photo using the POST accounts/:account_id/draft_tweets endpoint.
 #### Link
 https://developer.twitter.com/en/docs/twitter-api/v1/media/upload-media/api-reference/post-media-upload  
   
-### `TwitterClient.media.mediaMetadataCreate()`
+### `TwitterClient.media.mediaMetadataCreate(parameters)`
 #### Description
 This endpoint can be used to provide additional information about the uploaded media_id.
 This feature is currently only supported for images and GIFs.
 
 
+#### Parameters
+
+| Name | Required | type |
+| ---- | -------- | ---- |
+| media_id | true | string |
+| alt_text | true | { text: string } |
   
 #### Link
 https://developer.twitter.com/en/docs/twitter-api/v1/media/upload-media/api-reference/post-media-metadata-create  

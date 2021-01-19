@@ -87,6 +87,12 @@ subgroups:
       - title: POST oauth2/invalidate_token
         url: https://developer.twitter.com/en/docs/basics/authentication/api-reference/invalidate_bearer_token
         resourceUrl: https://api.twitter.com/oauth2/invalidate_token
+        description: |
+          Allows a registered application to revoke an issued oAuth 2.0 Bearer Token by presenting 
+          its client credentials. Once a Bearer Token has been invalidated, new creation 
+          attempts will yield a different Bearer Token and usage of the invalidated 
+          token will no longer be allowed.Successful responses include a 
+          JSON-structure describing the revoked Bearer Token.
         parameters:
           - name: access_token
             description: The value of the bearer token to revoke
@@ -98,11 +104,8 @@ subgroups:
         url: https://developer.twitter.com/en/docs/basics/authentication/api-reference/request_token
         resourceUrl: https://api.twitter.com/oauth/request_token
         description: |
-          Allows a registered application to revoke an issued oAuth 2.0 Bearer Token by presenting 
-          its client credentials. Once a Bearer Token has been invalidated, new creation 
-          attempts will yield a different Bearer Token and usage of the invalidated 
-          token will no longer be allowed.Successful responses include a 
-          JSON-structure describing the revoked Bearer Token.
+          Allows a Consumer application to obtain an OAuth Request Token to request user authorization. 
+          This method fulfills Section 6.1 of the OAuth 1.0 authentication flow.
         parameters:
           - name: oauth_callback
             description: |

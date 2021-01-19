@@ -202,13 +202,17 @@ subgroups:
         description: |
           This endpoint can be used to provide additional information about the uploaded media_id.
           This feature is currently only supported for images and GIFs.
-        exampleResponse: |
-          {
-            "media_id":"692797692624265216",
-            "alt_text": {
-              "text":"dancing cat" // Must be <= 1000 chars
-            }
-          }
+        parameters:
+          - name: media_id
+            description: |
+              The ID of the media to add metadata to
+            required: true
+            type: string
+          - name: alt_text
+            description: |
+              An object containing { text: "the-alt-text" }
+            required: true
+            type: '{ text: string }'
 
       - title: POST media/subtitles/delete
         url: https://developer.twitter.com/en/docs/twitter-api/v1/media/upload-media/api-reference/post-media-subtitles-delete
