@@ -213,6 +213,7 @@ subgroups:
               An object containing { text: "the-alt-text" }
             required: true
             type: '{ text: string }'
+        contentType: 'application/json'
 
       - title: POST media/subtitles/delete
         url: https://developer.twitter.com/en/docs/twitter-api/v1/media/upload-media/api-reference/post-media-subtitles-delete

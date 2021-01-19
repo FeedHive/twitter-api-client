@@ -69,6 +69,10 @@ function writeClients(dictionary: IReferenceDirectory[]) {
           requestParams = ', parameters';
         }
 
+        if (e.contentType && e.title.startsWith('POST')) {
+          requestParams += `, '${e.contentType}'`;
+        }
+
         method += `    return await ${doMethod}${returnType}('${resourceUrl}'${requestParams});\n`;
         method += '  }\n\n';
 

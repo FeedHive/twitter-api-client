@@ -59,7 +59,7 @@ class Transport {
           }
 
           if (!body) {
-            resolve();
+            resolve({} as T);
             return;
           }
 
@@ -98,7 +98,7 @@ class Transport {
           }
 
           if (!body) {
-            resolve();
+            resolve({} as T);
             return;
           }
 
@@ -111,7 +111,11 @@ class Transport {
     });
   }
 
-  public async doPostRequest<T>(url: string, body?: any): Promise<T> {
+  public async doPostRequest<T>(
+    url: string,
+    body?: any,
+    contentType = 'application/x-www-form-urlencoded',
+  ): Promise<T> {
     if (!this.oauth || !this.credentials) {
       throw Error('Unable to make request. Authentication has not been established');
     }
@@ -129,7 +133,7 @@ class Transport {
         this.credentials.accessToken,
         this.credentials.accessTokenSecret,
         body,
-        'application/x-www-form-urlencoded',
+        contentType,
         (err: { statusCode: number; data?: any }, body?: string | Buffer) => {
           if (err) {
             reject(err);
@@ -137,7 +141,7 @@ class Transport {
           }
 
           if (!body) {
-            resolve();
+            resolve({} as T);
             return;
           }
 
