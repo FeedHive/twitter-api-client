@@ -15,6 +15,7 @@ export interface IReferenceEndpoint {
   description?: string;
   exampleResponse?: string;
   parameters?: IParameter[];
+  contentType?: string;
 }
 
 export interface IParameter {
