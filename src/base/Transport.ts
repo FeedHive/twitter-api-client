@@ -127,12 +127,13 @@ class Transport {
       }
 
       const formattedUrl = formatURL(url);
+      const formattedBody = contentType === 'application/json' ? JSON.stringify(body) : body;
 
       this.oauth.post(
         formattedUrl,
         this.credentials.accessToken,
         this.credentials.accessTokenSecret,
-        body,
+        formattedBody,
         contentType,
         (err: { statusCode: number; data?: any }, body?: string | Buffer) => {
           if (err) {
