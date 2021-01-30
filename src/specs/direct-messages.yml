@@ -6,6 +6,13 @@ subgroups:
         url: https://developer.twitter.com/en/docs/direct-messages/custom-profiles/api-reference/get-profile
         resourceUrl: https://api.twitter.com/1.1/custom_profiles/:id.json
         description: Returns a custom profile that was created with POST custom_profiles/new.json.
+        parameters:
+          - name: id
+            description: |
+              The string ID of the custom profile that should be returned.
+              Provided in resource URL.
+            required: true
+            type: string
         exampleResponse: |
           {
             "custom_profile": {
@@ -19,16 +26,9 @@ subgroups:
               }
             }
           }
-        parameters:
-          - name: id
-            description: |
-              The string ID of the custom profile that should be returned.
-              Provided in resource URL.
-            required: true
-            type: string
+
   - title: Sending and receiving events
     endpoints:
-      # TODO: Support for DELETE verb
       - title: DELETE direct_messages/events/destroy
         url: https://developer.twitter.com/en/docs/direct-messages/sending-and-receiving/api-reference/delete-message-event
         resourceUrl: https://api.twitter.com/1.1/direct_messages/events/destroy.json
@@ -49,6 +49,11 @@ subgroups:
         url: https://developer.twitter.com/en/docs/direct-messages/sending-and-receiving/api-reference/get-event
         resourceUrl: https://api.twitter.com/1.1/direct_messages/events/show.json
         description: Returns a single Direct Message event by the given id.
+        parameters:
+          - name: id
+            description: The id of the Direct Message event that should be returned.
+            required: true
+            type: string
         exampleResponse: |
           {
             "event": {
@@ -58,11 +63,7 @@ subgroups:
               "message_create": {}
             }
           }
-        parameters:
-          - name: id
-            description: The id of the Direct Message event that should be returned.
-            required: true
-            type: string
+
       - title: POST direct_messages/events/new (message_create)
         url: https://developer.twitter.com/en/docs/direct-messages/sending-and-receiving/api-reference/new-event
         resourceUrl: https://api.twitter.com/1.1/direct_messages/events/new.json
@@ -73,6 +74,17 @@ subgroups:
           Replaces behavior currently provided by POST direct_messages/new.Requires a 
           JSON POST body and Content-Type header to be set to application/json. 
           Setting Content-Length may also be required if it is not automatically.
+        parameters:
+          - name: id
+            description: The ID of the user who should receive the direct message.
+            required: true
+            type: string
+          - name: data
+            description: The Message Data Object defining the content to deliver to the
+              reciepient.
+            required: true
+            type: string
+        contentType: 'application/json'
         exampleResponse: |
           {
             "event": {
@@ -87,16 +99,7 @@ subgroups:
               }
             }
           }
-        parameters:
-          - name: id
-            description: The ID of the user who should receive the direct message.
-            required: true
-            type: string
-          - name: data
-            description: The Message Data Object defining the content to deliver to the
-              reciepient.
-            required: true
-            type: string
+
   - title: Typing indicator and read receipts
     endpoints:
       - title: POST direct_messages/indicate_typing
@@ -112,12 +115,18 @@ subgroups:
             description: The user ID of the user to receive the typing indicator.
             required: true
             type: string
+
   - title: Welcome Messages
     endpoints:
       - title: GET direct_messages/welcome_messages/rules/show
         url: https://developer.twitter.com/en/docs/direct-messages/welcome-messages/api-reference/get-welcome-message-rule
         resourceUrl: https://api.twitter.com/1.1/direct_messages/welcome_messages/rules/show.json
         description: Returns a Welcome Message Rule by the given id.
+        parameters:
+          - name: id
+            description: The id of the Welcome Message Rule that should be returned.
+            required: true
+            type: string
         exampleResponse: |
           {
             "welcome_message_rule" : {
@@ -126,15 +135,16 @@ subgroups:
               "welcome_message_id": "844385345234"
             }
           }
-        parameters:
-          - name: id
-            description: The id of the Welcome Message Rule that should be returned.
-            required: true
-            type: string
+
       - title: GET direct_messages/welcome_messages/show
         url: https://developer.twitter.com/en/docs/direct-messages/welcome-messages/api-reference/get-welcome-message
         resourceUrl: https://api.twitter.com/1.1/direct_messages/welcome_messages/show.json
         description: Returns a Welcome Message by the given id.
+        parameters:
+          - name: id
+            description: The id of the Welcome Message that should be returned.
+            required: true
+            type: string
         exampleResponse: |
           {
             "welcome_message" : {
@@ -149,11 +159,7 @@ subgroups:
               }
             }
           }
-        parameters:
-          - name: id
-            description: The id of the Welcome Message that should be returned.
-            required: true
-            type: string
+
       - title: POST direct_messages/welcome_messages/new
         url: https://developer.twitter.com/en/docs/direct-messages/welcome-messages/api-reference/new-welcome-message
         resourceUrl: https://api.twitter.com/1.1/direct_messages/welcome_messages/new.json
@@ -165,21 +171,6 @@ subgroups:
           Requires a JSON POST body and Content-Type header to be set to application/json. 
           Setting Content-Length may also be required if it is not automatically.
           See the Welcome Messages overview to learn how to work with Welcome Messages.
-        exampleResponse: |
-          {
-            "welcome_message" : {
-              "id": "844385345234",
-              "created_timestamp": "1470182274821",
-              "message_data": {
-                "text": "Welcome!",
-                "attachment": {
-                  "type": "media",
-                  "media": {}
-                }
-              }
-            },
-            "name": "simple_welcome-message 01"
-          }
         parameters:
           - name: message_data
             description: |
@@ -195,6 +186,23 @@ subgroups:
               underscores, spaces, hashes and at signs.
             required: false
             type: string
+        contentType: 'application/json'
+        exampleResponse: |
+          {
+            "welcome_message" : {
+              "id": "844385345234",
+              "created_timestamp": "1470182274821",
+              "message_data": {
+                "text": "Welcome!",
+                "attachment": {
+                  "type": "media",
+                  "media": {}
+                }
+              }
+            },
+            "name": "simple_welcome-message 01"
+          }
+
       - title: POST direct_messages/welcome_messages/rules/new
         url: https://developer.twitter.com/en/docs/direct-messages/welcome-messages/api-reference/new-welcome-message-rule
         resourceUrl: https://api.twitter.com/1.1/direct_messages/welcome_messages/rules/new.json
@@ -207,6 +215,12 @@ subgroups:
           the most recently created Rule will always take precedence, and the assigned 
           Welcome Message will be displayed in the conversation.See the Welcome Messages 
           overview to learn how to work with Welcome Messages.
+        parameters:
+          - name: welcome_message_id
+            description: The ID of the Welcome Message that will be sent when this Rule is triggered.
+            required: true
+            type: string
+        contentType: 'application/json'
         exampleResponse: |
           {
             "welcome_message_rule" : {
@@ -215,8 +229,3 @@ subgroups:
               "welcome_message_id": "844385345234"
             }
           }
-        parameters:
-          - name: welcome_message_id
-            description: The ID of the Welcome Message that will be sent when this Rule is triggered.
-            required: true
-            type: string
