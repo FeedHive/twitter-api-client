@@ -1701,7 +1701,7 @@ Returns a custom profile that was created with POST custom_profiles/new.json.
 #### Link
 https://developer.twitter.com/en/docs/direct-messages/custom-profiles/api-reference/get-profile  
   
-### `TwitterClient.directMessages.directMessagesEventsShow(parameters)`
+### `TwitterClient.directMessages.eventsShow(parameters)`
 #### Description
 Returns a single Direct Message event by the given id.
 
@@ -1714,7 +1714,7 @@ Returns a single Direct Message event by the given id.
 #### Link
 https://developer.twitter.com/en/docs/direct-messages/sending-and-receiving/api-reference/get-event  
   
-### `TwitterClient.directMessages.directMessagesEventsNewMessageCreate(parameters)`
+### `TwitterClient.directMessages.eventsNew(parameters)`
 #### Description
 Publishes a new message_create event resulting in a Direct Message sent to a 
 specified user from the authenticating user. Returns an event if successful. 
@@ -1728,13 +1728,32 @@ Setting Content-Length may also be required if it is not automatically.
 
 | Name | Required | type |
 | ---- | -------- | ---- |
-| id | true | string |
-| data | true | string |
+| event | true | {
+  type: string;
+  message_create: {
+    target: {
+      recipient_id: string;
+    };
+    message_data: {
+      text: string;
+      quick_reply?: {
+        type: string[],
+      };
+      attachment?: {
+        type: string;
+        media: {
+          id: string;
+        }
+      };
+    }
+  }
+}
+ |
   
 #### Link
 https://developer.twitter.com/en/docs/direct-messages/sending-and-receiving/api-reference/new-event  
   
-### `TwitterClient.directMessages.directMessagesIndicateTyping(parameters)`
+### `TwitterClient.directMessages.indicateTyping(parameters)`
 #### Description
 Displays a visual typing indicator in the recipient’s 
 Direct Message conversation view with the sender. 
@@ -1751,7 +1770,7 @@ with a duration of ~3 seconds.
 #### Link
 https://developer.twitter.com/en/docs/direct-messages/typing-indicator-and-read-receipts/api-reference/new-typing-indicator  
   
-### `TwitterClient.directMessages.directMessagesWelcomeMessagesRulesShow(parameters)`
+### `TwitterClient.directMessages.welcomeMessagesRulesShow(parameters)`
 #### Description
 Returns a Welcome Message Rule by the given id.
 
@@ -1764,7 +1783,7 @@ Returns a Welcome Message Rule by the given id.
 #### Link
 https://developer.twitter.com/en/docs/direct-messages/welcome-messages/api-reference/get-welcome-message-rule  
   
-### `TwitterClient.directMessages.directMessagesWelcomeMessagesShow(parameters)`
+### `TwitterClient.directMessages.welcomeMessagesShow(parameters)`
 #### Description
 Returns a Welcome Message by the given id.
 
@@ -1777,7 +1796,7 @@ Returns a Welcome Message by the given id.
 #### Link
 https://developer.twitter.com/en/docs/direct-messages/welcome-messages/api-reference/get-welcome-message  
   
-### `TwitterClient.directMessages.directMessagesWelcomeMessagesNew(parameters)`
+### `TwitterClient.directMessages.welcomeMessagesNew(parameters)`
 #### Description
 Creates a new Welcome Message that will be stored and sent in the future 
 from the authenticating user in defined circumstances. 
@@ -1792,13 +1811,28 @@ See the Welcome Messages overview to learn how to work with Welcome Messages.
 
 | Name | Required | type |
 | ---- | -------- | ---- |
-| message_data | true | string |
+| welcome_message | true | {
+  message_data: {
+    text: string;
+    quick_reply?: {
+      type: string[],
+    };
+    attachment?: {
+      type: string;
+      media: {
+        id: string;
+      }
+    };
+  };
+  name?: string;
+}
+ |
 | name | false | string |
   
 #### Link
 https://developer.twitter.com/en/docs/direct-messages/welcome-messages/api-reference/new-welcome-message  
   
-### `TwitterClient.directMessages.directMessagesWelcomeMessagesRulesNew(parameters)`
+### `TwitterClient.directMessages.welcomeMessagesRulesNew(parameters)`
 #### Description
 Creates a new Welcome Message Rule that determines which Welcome Message will be 
 shown in a given conversation. Returns the created rule if successful.
@@ -1814,7 +1848,10 @@ overview to learn how to work with Welcome Messages.
 
 | Name | Required | type |
 | ---- | -------- | ---- |
-| welcome_message_id | true | string |
+| welcome_message_rule | true | {
+  welcome_message_id: string;
+}
+ |
   
 #### Link
 https://developer.twitter.com/en/docs/direct-messages/welcome-messages/api-reference/new-welcome-message-rule  
