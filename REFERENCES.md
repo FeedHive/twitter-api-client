@@ -825,6 +825,23 @@ Returns settings (including current trend, geo and sleep time information) for t
 #### Link
 https://developer.twitter.com/en/docs/accounts-and-users/manage-account-settings/api-reference/get-account-settings  
   
+### `TwitterClient.accountsAndUsers.accountVerifyCredentials(parameters)`
+#### Description
+Returns an HTTP 200 OK response code and a representation of the requesting user if authentication was successful;
+returns a 401 status code and an error message if not. Use this method to test if supplied user credentials are valid.
+
+
+#### Parameters
+
+| Name | Required | type |
+| ---- | -------- | ---- |
+| include_entities | false | boolean |
+| skip_status | false | boolean |
+| include_email | false | boolean |
+  
+#### Link
+https://developer.twitter.com/en/docs/twitter-api/v1/accounts-and-users/manage-account-settings/api-reference/get-account-verify_credentials  
+  
 ### `TwitterClient.accountsAndUsers.savedSearchesList()`
 #### Description
 Returns the authenticated user's saved search queries.

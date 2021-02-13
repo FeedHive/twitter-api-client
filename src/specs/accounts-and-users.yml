@@ -66,7 +66,7 @@ subgroups:
             required: false
             type: number
           - name: count
-            description: Specifies the number of results to return per page (see cursor below). 
+            description: Specifies the number of results to return per page (see cursor below).
               The default is 20, with a maximum of 5,000.
             required: false
             type: number
@@ -1398,6 +1398,29 @@ subgroups:
             "use_cookie_personalization": true,
             "allow_contributor_request": "all"
           }
+
+      - title: GET account/verify_credentials
+        url: https://developer.twitter.com/en/docs/twitter-api/v1/accounts-and-users/manage-account-settings/api-reference/get-account-verify_credentials
+        resourceUrl: https://api.twitter.com/1.1/account/verify_credentials.json
+        description: |
+          Returns an HTTP 200 OK response code and a representation of the requesting user if authentication was successful;
+          returns a 401 status code and an error message if not. Use this method to test if supplied user credentials are valid.
+        parameters:
+          - name: include_entities
+            description: The entities node will not be included when set to false.
+            required: false
+            type: boolean
+          - name: skip_status
+            description: When set to either true , t or 1 statuses will not be included in the returned user object.
+            required: false
+            type: boolean
+          - name: include_email
+            description: When set to true email will be returned in the user objects as a string. If the user does not have an email address on their account, or if the email address is not verified, null will be returned.
+            required: false
+            type: boolean
+        exampleResponse: |
+          {user-object}
+
       - title: GET saved_searches/list
         url: https://developer.twitter.com/en/docs/accounts-and-users/manage-account-settings/api-reference/get-saved_searches-list
         resourceUrl: https://api.twitter.com/1.1/saved_searches/list.json
