@@ -1584,6 +1584,37 @@ Returns the destroyed status if successful.
 #### Link
 https://developer.twitter.com/en/docs/tweets/post-and-engage/api-reference/post-statuses-destroy-id  
   
+### `TwitterClient.tweets.statusesOembed(parameters)`
+#### Description
+Returns a single Tweet, specified by either a Tweet web URL or the Tweet ID, in an oEmbed-compatible format.
+The returned HTML snippet will be automatically recognized as an Embedded Tweet when Twitter's widget JavaScript
+is included on the page.
+The oEmbed endpoint allows customization of the final appearance of an Embedded Tweet by setting the corresponding
+properties in HTML markup to b einterpreted by Twitter's JavaScript bundled with the HTML response by default.
+The format of the returned markup may change over time as Twitter adds new features or adjusts its Tweet representation.
+The Tweet fallback markup is meant to be cached on your servers for upt o the suggested cache lifetime specified in the cache_age.
+
+
+#### Parameters
+
+| Name | Required | type |
+| ---- | -------- | ---- |
+| url | true | string |
+| maxwidth | false | number |
+| hide_media | false | boolean |
+| hide_thread | false | boolean |
+| omit_script | false | boolean |
+| align | false | string |
+| related | false | string |
+| lang | false | string |
+| theme | false | string |
+| link_color | false | string |
+| widget_type | false | string |
+| dnt | false | boolean |
+  
+#### Link
+https://developer.twitter.com/en/docs/twitter-api/v1/tweets/post-and-engage/api-reference/get-statuses-oembed  
+  
 ### `TwitterClient.tweets.statusesRetweetById(parameters)`
 #### Description
 Retweets a tweet. Returns the original Tweet with Retweet details embedded.Usage Notes:
