@@ -60,7 +60,7 @@ function writeClients(dictionary: IReferenceDirectory[]) {
 
         let requestParams = '';
 
-        if (e.parameters && e.title.startsWith('GET')) {
+        if ((e.parameters && e.title.startsWith('GET')) || e.title.startsWith('DELETE')) {
           method += `    const params = createParams(parameters);\n`;
           requestParams = ' + params';
         }

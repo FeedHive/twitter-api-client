@@ -264,7 +264,7 @@ subgroups:
             }
           }
 
-      - title: POST welcome_messages/list
+      - title: GET welcome_messages/list
         url: https://developer.twitter.com/en/docs/twitter-api/v1/direct-messages/welcome-messages/api-reference/list-welcome-messages
         resourceUrl: https://api.twitter.com/1.1/direct_messages/welcome_messages/list.json
         description: Returns a list of Welcome Messages.
@@ -294,3 +294,23 @@ subgroups:
             ],
             "next_cursor": "NDUzNDUzNDY3Nzc3"
           }
+
+      - title: DELETE welcome_messages/destroy
+        url: https://developer.twitter.com/en/docs/twitter-api/v1/direct-messages/welcome-messages/api-reference/delete-welcome-message
+        resourceUrl: https://api.twitter.com/1.1/direct_messages/welcome_messages/destroy.json
+        description: Returns a list of Welcome Messages.
+        parameters:
+          - name: id
+            description: The id of the Welcome Message that should be deleted.
+            required: true
+            type: string
+
+      - title: DELETE welcome_messages/rules/destroy
+        url: https://developer.twitter.com/en/docs/twitter-api/v1/direct-messages/welcome-messages/api-reference/delete-welcome-message-rule
+        resourceUrl: https://api.twitter.com/1.1/direct_messages/welcome_messages/rules/destroy.json
+        description: Returns a list of Welcome Messages.
+        parameters:
+          - name: id
+            description: The id of the Welcome Message Rule that should be deleted.
+            required: true
+            type: string
