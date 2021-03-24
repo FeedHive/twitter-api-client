@@ -1904,6 +1904,20 @@ overview to learn how to work with Welcome Messages.
 #### Link
 https://developer.twitter.com/en/docs/direct-messages/welcome-messages/api-reference/new-welcome-message-rule  
   
+### `TwitterClient.directMessages.welcomeMessagesList(parameters)`
+#### Description
+Returns a list of Welcome Messages.
+
+#### Parameters
+
+| Name | Required | type |
+| ---- | -------- | ---- |
+| count | false | number |
+| cursor | false | string |
+  
+#### Link
+https://developer.twitter.com/en/docs/twitter-api/v1/direct-messages/welcome-messages/api-reference/list-welcome-messages  
+  
 ## Media
 ### `TwitterClient.media.mediaUploadInit(parameters)`
 #### Description
