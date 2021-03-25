@@ -3,32 +3,32 @@ name: publish
 on:
   push:
     branches:
-    - master
+      - main
 
 jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
-    - uses: actions/setup-node@v1
-      with:
-        node-version: 12.x
-        registry-url: 'https://registry.npmjs.org'
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+          registry-url: 'https://registry.npmjs.org'
 
-    - name: Install
-      run: |
-        npm install
+      - name: Install
+        run: |
+          npm install
 
-    - name: Test
-      run: npm test
+      - name: Test
+        run: npm test
 
-    - name: Generate
-      run: npm run generate
+      - name: Generate
+        run: npm run generate
 
-    - name: Build
-      run: npm run build
-  
-    - name: Publish to NPM registry
-      run: npm publish
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+      - name: Build
+        run: npm run build
+
+      - name: Publish to NPM registry
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
