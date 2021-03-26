@@ -12,7 +12,7 @@ subgroups:
         parameters:
           - name: ids
             description: A comma-separated list of ids to get metrics for
-            required: false
+            required: true
             type: string
           - name: tweet.fields
             description: A comma-separated list of fields to include for the tweet object
