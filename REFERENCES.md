@@ -2146,7 +2146,7 @@ Search for places that can be attached to a Tweet via POST statuses/update. Give
 https://developer.twitter.com/en/docs/geo/places-near-location/api-reference/get-geo-search  
   
 ## Metrics
-### `TwitterClient.metrics.tweetsByTweetId(parameters)`
+### `TwitterClient.metrics.tweets(parameters)`
 #### Description
 The metrics field allows developers to access public and private engagement metrics for
 Tweet and media objects. Public metrics are accessible by anyone with a developer account while
@@ -2157,7 +2157,7 @@ private metrics are accessible from owned/authorized accounts (definition below)
 
 | Name | Required | type |
 | ---- | -------- | ---- |
-| tweet_id | true | string |
+| ids | false | string |
 | tweet.fields | false | string |
 | media.fields | false | string |
 | expansions | false | string |

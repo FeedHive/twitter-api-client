@@ -2,17 +2,17 @@ title: metrics
 subgroups:
   - title: Get metrics from a tweet
     endpoints:
-      - title: GET tweets/:tweet_id
+      - title: GET tweets
         url: https://developer.twitter.com/en/docs/twitter-api/metrics
-        resourceUrl: https://api.twitter.com/2/tweets/:tweet_id
+        resourceUrl: https://api.twitter.com/2/tweets
         description: |
           The metrics field allows developers to access public and private engagement metrics for
           Tweet and media objects. Public metrics are accessible by anyone with a developer account while
           private metrics are accessible from owned/authorized accounts (definition below).
         parameters:
-          - name: tweet_id
-            description: The ID of the tweet to get metrics for
-            required: true
+          - name: ids
+            description: A comma-separated list of ids to get metrics for
+            required: false
             type: string
           - name: tweet.fields
             description: A comma-separated list of fields to include for the tweet object
@@ -28,28 +28,28 @@ subgroups:
             type: string
         exampleResponse: |
           {
-            "data": {
-              "attachments": {
-                "media_keys": [
-                  "13_1204080851740315648"
-                ]
-              },
-              "id": "1263145271946551300",
-              "non_public_metrics": {
-                "impression_count": 956,
-                "url_link_clicks": 9,
-                "user_profile_clicks": 34
-              },
-              "organic_metrics": {
-                "impression_count": 956,
-                "like_count": 49,
-                "reply_count": 2,
-                "retweet_count": 9,
-                "url_link_clicks": 9,
-                "user_profile_clicks": 34
-              },
-              "text": "test"
-            },
+            "data": [
+              {
+                "attachments": {
+                  "media_keys": ["13_1204080851740315648"]
+                },
+                "id": "1263145271946551300",
+                "non_public_metrics": {
+                  "impression_count": 956,
+                  "url_link_clicks": 9,
+                  "user_profile_clicks": 34
+                },
+                "organic_metrics": {
+                  "impression_count": 956,
+                  "like_count": 49,
+                  "reply_count": 2,
+                  "retweet_count": 9,
+                  "url_link_clicks": 9,
+                  "user_profile_clicks": 34
+                },
+                "text": "test"
+              }
+            ],
             "includes": {
               "media": [
                 {
