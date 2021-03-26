@@ -2,7 +2,7 @@ import fs from 'fs';
 import { resolve } from 'path';
 import IReferenceDirectory from '../interfaces/IReferenceDirectory';
 import { createCamelCaseTitle } from '../utils/utils';
-import { removeHttpVerbs } from '../base/httpVerbs'
+import { removeHttpVerbs } from '../base/httpVerbs';
 
 function writeParamsInterfaces(dictionary: IReferenceDirectory[]) {
   const generatedPath = resolve(__dirname, '../../generated');
@@ -24,7 +24,7 @@ function writeParamsInterfaces(dictionary: IReferenceDirectory[]) {
         let params = '';
 
         e.parameters.forEach((p, i) => {
-          params += `  /**\n  * ${p.description}\n  */\n  ${p.name}${!p.required ? '?' : ''}: ${
+          params += `  /**\n  * ${p.description}\n  */\n  '${p.name}'${!p.required ? '?' : ''}: ${
             p.type === 'number' ? 'string | number' : p.type
           };`;
 

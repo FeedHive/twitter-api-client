@@ -1493,7 +1493,7 @@ the user's GET statuses / user_timeline.
 #### Link
 https://developer.twitter.com/en/docs/tweets/post-and-engage/api-reference/get-statuses-retweets_of_me  
   
-### `TwitterClient.tweets.statusesShowById(parameters)`
+### `TwitterClient.tweets.statusesShow(parameters)`
 #### Description
 Returns a single Tweet, specified by the id parameter.
 The Tweet's author will also be embedded within the Tweet.
@@ -2144,4 +2144,24 @@ Search for places that can be attached to a Tweet via POST statuses/update. Give
   
 #### Link
 https://developer.twitter.com/en/docs/geo/places-near-location/api-reference/get-geo-search  
+  
+## Metrics
+### `TwitterClient.metrics.tweetsByTweetId(parameters)`
+#### Description
+The metrics field allows developers to access public and private engagement metrics for
+Tweet and media objects. Public metrics are accessible by anyone with a developer account while
+private metrics are accessible from owned/authorized accounts (definition below).
+
+
+#### Parameters
+
+| Name | Required | type |
+| ---- | -------- | ---- |
+| tweet_id | true | string |
+| tweet.fields | false | string |
+| media.fields | false | string |
+| expansions | false | string |
+  
+#### Link
+https://developer.twitter.com/en/docs/twitter-api/metrics  
   
