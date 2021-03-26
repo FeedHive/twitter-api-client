@@ -2157,7 +2157,7 @@ private metrics are accessible from owned/authorized accounts (definition below)
 
 | Name | Required | type |
 | ---- | -------- | ---- |
-| ids | false | string |
+| ids | true | string |
 | tweet.fields | false | string |
 | media.fields | false | string |
 | expansions | false | string |
