@@ -1,20 +1,26 @@
+### V1 ENDPOINTS ####
+
 # BASICS
-- $ref: basic.yml
+- $ref: v1/basic.yml
 
 # ACCOUNTS AND USERS
-- $ref: accounts-and-users.yml
+- $ref: v1/accounts-and-users.yml
 
 # TWEETS
-- $ref: tweets.yml
+- $ref: v1/tweets.yml
 
 # DIRECT MESSAGS
-- $ref: direct-messages.yml
+- $ref: v1/direct-messages.yml
 
 # MEDIA
-- $ref: media.yml
+- $ref: v1/media.yml
 
 # TRENDS
-- $ref: trends.yml
+- $ref: v1/trends.yml
 
 # GEO
-- $ref: geo.yml
+- $ref: v1/geo.yml
+### V2 ENDPOINTS ####
+
+# METRICS
+- $ref: v2/metrics.yml

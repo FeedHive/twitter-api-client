@@ -47,7 +47,13 @@ function writeClients(dictionary: IReferenceDirectory[]) {
         const doMethod = getMethodName(e.title);
         const listed = e.exampleResponse?.startsWith('[') ? '[]' : '';
         const returnType = e.exampleResponse ? `<${interfaceName}${listed}>` : '';
-        const resourceUrl = e.resourceUrl.replace(':id', `' + parameters.id + '`);
+
+        const matchPathParam = e.resourceUrl.match(/(:[a-zA-Z_]+)/);
+
+        const pathParam = matchPathParam?.[0] ?? '';
+        const resourceUrl = pathParam
+          ? e.resourceUrl.replace(pathParam, `' + parameters.${pathParam.slice(1)} + '`)
+          : e.resourceUrl;
 
         let method = '  /**\n';
         method += `   * ${e.description?.replace(/\n/g, ' ')}\n`;
@@ -61,7 +67,9 @@ function writeClients(dictionary: IReferenceDirectory[]) {
         let requestParams = '';
 
         if ((e.parameters && e.title.startsWith('GET')) || e.title.startsWith('DELETE')) {
-          method += `    const params = createParams(parameters);\n`;
+          method += pathParam
+            ? `    const params = createParams(parameters, ['${pathParam.slice(1)}']);\n`
+            : `    const params = createParams(parameters);\n`;
           requestParams = ' + params';
         }
 

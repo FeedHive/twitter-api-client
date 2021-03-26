@@ -1,0 +1,76 @@
+title: metrics
+subgroups:
+  - title: Get metrics from a tweet
+    endpoints:
+      - title: GET tweets/:tweet_id
+        url: https://developer.twitter.com/en/docs/twitter-api/metrics
+        resourceUrl: https://api.twitter.com/2/tweets/:tweet_id
+        description: |
+          The metrics field allows developers to access public and private engagement metrics for
+          Tweet and media objects. Public metrics are accessible by anyone with a developer account while
+          private metrics are accessible from owned/authorized accounts (definition below).
+        parameters:
+          - name: tweet_id
+            description: The ID of the tweet to get metrics for
+            required: true
+            type: string
+          - name: tweet.fields
+            description: A comma-separated list of fields to include for the tweet object
+            required: false
+            type: string
+          - name: media.fields
+            description: A comma-separated list of fields to include for the media object
+            required: false
+            type: string
+          - name: expansions
+            description: Use expansion for media objects
+            required: false
+            type: string
+        exampleResponse: |
+          {
+            "data": {
+              "attachments": {
+                "media_keys": [
+                  "13_1204080851740315648"
+                ]
+              },
+              "id": "1263145271946551300",
+              "non_public_metrics": {
+                "impression_count": 956,
+                "url_link_clicks": 9,
+                "user_profile_clicks": 34
+              },
+              "organic_metrics": {
+                "impression_count": 956,
+                "like_count": 49,
+                "reply_count": 2,
+                "retweet_count": 9,
+                "url_link_clicks": 9,
+                "user_profile_clicks": 34
+              },
+              "text": "test"
+            },
+            "includes": {
+              "media": [
+                {
+                  "media_key": "13_1204080851740315648",
+                  "non_public_metrics": {
+                    "playback_0_count": 0,
+                    "playback_100_count": 1,
+                    "playback_25_count": 2,
+                    "playback_50_count": 1,
+                    "playback_75_count": 1
+                  },
+                  "organic_metrics": {
+                    "playback_0_count": 0,
+                    "playback_100_count": 1,
+                    "playback_25_count": 2,
+                    "playback_50_count": 1,
+                    "playback_75_count": 1,
+                    "view_count": 1
+                  },
+                  "type": "video"
+                }
+              ]
+            }
+          }

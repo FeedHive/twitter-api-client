@@ -655,7 +655,7 @@ subgroups:
             type: string
         exampleResponse: |
           [ {tweet-object} ]
-      - title: GET statuses/show/:id
+      - title: GET statuses/show
         url: https://developer.twitter.com/en/docs/tweets/post-and-engage/api-reference/get-statuses-show-id
         resourceUrl: https://api.twitter.com/1.1/statuses/show.json
         description: |
@@ -804,7 +804,8 @@ subgroups:
             required: true
             type: string
           - name: maxwidth
-            description: The maximum width of a rendered Tweet in whole pixels. A supplied value under or over the allowed range will be returned as the minimum
+            description:
+              The maximum width of a rendered Tweet in whole pixels. A supplied value under or over the allowed range will be returned as the minimum
               or maximum supported width respectively; the reset width value will be reflected in the returned width property. Note that Twitter does not support the oEmbed
               maxheight parameter. Tweets are fundamentally text, and are therefore of unpreditable height that cannot be scaled like an image or video. Relatedly, the oEmbed
               response will not provide a value for height. Implementations that need consistent heights for Tweets should refer to the hide_thread and hide_media parameters

@@ -1,4 +1,4 @@
-export const createParams = (params?: { [key: string]: any }) => {
+export const createParams = (params?: { [key: string]: any }, exclude?: string[]) => {
   if (!params) {
     return '';
   }
@@ -6,6 +6,10 @@ export const createParams = (params?: { [key: string]: any }) => {
   const searchParams = new URLSearchParams();
 
   Object.entries(params).forEach(([key, value]) => {
+    if (exclude?.includes(key)) {
+      return;
+    }
+
     if (typeof value === 'boolean') {
       searchParams.append(key, value ? 'true' : 'false');
       return;
@@ -56,9 +60,7 @@ export const parse = <T>(body: string): T => {
   }
 
   try {
-    parsed = JSON.parse(
-      '{"' + decodeURI(body).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g, '":"') + '"}',
-    );
+    parsed = JSON.parse('{"' + decodeURI(body).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g, '":"') + '"}');
   } catch (error) {}
 
   if (parsed) {
