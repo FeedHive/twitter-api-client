@@ -290,9 +290,8 @@ subgroups:
             description: This parameter enables developers to request a series of different extended fields introduced in the years since statuses/show and statuses/lookup were introduced. It has been replaced with the fields and expansions functionality.
             required: false
             type: string
-
         exampleResponse: |
-          {tweet-object}
+          [ {tweet-object} ]
       - title: GET statuses/mentions_timeline
         url: https://developer.twitter.com/en/docs/tweets/timelines/api-reference/get-statuses-mentions_timeline
         resourceUrl: https://api.twitter.com/1.1/statuses/mentions_timeline.json
@@ -629,7 +628,8 @@ subgroups:
             required: false
             type: number
           - name: max_id
-            description: Returns results with an ID less than (that is, older than) or
+            description:
+              Returns results with an ID less than (that is, older than) or
               equal to the specified ID.
             required: false
             type: number
@@ -641,7 +641,8 @@ subgroups:
             required: false
             type: boolean
           - name: include_entities
-            description: The tweet entities node will not be included when set to false
+            description:
+              The tweet entities node will not be included when set to false
               .
             required: false
             type: boolean
@@ -703,7 +704,8 @@ subgroups:
             required: false
             type: boolean
           - name: include_card_uri
-            description: When set to either true , t or 1 , the retrieved Tweet will include
+            description:
+              When set to either true , t or 1 , the retrieved Tweet will include
               a card_uri attribute when there is an ads card attached to the Tweet and
               when that card was attached using the card_uri value.
             required: false
@@ -776,7 +778,8 @@ subgroups:
             required: true
             type: number
           - name: trim_user
-            description: When set to either true, t or 1, each tweet returned in a timeline
+            description:
+              When set to either true, t or 1, each tweet returned in a timeline
               will include a user object including only the status authors numerical ID.
               Omit this parameter to receive the complete user object.
             required: false
@@ -901,7 +904,8 @@ subgroups:
             required: true
             type: number
           - name: trim_user
-            description: When set to either true , t or 1 , each Tweet returned in a timeline
+            description:
+              When set to either true , t or 1 , each Tweet returned in a timeline
               will include a user object including only the status authors numerical ID.
               Omit this parameter to receive the complete user object.
             required: false
