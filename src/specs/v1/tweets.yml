@@ -290,9 +290,8 @@ subgroups:
             description: This parameter enables developers to request a series of different extended fields introduced in the years since statuses/show and statuses/lookup were introduced. It has been replaced with the fields and expansions functionality.
             required: false
             type: string
-
         exampleResponse: |
-          {tweet-object}
+          [ {tweet-object} ]
       - title: GET statuses/mentions_timeline
         url: https://developer.twitter.com/en/docs/tweets/timelines/api-reference/get-statuses-mentions_timeline
         resourceUrl: https://api.twitter.com/1.1/statuses/mentions_timeline.json
