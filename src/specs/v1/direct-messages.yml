@@ -33,12 +33,12 @@ subgroups:
         url: https://developer.twitter.com/en/docs/direct-messages/sending-and-receiving/api-reference/delete-message-event
         resourceUrl: https://api.twitter.com/1.1/direct_messages/events/destroy.json
         description: |
-          Deletes the direct message specified in the required ID parameter. 
-          The authenticating user must be the recipient of the specified direct message. 
-          Direct Messages are only removed from the interface of the user context provided. 
-          Other members of the conversation can still access the Direct Messages. 
+          Deletes the direct message specified in the required ID parameter.
+          The authenticating user must be the recipient of the specified direct message.
+          Direct Messages are only removed from the interface of the user context provided.
+          Other members of the conversation can still access the Direct Messages.
           A successful delete will return a 204 http response code with no body content.
-          Important: This method requires an access token with RWD 
+          Important: This method requires an access token with RWD
           (read, write & direct message) permissions.
         parameters:
           - name: id
@@ -63,16 +63,41 @@ subgroups:
               "message_create": {}
             }
           }
-
+      - title: GET events/list
+        url: https://developer.twitter.com/en/docs/twitter-api/v1/direct-messages/sending-and-receiving/api-reference/list-events
+        resourceUrl: https://api.twitter.com/1.1/direct_messages/events/list.json
+        description: Returns all Direct Message events (both sent and received) within the last 30 days. Sorted in reverse-chronological order.
+        parameters:
+          - name: count
+            description: Max number of events to be returned. 20 default. 50 max.
+            required: false
+            type: number
+          - name: cursor
+            description: For paging through result sets greater than 1 page, use the “next_cursor” property from the previous request.
+            required: false
+            type: string
+        exampleResponse: |
+          {
+            "next_cursor": "AB345dkfC",
+            "events": [
+              { "id": "110", "created_timestamp": "5300", ... },
+              { "id": "109", "created_timestamp": "5200", ... },
+              { "id": "108", "created_timestamp": "5200", ... },
+              { "id": "107", "created_timestamp": "5200", ... },
+              { "id": "106", "created_timestamp": "5100", ... },
+              { "id": "105", "created_timestamp": "5100", ... },
+              ...
+            ]
+          }
       - title: POST events/new
         url: https://developer.twitter.com/en/docs/direct-messages/sending-and-receiving/api-reference/new-event
         resourceUrl: https://api.twitter.com/1.1/direct_messages/events/new.json
         description: |
-          Publishes a new message_create event resulting in a Direct Message sent to a 
-          specified user from the authenticating user. Returns an event if successful. 
-          Supports publishing Direct Messages with optional Quick Reply and media attachment. 
-          Replaces behavior currently provided by POST direct_messages/new.Requires a 
-          JSON POST body and Content-Type header to be set to application/json. 
+          Publishes a new message_create event resulting in a Direct Message sent to a
+          specified user from the authenticating user. Returns an event if successful.
+          Supports publishing Direct Messages with optional Quick Reply and media attachment.
+          Replaces behavior currently provided by POST direct_messages/new.Requires a
+          JSON POST body and Content-Type header to be set to application/json.
           Setting Content-Length may also be required if it is not automatically.
         parameters:
           - name: event
@@ -121,9 +146,9 @@ subgroups:
         url: https://developer.twitter.com/en/docs/direct-messages/typing-indicator-and-read-receipts/api-reference/new-typing-indicator
         resourceUrl: https://api.twitter.com/1.1/direct_messages/indicate_typing.json
         description: |
-          Displays a visual typing indicator in the recipient’s 
-          Direct Message conversation view with the sender. 
-          Each request triggers a typing indicator animation 
+          Displays a visual typing indicator in the recipient’s
+          Direct Message conversation view with the sender.
+          Each request triggers a typing indicator animation
           with a duration of ~3 seconds.
         parameters:
           - name: recipient_id
@@ -179,11 +204,11 @@ subgroups:
         url: https://developer.twitter.com/en/docs/direct-messages/welcome-messages/api-reference/new-welcome-message
         resourceUrl: https://api.twitter.com/1.1/direct_messages/welcome_messages/new.json
         description: |
-          Creates a new Welcome Message that will be stored and sent in the future 
-          from the authenticating user in defined circumstances. 
-          Returns the message template if successful. Supports publishing with the same 
+          Creates a new Welcome Message that will be stored and sent in the future
+          from the authenticating user in defined circumstances.
+          Returns the message template if successful. Supports publishing with the same
           elements as Direct Messages (e.g. Quick Replies, media attachments).
-          Requires a JSON POST body and Content-Type header to be set to application/json. 
+          Requires a JSON POST body and Content-Type header to be set to application/json.
           Setting Content-Length may also be required if it is not automatically.
           See the Welcome Messages overview to learn how to work with Welcome Messages.
         parameters:
@@ -238,13 +263,13 @@ subgroups:
         url: https://developer.twitter.com/en/docs/direct-messages/welcome-messages/api-reference/new-welcome-message-rule
         resourceUrl: https://api.twitter.com/1.1/direct_messages/welcome_messages/rules/new.json
         description: |
-          Creates a new Welcome Message Rule that determines which Welcome Message will be 
+          Creates a new Welcome Message Rule that determines which Welcome Message will be
           shown in a given conversation. Returns the created rule if successful.
-          Requires a JSON POST body and Content-Type header to be set to application/json. 
+          Requires a JSON POST body and Content-Type header to be set to application/json.
           Setting Content-Length may also be required if it is not automatically.
           Additional rule configurations are forthcoming. For the initial beta release,
-          the most recently created Rule will always take precedence, and the assigned 
-          Welcome Message will be displayed in the conversation.See the Welcome Messages 
+          the most recently created Rule will always take precedence, and the assigned
+          Welcome Message will be displayed in the conversation.See the Welcome Messages
           overview to learn how to work with Welcome Messages.
         parameters:
           - name: welcome_message_rule

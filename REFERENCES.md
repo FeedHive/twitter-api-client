@@ -1762,13 +1762,27 @@ Returns a single Direct Message event by the given id.
 #### Link
 https://developer.twitter.com/en/docs/direct-messages/sending-and-receiving/api-reference/get-event  
   
+### `TwitterClient.directMessages.eventsList(parameters)`
+#### Description
+Returns all Direct Message events (both sent and received) within the last 30 days. Sorted in reverse-chronological order.
+
+#### Parameters
+
+| Name | Required | type |
+| ---- | -------- | ---- |
+| count | false | number |
+| cursor | false | string |
+  
+#### Link
+https://developer.twitter.com/en/docs/twitter-api/v1/direct-messages/sending-and-receiving/api-reference/list-events  
+  
 ### `TwitterClient.directMessages.eventsNew(parameters)`
 #### Description
-Publishes a new message_create event resulting in a Direct Message sent to a 
-specified user from the authenticating user. Returns an event if successful. 
-Supports publishing Direct Messages with optional Quick Reply and media attachment. 
-Replaces behavior currently provided by POST direct_messages/new.Requires a 
-JSON POST body and Content-Type header to be set to application/json. 
+Publishes a new message_create event resulting in a Direct Message sent to a
+specified user from the authenticating user. Returns an event if successful.
+Supports publishing Direct Messages with optional Quick Reply and media attachment.
+Replaces behavior currently provided by POST direct_messages/new.Requires a
+JSON POST body and Content-Type header to be set to application/json.
 Setting Content-Length may also be required if it is not automatically.
 
 
@@ -1803,9 +1817,9 @@ https://developer.twitter.com/en/docs/direct-messages/sending-and-receiving/api-
   
 ### `TwitterClient.directMessages.indicateTyping(parameters)`
 #### Description
-Displays a visual typing indicator in the recipient’s 
-Direct Message conversation view with the sender. 
-Each request triggers a typing indicator animation 
+Displays a visual typing indicator in the recipient’s
+Direct Message conversation view with the sender.
+Each request triggers a typing indicator animation
 with a duration of ~3 seconds.
 
 
@@ -1846,11 +1860,11 @@ https://developer.twitter.com/en/docs/direct-messages/welcome-messages/api-refer
   
 ### `TwitterClient.directMessages.welcomeMessagesNew(parameters)`
 #### Description
-Creates a new Welcome Message that will be stored and sent in the future 
-from the authenticating user in defined circumstances. 
-Returns the message template if successful. Supports publishing with the same 
+Creates a new Welcome Message that will be stored and sent in the future
+from the authenticating user in defined circumstances.
+Returns the message template if successful. Supports publishing with the same
 elements as Direct Messages (e.g. Quick Replies, media attachments).
-Requires a JSON POST body and Content-Type header to be set to application/json. 
+Requires a JSON POST body and Content-Type header to be set to application/json.
 Setting Content-Length may also be required if it is not automatically.
 See the Welcome Messages overview to learn how to work with Welcome Messages.
 
@@ -1882,13 +1896,13 @@ https://developer.twitter.com/en/docs/direct-messages/welcome-messages/api-refer
   
 ### `TwitterClient.directMessages.welcomeMessagesRulesNew(parameters)`
 #### Description
-Creates a new Welcome Message Rule that determines which Welcome Message will be 
+Creates a new Welcome Message Rule that determines which Welcome Message will be
 shown in a given conversation. Returns the created rule if successful.
-Requires a JSON POST body and Content-Type header to be set to application/json. 
+Requires a JSON POST body and Content-Type header to be set to application/json.
 Setting Content-Length may also be required if it is not automatically.
 Additional rule configurations are forthcoming. For the initial beta release,
-the most recently created Rule will always take precedence, and the assigned 
-Welcome Message will be displayed in the conversation.See the Welcome Messages 
+the most recently created Rule will always take precedence, and the assigned
+Welcome Message will be displayed in the conversation.See the Welcome Messages
 overview to learn how to work with Welcome Messages.
 
 
