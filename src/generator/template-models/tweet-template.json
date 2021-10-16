@@ -303,7 +303,7 @@
   "retweeted": false,
   "possibly_sensitive": false,
   "lang": "en",
-  "retweeted_status": {
+  "retweeted_status--?": {
     "created_at": "Fri Oct 15 00:35:07 +0000 2021",
     "id": 1448809628934934530,
     "id_str": "1448809628934934530",
