@@ -58,6 +58,9 @@ const data = await twitterClient.directMessages.directMessagesEventsShow({ id: '
 // Get most recent 25 retweets of a tweet
 const data = await twitterClient.tweets.statusesRetweetsById({ id: '12345', count: 25 });
 
+// Status update or tweet
+const data = await twitterClient.tweets.statusesUpdate({ status: 'Example' });
+
 // Get local trends
 const data = await twitterClient.trends.trendsAvailable();
 ```
