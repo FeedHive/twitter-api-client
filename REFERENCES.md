@@ -2179,3 +2179,41 @@ private metrics are accessible from owned/authorized accounts (definition below)
 #### Link
 https://developer.twitter.com/en/docs/twitter-api/metrics  
   
+## TweetsV2
+### `TwitterClient.tweetsV2.tweets(parameters)`
+#### Description
+Creates a Tweet on behalf of an authenticated user.
+
+
+#### Parameters
+
+| Name | Required | type |
+| ---- | -------- | ---- |
+| text | true | string |
+| direct_message_deep_link | false | string |
+| for_super_followers_only | false | boolean |
+| geo | false | {
+  place_id: string
+}
+ |
+| media | false | {
+  media_ids: string[];
+  tagged_user_ids: string[];
+}
+ |
+| poll | false | {
+  options: string[];
+  duration_minutes: number;
+}
+ |
+| quote_tweet_id | false | string |
+| reply | false | {
+  exclude_reply_user_ids: string;
+  in_reply_to_tweet_id: string;
+}
+ |
+| reply_settings | false | string |
+  
+#### Link
+https://developer.twitter.com/en/docs/twitter-api/tweets/manage-tweets/api-reference/post-tweets  
+  
