@@ -1,0 +1,80 @@
+title: TweetsV2
+subgroups:
+  - title: Post tweets
+    endpoints:
+      - title: POST createTweet
+        url: https://developer.twitter.com/en/docs/twitter-api/tweets/manage-tweets/api-reference/post-tweets
+        resourceUrl: https://api.twitter.com/2/tweets
+        contentType: 'application/json'
+        description: |
+          Creates a Tweet on behalf of an authenticated user.
+        parameters:
+          - name: text
+            description: The text of your Tweet.
+            required: true
+            type: string
+          - name: direct_message_deep_link
+            description: Tweets a link directly to a Direct Message conversation with an account.
+            required: false
+            type: string
+          - name: for_super_followers_only
+            description: Allows you to Tweet exclusively for Super Followers.
+            required: false
+            type: boolean
+          - name: geo
+            description: A place in the world.
+            required: false
+            type: |
+              {
+                place_id: string
+              }
+          - name: media
+            description: A JSON object that contains media information being attached to created Tweet. This is mutually exclusive from Quote Tweet ID and Poll.
+            required: false
+            type: |
+              {
+                media_ids: string[];
+                tagged_user_ids: string[];
+              }
+          - name: poll
+            description: A JSON object that contains options for a Tweet with a poll. This is mutually exclusive from Media and Quote Tweet ID.
+            required: false
+            type: |
+              {
+                options: string[];
+                duration_minutes: number;
+              }
+          - name: quote_tweet_id
+            description: Link to the Tweet being quoted.
+            required: false
+            type: string
+          - name: reply
+            description: A JSON object that contains information of the Tweet being replied to.
+            required: false
+            type: |
+              {
+                exclude_reply_user_ids: string;
+                in_reply_to_tweet_id: string;
+              }
+          - name: reply_settings
+            description: Settings to indicate who can reply to the Tweet. Options include "mentionedUsers" and "following". If the field isn’t specified, it will default to everyone.
+            required: false
+            type: string
+        exampleResponse: |
+          {
+            "data": {
+              "id": "1445880548472328192",
+              "text": "Hello world!"
+            }
+          }
+
+      - title: DELETE deleteTweet
+        url: https://developer.twitter.com/en/docs/twitter-api/tweets/manage-tweets/api-reference/delete-tweets-id
+        resourceUrl: https://api.twitter.com/2/tweets/
+        description: |
+          Deletes a Tweet on behalf of an authenticated user.
+        parameters:
+          - name: id
+            description: The ID of the Tweet to delete.
+            required: true
+            type: string
