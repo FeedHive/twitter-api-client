@@ -2,9 +2,10 @@ title: TweetsV2
 subgroups:
   - title: Post tweets
     endpoints:
-      - title: POST tweets
+      - title: POST createTweet
         url: https://developer.twitter.com/en/docs/twitter-api/tweets/manage-tweets/api-reference/post-tweets
         resourceUrl: https://api.twitter.com/2/tweets
+        contentType: 'application/json'
         description: |
           Creates a Tweet on behalf of an authenticated user.
         parameters:
@@ -59,7 +60,15 @@ subgroups:
             description: Settings to indicate who can reply to the Tweet. Options include "mentionedUsers" and "following". If the field isn’t specified, it will default to everyone.
             required: false
             type: string
-      - title: DELETE tweets
+        exampleResponse: |
+          {
+            "data": {
+              "id": "1445880548472328192",
+              "text": "Hello world!"
+            }
+          }
+
+      - title: DELETE deleteTweet
         url: https://developer.twitter.com/en/docs/twitter-api/tweets/manage-tweets/api-reference/delete-tweets-id
         resourceUrl: https://api.twitter.com/2/tweets/
         description: |

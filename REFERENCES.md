@@ -2180,7 +2180,7 @@ private metrics are accessible from owned/authorized accounts (definition below)
 https://developer.twitter.com/en/docs/twitter-api/metrics  
   
 ## TweetsV2
-### `TwitterClient.tweetsV2.tweets(parameters)`
+### `TwitterClient.tweetsV2.createTweet(parameters)`
 #### Description
 Creates a Tweet on behalf of an authenticated user.
 
