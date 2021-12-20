@@ -20,7 +20,11 @@
 
 # GEO
 - $ref: v1/geo.yml
+
 ### V2 ENDPOINTS ####
 
 # METRICS
 - $ref: v2/metrics.yml
+
+# TWEETS
+- $ref: v2/tweets.yml
