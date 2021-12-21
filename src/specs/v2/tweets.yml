@@ -34,7 +34,7 @@ subgroups:
             type: |
               {
                 media_ids: string[];
-                tagged_user_ids: string[];
+                tagged_user_ids?: string[];
               }
           - name: poll
             description: A JSON object that contains options for a Tweet with a poll. This is mutually exclusive from Media and Quote Tweet ID.
@@ -53,7 +53,7 @@ subgroups:
             required: false
             type: |
               {
-                exclude_reply_user_ids: string;
+                exclude_reply_user_ids?: string;
                 in_reply_to_tweet_id: string;
               }
           - name: reply_settings
