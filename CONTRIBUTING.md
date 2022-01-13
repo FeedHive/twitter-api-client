@@ -80,8 +80,11 @@ This is done by simple going to the `package.json` file and update the version.
 
 ## Adding changes to the client
 
-In the `src` folder your will find a file `spec/twitter-api-spec.yml`.  
+In the `src` folder you will find a file `spec/twitter-api-spec.yml`.  
 This is the full specification of the Twitter API that is used in by this client.
+If you add a new endpoint group (eg, 'metrics' or 'tweets') you must add a new reference in the `spec/twitter-api-spec.yml` file.
+
+After adding the new reference, and the endpoint details in the `v1` or `v2` directories, run `npm run generate` to update the client (changes reflected in `REFERENCES.md`)
 
 When you run the command `npm run generate`, this file will be used to auto-generate a new client.  
 Any changes you make in this file will be reflected by the Twitter API Client.

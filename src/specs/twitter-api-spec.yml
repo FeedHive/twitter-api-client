@@ -28,3 +28,6 @@
 
 # TWEETS
 - $ref: v2/tweets.yml
+
+# TIMELINES
+- $ref: v2/timelines.yml

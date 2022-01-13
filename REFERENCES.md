@@ -2198,7 +2198,7 @@ Creates a Tweet on behalf of an authenticated user.
  |
 | media | false | {
   media_ids: string[];
-  tagged_user_ids: string[];
+  tagged_user_ids?: string[];
 }
  |
 | poll | false | {
@@ -2208,7 +2208,7 @@ Creates a Tweet on behalf of an authenticated user.
  |
 | quote_tweet_id | false | string |
 | reply | false | {
-  exclude_reply_user_ids: string;
+  exclude_reply_user_ids?: string;
   in_reply_to_tweet_id: string;
 }
  |
@@ -2216,4 +2216,30 @@ Creates a Tweet on behalf of an authenticated user.
   
 #### Link
 https://developer.twitter.com/en/docs/twitter-api/tweets/manage-tweets/api-reference/post-tweets  
+  
+## Timelines
+### `TwitterClient.timelines.tweetsByUserId(parameters)`
+#### Description
+Returns Tweets composed by a single user, specified by the requested user ID. By default, the most recent ten Tweets are returned per request. Using pagination, the most recent 3,200 Tweets can be retrieved. The Tweets returned by this endpoint count towards the Project-level Tweet cap.
+
+#### Parameters
+
+| Name | Required | type |
+| ---- | -------- | ---- |
+| id | true | string |
+| end_time | false | date |
+| exclude | false | enum |
+| expansions | false | string |
+| max_results | false | integer |
+| media.fields | false | enum |
+| pagination_token | false | string |
+| place.fields | false | enum |
+| poll.fields | false | enum |
+| since_id | false | date |
+| tweet.fields | false | date |
+| until_id | false | string |
+| user.fields | false | enum |
+  
+#### Link
+https://developer.twitter.com/en/docs/twitter-api/tweets/timelines/api-reference/get-users-id-tweets  
   
