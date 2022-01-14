@@ -42,7 +42,7 @@ This folder will contain the new client source code in TypeScript.
 Run the command:
 
 ```console
-npm build
+npm run build
 ```
 
 This will produce yet another folder `dist` in the root.  
@@ -74,13 +74,17 @@ npm install path/to/your/cloned/twitter-api-client/repository
 Consume the client and test that the new functionality works as expected.
 
 ### Update the version
+
 Before creating the PR, make sure to update the version using the principles of semantic versioning.  
-This is done by simple going to the `package.json` file and update the version.  
+This is done by simple going to the `package.json` file and update the version.
 
 ## Adding changes to the client
 
-In the `src` folder your will find a file `spec/twitter-api-spec.yml`.  
+In the `src` folder you will find a file `spec/twitter-api-spec.yml`.  
 This is the full specification of the Twitter API that is used in by this client.
+If you add a new endpoint group (eg, 'metrics' or 'tweets') you must add a new reference in the `spec/twitter-api-spec.yml` file.
+
+After adding the new reference, and the endpoint details in the `v1` or `v2` directories, run `npm run generate` to update the client (changes reflected in `REFERENCES.md`)
 
 When you run the command `npm run generate`, this file will be used to auto-generate a new client.  
 Any changes you make in this file will be reflected by the Twitter API Client.
@@ -146,7 +150,8 @@ The client follows the format:
 ```
 
 ## PR Checklist
-- I ran all unit tests, and they are passing  
+
+- I ran all unit tests, and they are passing
 - I wrote new unit tests if appropriate
-- I install the client locally and tested it manually 
+- I install the client locally and tested it manually
 - I updated the version in `package.json`
