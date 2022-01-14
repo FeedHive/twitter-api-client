@@ -2243,3 +2243,20 @@ Returns Tweets composed by a single user, specified by the requested user ID. By
 #### Link
 https://developer.twitter.com/en/docs/twitter-api/tweets/timelines/api-reference/get-users-id-tweets  
   
+## Users
+### `TwitterClient.users.2UsersMe(parameters)`
+#### Description
+Return user informatino about an authorized user. User rate limit for OAuth 2.0 and OAuth 1.0a: 75 requests per 15-minute window per each authenticated user.
+
+
+#### Parameters
+
+| Name | Required | type |
+| ---- | -------- | ---- |
+| expansions | false | enum |
+| tweet.fields | false | enum |
+| user.fields | false | enum |
+  
+#### Link
+https://developer.twitter.com/en/docs/twitter-api/users/lookup/api-reference/get-users-me  
+  
