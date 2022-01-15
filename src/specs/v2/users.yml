@@ -2,24 +2,12 @@ title: users
 subgroups:
   - title: Get information about an authorized user
     endpoints:
-      - title: GET /2/users/me
+      - title: GET /users/me
         url: https://developer.twitter.com/en/docs/twitter-api/users/lookup/api-reference/get-users-me
         resourceUrl: https://api.twitter.com/2/users/me
         description: |
-          Return user informatino about an authorized user. User rate limit for OAuth 2.0 and OAuth 1.0a: 75 requests per 15-minute window per each authenticated user.
+          Return user information about an authorized user. User rate limit for OAuth 2.0 and OAuth 1.0a: 75 requests per 15-minute window per each authenticated user.
         parameters:
-          - name: expansions
-            description: request additional data objects that relate to the originally returned users.
-            required: false
-            type: enum
-          - name: tweet.fields
-            description: Enables you to select which specific Tweet fields will deliver in each returned pinned Tweet.
-            required: false
-            type: enum
-          - name: user.fields
-            description: Enables you to select which specific user fields will deliver with each returned users objects.
-            required: false
-            type: enum
         exampleResponse: |
           {
             "data": {

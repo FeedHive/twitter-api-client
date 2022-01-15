@@ -1,7 +1,9 @@
 import { resolve } from 'path';
 import $RefParser from '@apidevtools/json-schema-ref-parser';
 import writeParamsInterfaces from './generator/writeParamsInterfaces';
-import createFolderStructure, { copyBase } from './generator/createFolderStructure';
+import createFolderStructure, {
+  copyBase,
+} from './generator/createFolderStructure';
 import writeTypesInterfaces from './generator/writeTypesInterfaces';
 import writeClients from './generator/writeClients';
 import writeReferences from './generator/writeReferences';
@@ -32,7 +34,9 @@ async function start() {
 let dictionary: any;
 
 async function parseDictionary() {
-  dictionary = await $RefParser.dereference(resolve(__dirname, './specs/twitter-api-spec.yml'));
+  dictionary = await $RefParser.dereference(
+    resolve(__dirname, './specs/twitter-api-spec.yml')
+  );
 }
 
 function createParamsInterfaces() {
