@@ -36,7 +36,10 @@ function writeTypesInterfaces(dictionary: IReferenceDirectory[]) {
           .replace(/\{collection-object\}/g, JSON.stringify(collectionTemplate))
           .replace(/\{mention-object\}/g, JSON.stringify(mentionTemplate))
           .replace(/\{geo-object\}/g, JSON.stringify(geoTemplate))
-          .replace(/\{geo-reverse-object\}/g, JSON.stringify(geoReverseTemplate));
+          .replace(
+            /\{geo-reverse-object\}/g,
+            JSON.stringify(geoReverseTemplate)
+          );
 
         try {
           const parsed = JSON.parse(exampleResponse);
@@ -46,7 +49,7 @@ function writeTypesInterfaces(dictionary: IReferenceDirectory[]) {
             if (name === 'RootObject') {
               interfacesContent += `export default ${interfaceContent.replace(
                 'RootObject',
-                fileName,
+                fileName
               )}\n\n`;
             } else {
               interfacesContent += `export ${interfaceContent}\n\n`;
