@@ -13,7 +13,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/FeedHive/twitter-api-client"
+    "url": "git+https://github.com/FeedHive/twitter-api-client.git"
   },
   "keywords": [
     "node.js",
@@ -24,9 +24,9 @@
   "author": "FeedHive",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/FeedHive/twitter-api-client"
+    "url": "https://github.com/FeedHive/twitter-api-client/issues"
   },
-  "homepage": "https://github.com/FeedHive/twitter-api-client",
+  "homepage": "https://github.com/FeedHive/twitter-api-client#readme",
   "dependencies": {
     "oauth": "^0.9.15",
     "object-sizeof": "^1.6.1"
