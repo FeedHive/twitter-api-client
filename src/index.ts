@@ -1,9 +1,7 @@
 import { resolve } from 'path';
 import $RefParser from '@apidevtools/json-schema-ref-parser';
 import writeParamsInterfaces from './generator/writeParamsInterfaces';
-import createFolderStructure, {
-  copyBase,
-} from './generator/createFolderStructure';
+import createFolderStructure, { copyBase } from './generator/createFolderStructure';
 import writeTypesInterfaces from './generator/writeTypesInterfaces';
 import writeClients from './generator/writeClients';
 import writeReferences from './generator/writeReferences';
