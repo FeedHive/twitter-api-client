@@ -2198,7 +2198,7 @@ Creates a Tweet on behalf of an authenticated user.
  |
 | media | false | {
   media_ids: string[];
-  tagged_user_ids: string[];
+  tagged_user_ids?: string[];
 }
  |
 | poll | false | {
@@ -2208,7 +2208,7 @@ Creates a Tweet on behalf of an authenticated user.
  |
 | quote_tweet_id | false | string |
 | reply | false | {
-  exclude_reply_user_ids: string;
+  exclude_reply_user_ids?: string;
   in_reply_to_tweet_id: string;
 }
  |
