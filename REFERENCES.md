@@ -1067,6 +1067,25 @@ the screen_name or user_id parameter instead.
 #### Link
 https://developer.twitter.com/en/docs/accounts-and-users/mute-block-report-users/api-reference/post-blocks-create  
   
+### `TwitterClient.accountsAndUsers.blocksDestroy(parameters)`
+#### Description
+Un-blocks the user specified in the ID parameter for the authenticating user.
+Returns the un-blocked user when successful. If relationships existed before
+the block was instantiated, they will not be restored.
+
+
+#### Parameters
+
+| Name | Required | type |
+| ---- | -------- | ---- |
+| screen_name | false | string |
+| user_id | false | number |
+| include_entities | false | boolean |
+| skip_status | false | boolean |
+  
+#### Link
+https://developer.twitter.com/en/docs/twitter-api/v1/accounts-and-users/mute-block-report-users/api-reference/post-blocks-destroy  
+  
 ### `TwitterClient.accountsAndUsers.mutesUsersCreate(parameters)`
 #### Description
 Mutes the user specified in the ID parameter for the authenticating user.
@@ -2198,7 +2217,7 @@ Creates a Tweet on behalf of an authenticated user.
  |
 | media | false | {
   media_ids: string[];
-  tagged_user_ids: string[];
+  tagged_user_ids?: string[];
 }
  |
 | poll | false | {
@@ -2208,7 +2227,7 @@ Creates a Tweet on behalf of an authenticated user.
  |
 | quote_tweet_id | false | string |
 | reply | false | {
-  exclude_reply_user_ids: string;
+  exclude_reply_user_ids?: string;
   in_reply_to_tweet_id: string;
 }
  |

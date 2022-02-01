@@ -1771,6 +1771,37 @@ subgroups:
             type: boolean
         exampleResponse: |
           {user-object}
+      - title: POST blocks/destroy
+        url: https://developer.twitter.com/en/docs/twitter-api/v1/accounts-and-users/mute-block-report-users/api-reference/post-blocks-destroy
+        resourceUrl: https://api.twitter.com/1.1/blocks/destroy.json
+        description: |
+          Un-blocks the user specified in the ID parameter for the authenticating user.
+          Returns the un-blocked user when successful. If relationships existed before
+          the block was instantiated, they will not be restored.
+        parameters:
+          - name: screen_name
+            description: |
+              The screen name of the potentially blocked user. Helpful for
+              disambiguating when a valid screen name is also a user ID.
+            required: false
+            type: string
+          - name: user_id
+            description: |
+              The ID of the potentially blocked user. Helpful for disambiguating
+              when a valid user ID is also a valid screen name.
+            required: false
+            type: number
+          - name: include_entities
+            description: The entities node will not be included when set to false .
+            required: false
+            type: boolean
+          - name: skip_status
+            description: |
+              When set to either true , t or 1 statuses will not be included in the returned user objects.
+            required: false
+            type: boolean
+        exampleResponse: |
+          {user-object}
       - title: POST mutes/users/create
         url: https://developer.twitter.com/en/docs/accounts-and-users/mute-block-report-users/api-reference/post-mutes-users-create
         resourceUrl: https://api.twitter.com/1.1/mutes/users/create.json
