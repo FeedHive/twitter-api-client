@@ -1067,6 +1067,25 @@ the screen_name or user_id parameter instead.
 #### Link
 https://developer.twitter.com/en/docs/accounts-and-users/mute-block-report-users/api-reference/post-blocks-create  
   
+### `TwitterClient.accountsAndUsers.blocksDestroy(parameters)`
+#### Description
+Un-blocks the user specified in the ID parameter for the authenticating user.
+Returns the un-blocked user when successful. If relationships existed before
+the block was instantiated, they will not be restored.
+
+
+#### Parameters
+
+| Name | Required | type |
+| ---- | -------- | ---- |
+| screen_name | false | string |
+| user_id | false | number |
+| include_entities | false | boolean |
+| skip_status | false | boolean |
+  
+#### Link
+https://developer.twitter.com/en/docs/twitter-api/v1/accounts-and-users/mute-block-report-users/api-reference/post-blocks-destroy  
+  
 ### `TwitterClient.accountsAndUsers.mutesUsersCreate(parameters)`
 #### Description
 Mutes the user specified in the ID parameter for the authenticating user.
@@ -2198,7 +2217,7 @@ Creates a Tweet on behalf of an authenticated user.
  |
 | media | false | {
   media_ids: string[];
-  tagged_user_ids: string[];
+  tagged_user_ids?: string[];
 }
  |
 | poll | false | {
@@ -2208,7 +2227,7 @@ Creates a Tweet on behalf of an authenticated user.
  |
 | quote_tweet_id | false | string |
 | reply | false | {
-  exclude_reply_user_ids: string;
+  exclude_reply_user_ids?: string;
   in_reply_to_tweet_id: string;
 }
  |
@@ -2216,4 +2235,58 @@ Creates a Tweet on behalf of an authenticated user.
   
 #### Link
 https://developer.twitter.com/en/docs/twitter-api/tweets/manage-tweets/api-reference/post-tweets  
+  
+### `TwitterClient.tweetsV2.searchRecentTweets(parameters)`
+#### Description
+Returns Tweets from the last seven days that match a search query
+
+
+#### Parameters
+
+| Name | Required | type |
+| ---- | -------- | ---- |
+| query | true | string |
+| end_time | false | string |
+| expansions | false | string |
+| max_results | false | number |
+| media.fields | false | string |
+| next_token | false | string |
+| place.fields | false | string |
+| poll.fields | false | string |
+| since_id | false | string |
+| sort_order | false | string |
+| start_time | false | string |
+| tweet.fields | false | string |
+| until_id | false | string |
+| user.fields | false | string |
+  
+#### Link
+https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-recent  
+  
+### `TwitterClient.tweetsV2.searchAllTweets(parameters)`
+#### Description
+Full-archive search returns the complete history of public Tweets matching a search query; since the first Tweet was created March 26, 2006.
+
+
+#### Parameters
+
+| Name | Required | type |
+| ---- | -------- | ---- |
+| query | true | string |
+| end_time | false | string |
+| expansions | false | string |
+| max_results | false | number |
+| media.fields | false | string |
+| next_token | false | string |
+| place.fields | false | string |
+| poll.fields | false | string |
+| since_id | false | string |
+| sort_order | false | string |
+| start_time | false | string |
+| tweet.fields | false | string |
+| until_id | false | string |
+| user.fields | false | string |
+  
+#### Link
+https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-all  
   

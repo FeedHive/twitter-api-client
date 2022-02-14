@@ -62,7 +62,7 @@ const data = await twitterClient.tweets.statusesRetweetsById({ id: '12345', coun
 const data = await twitterClient.trends.trendsAvailable();
 ```
 
-[See all available methods here](https://github.com/FeedHive/twitter-api-client/blob/master/REFERENCES.md).
+[See all available methods here](https://github.com/FeedHive/twitter-api-client/blob/main/REFERENCES.md).
 
 ### Configuration
 
@@ -85,7 +85,7 @@ const twitterClient = new TwitterClient({
 
 ## License
 
-This project is licensed under the [MIT License](https://github.com/Silind/twitter-api-client/blob/master/LICENSE)
+This project is licensed under the [MIT License](https://github.com/Silind/twitter-api-client/blob/main/LICENSE)
 
 ## Get Help
 
@@ -101,4 +101,4 @@ In the case of a bug report, bugfix or a suggestions, please feel very free to o
 #### Pull request
 
 Pull requests are always welcome, and I'll do my best to do reviews as fast as I can.
-Please refer to the [contribution guide](https://github.com/Silind/twitter-api-client/blob/master/CONTRIBUTING.md) to see how to get started.
+Please refer to the [contribution guide](https://github.com/Silind/twitter-api-client/blob/main/CONTRIBUTING.md) to see how to get started.
