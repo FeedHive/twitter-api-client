@@ -1067,6 +1067,25 @@ the screen_name or user_id parameter instead.
 #### Link
 https://developer.twitter.com/en/docs/accounts-and-users/mute-block-report-users/api-reference/post-blocks-create  
   
+### `TwitterClient.accountsAndUsers.blocksDestroy(parameters)`
+#### Description
+Un-blocks the user specified in the ID parameter for the authenticating user.
+Returns the un-blocked user when successful. If relationships existed before
+the block was instantiated, they will not be restored.
+
+
+#### Parameters
+
+| Name | Required | type |
+| ---- | -------- | ---- |
+| screen_name | false | string |
+| user_id | false | number |
+| include_entities | false | boolean |
+| skip_status | false | boolean |
+  
+#### Link
+https://developer.twitter.com/en/docs/twitter-api/v1/accounts-and-users/mute-block-report-users/api-reference/post-blocks-destroy  
+  
 ### `TwitterClient.accountsAndUsers.mutesUsersCreate(parameters)`
 #### Description
 Mutes the user specified in the ID parameter for the authenticating user.
@@ -2217,31 +2236,57 @@ Creates a Tweet on behalf of an authenticated user.
 #### Link
 https://developer.twitter.com/en/docs/twitter-api/tweets/manage-tweets/api-reference/post-tweets  
   
-## Timelines
-### `TwitterClient.timelines.usersIdTweets(parameters)`
+### `TwitterClient.tweetsV2.searchRecentTweets(parameters)`
 #### Description
-Returns Tweets composed by a single user, specified by the requested user ID. By default, the most recent ten Tweets are returned per request. Using pagination, the most recent 3,200 Tweets can be retrieved. The Tweets returned by this endpoint count towards the Project-level Tweet cap.
+Returns Tweets from the last seven days that match a search query
 
 #### Parameters
 
 | Name | Required | type |
 | ---- | -------- | ---- |
-| id | true | string |
+=======
+| query | true | string |
+| end_time | false | string |
 | expansions | false | string |
 | max_results | false | number |
-| pagination_token | false | string |
+| media.fields | false | string |
+| next_token | false | string |
+| place.fields | false | string |
+| poll.fields | false | string |
+| since_id | false | string |
+| sort_order | false | string |
+| start_time | false | string |
+| tweet.fields | false | string |
 | until_id | false | string |
+| user.fields | false | string |
   
 #### Link
-https://developer.twitter.com/en/docs/twitter-api/tweets/timelines/api-reference/get-users-id-tweets  
+https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-recent  
   
-## Users
-### `TwitterClient.users.usersMe()`
+### `TwitterClient.tweetsV2.searchAllTweets(parameters)`
 #### Description
-Return user information about an authorized user. User rate limit for OAuth 2.0 and OAuth 1.0a: 75 requests per 15-minute window per each authenticated user.
+Full-archive search returns the complete history of public Tweets matching a search query; since the first Tweet was created March 26, 2006.
 
 
+#### Parameters
+
+| Name | Required | type |
+| ---- | -------- | ---- |
+| query | true | string |
+| end_time | false | string |
+| expansions | false | string |
+| max_results | false | number |
+| media.fields | false | string |
+| next_token | false | string |
+| place.fields | false | string |
+| poll.fields | false | string |
+| since_id | false | string |
+| sort_order | false | string |
+| start_time | false | string |
+| tweet.fields | false | string |
+| until_id | false | string |
+| user.fields | false | string |
   
 #### Link
-https://developer.twitter.com/en/docs/twitter-api/users/lookup/api-reference/get-users-me  
+https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-all  
   

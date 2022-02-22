@@ -25,3 +25,4 @@ Please verify that you:
 - [ ] Wrote new unit tests if appropriate
 - [ ] Installed the client locally and tested it manually
 - [ ] Updated the version in `package.json`
+- [ ] Set the branch base to `development` (not `main`)
