@@ -2290,3 +2290,25 @@ Full-archive search returns the complete history of public Tweets matching a sea
 #### Link
 https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-all  
   
+### `TwitterClient.tweetsV2.likingUsers(parameters)`
+#### Description
+Allows you to get information about a Tweet’s liking users.
+
+
+#### Parameters
+
+| Name | Required | type |
+| ---- | -------- | ---- |
+| id | true | string |
+| expansions | false | string |
+| max_results | false | number |
+| media.fields | false | string |
+| pagination_token | false | string |
+| place.fields | false | string |
+| poll.fields | false | string |
+| tweet.fields | false | string |
+| user.fields | false | string |
+  
+#### Link
+https://developer.twitter.com/en/docs/twitter-api/tweets/likes/api-reference/get-tweets-id-liking_users  
+  
