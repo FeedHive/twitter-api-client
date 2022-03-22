@@ -1,6 +1,20 @@
 # Reference
 
 ## Basics
+### `TwitterClient.basics.applicationRateLimitStatus(parameters)`
+#### Description
+Returns the current rate limits for methods belonging to the specified resource families.
+
+
+#### Parameters
+
+| Name | Required | type |
+| ---- | -------- | ---- |
+| resources | false | string |
+  
+#### Link
+https://developer.twitter.com/en/docs/twitter-api/v1/developer-utilities/rate-limit-status/api-reference/get-application-rate_limit_status  
+  
 ### `TwitterClient.basics.oauthAuthenticate(parameters)`
 #### Description
 Allows a Consumer application to use an OAuth request_token to request user authorization. 
