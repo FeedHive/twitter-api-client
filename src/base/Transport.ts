@@ -93,8 +93,6 @@ class Transport {
         this.credentials.accessTokenSecret,
         (err: { statusCode: number; data?: any }, body?: string | Buffer) => {
           if (err) {
-            console.log('ERRROR', err);
-
             reject(err);
             return;
           }
