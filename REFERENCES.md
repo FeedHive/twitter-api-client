@@ -131,6 +131,21 @@ If attempted too frequently, requests will be rejected with a HTTP 403 with code
 #### Link
 https://developer.twitter.com/en/docs/basics/authentication/api-reference/token  
   
+## Application
+### `TwitterClient.application.applicationRateLimitStatus(parameters)`
+#### Description
+Returns the current rate limits for methods belonging to the specified resource families.
+
+
+#### Parameters
+
+| Name | Required | type |
+| ---- | -------- | ---- |
+| resources | false | string |
+  
+#### Link
+https://developer.twitter.com/en/docs/twitter-api/v1/developer-utilities/rate-limit-status/api-reference/get-application-rate_limit_status  
+  
 ## AccountsAndUsers
 ### `TwitterClient.accountsAndUsers.listsList(parameters)`
 #### Description
@@ -2289,4 +2304,26 @@ Full-archive search returns the complete history of public Tweets matching a sea
   
 #### Link
 https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-all  
+  
+### `TwitterClient.tweetsV2.likingUsers(parameters)`
+#### Description
+Allows you to get information about a Tweet’s liking users.
+
+
+#### Parameters
+
+| Name | Required | type |
+| ---- | -------- | ---- |
+| id | true | string |
+| expansions | false | string |
+| max_results | false | number |
+| media.fields | false | string |
+| pagination_token | false | string |
+| place.fields | false | string |
+| poll.fields | false | string |
+| tweet.fields | false | string |
+| user.fields | false | string |
+  
+#### Link
+https://developer.twitter.com/en/docs/twitter-api/tweets/likes/api-reference/get-tweets-id-liking_users  
   

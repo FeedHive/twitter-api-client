@@ -1,0 +1,16 @@
+title: Application
+subgroups:
+  - title: Application
+    endpoints:
+      - title: GET application/rate_limit_status
+        url: https://developer.twitter.com/en/docs/twitter-api/v1/developer-utilities/rate-limit-status/api-reference/get-application-rate_limit_status
+        resourceUrl: https://api.twitter.com/1.1/application/rate_limit_status.json
+        description: |
+          Returns the current rate limits for methods belonging to the specified resource families.
+        parameters:
+          - name: resources
+            description: |
+              A comma-separated list of resource families you want to know the current rate limit disposition for. 
+              For best performance, only specify the resource families pertinent to your application.
+            required: false
+            type: string
