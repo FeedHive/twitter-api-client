@@ -7,6 +7,15 @@ Node.js client for Twitter API
 [![NPM Version](https://img.shields.io/npm/v/twitter-api-client)](https://www.npmjs.com/package/twitter-api-client)
 ![Build Status](https://github.com/FeedHive/twitter-api-client/workflows/build/badge.svg)
 
+### ⚠️ Important notice
+
+Twitter now has an [official TypeScript SDK](https://github.com/twitterdev/twitter-api-typescript-sdk).  
+We recommend using that instead of this client.
+
+This project will be maintained, but will not be developed any further.
+
+To all contributors who added to this project: Thank you 🧡
+
 ## Table of content
 
 - [Features](#features)

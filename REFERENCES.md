@@ -2290,3 +2290,42 @@ Full-archive search returns the complete history of public Tweets matching a sea
 #### Link
 https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-all  
   
+### `TwitterClient.tweetsV2.countRecentTweets(parameters)`
+#### Description
+The recent Tweet counts endpoint returns count of Tweets from the last seven days that match a query.
+
+
+#### Parameters
+
+| Name | Required | type |
+| ---- | -------- | ---- |
+| query | true | string |
+| end_time | false | string |
+| start_time | false | string |
+| granularity | false | string |
+| since_id | false | string |
+| until_id | false | string |
+  
+#### Link
+https://developer.twitter.com/en/docs/twitter-api/tweets/counts/api-reference/get-tweets-counts-recent  
+  
+### `TwitterClient.tweetsV2.countAllTweets(parameters)`
+#### Description
+The recent Tweet counts endpoint returns count of Tweets from the last seven days that match a query.
+
+
+#### Parameters
+
+| Name | Required | type |
+| ---- | -------- | ---- |
+| query | true | string |
+| end_time | false | string |
+| start_time | false | string |
+| granularity | false | string |
+| since_id | false | string |
+| until_id | false | string |
+| next_token | false | string |
+  
+#### Link
+https://developer.twitter.com/en/docs/twitter-api/tweets/counts/api-reference/get-tweets-counts-all  
+  
