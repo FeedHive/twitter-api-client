@@ -62,7 +62,7 @@ const twitterClient = new TwitterClient({
 const data = await twitterClient.accountsAndUsers.usersSearch({ q: 'twitterDev' });
 
 // Get message event by Id
-const data = await twitterClient.directMessages.directMessagesEventsShow({ id: '1234' });
+const data = await twitterClient.directMessages.eventsShow({ id: '1234' });
 
 // Get most recent 25 retweets of a tweet
 const data = await twitterClient.tweets.statusesRetweetsById({ id: '12345', count: 25 });
