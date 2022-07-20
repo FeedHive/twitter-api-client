@@ -7,6 +7,15 @@ Node.js client for Twitter API
 [![NPM Version](https://img.shields.io/npm/v/twitter-api-client)](https://www.npmjs.com/package/twitter-api-client)
 ![Build Status](https://github.com/FeedHive/twitter-api-client/workflows/build/badge.svg)
 
+### ⚠️ Important notice
+
+Twitter now has an [official TypeScript SDK](https://github.com/twitterdev/twitter-api-typescript-sdk).  
+We recommend using that instead of this client.
+
+This project will be maintained, but will not be developed any further.
+
+To all contributors who added to this project: Thank you 🧡
+
 ## Table of content
 
 - [Features](#features)
@@ -53,7 +62,7 @@ const twitterClient = new TwitterClient({
 const data = await twitterClient.accountsAndUsers.usersSearch({ q: 'twitterDev' });
 
 // Get message event by Id
-const data = await twitterClient.directMessages.directMessagesEventsShow({ id: '1234' });
+const data = await twitterClient.directMessages.eventsShow({ id: '1234' });
 
 // Get most recent 25 retweets of a tweet
 const data = await twitterClient.tweets.statusesRetweetsById({ id: '12345', count: 25 });

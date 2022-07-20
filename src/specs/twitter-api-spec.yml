@@ -3,6 +3,9 @@
 # BASICS
 - $ref: v1/basic.yml
 
+# APPS
+- $ref: v1/apps.yml
+
 # ACCOUNTS AND USERS
 - $ref: v1/accounts-and-users.yml
 
