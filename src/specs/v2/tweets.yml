@@ -86,14 +86,14 @@ subgroups:
           - name: query
             description: A UTF-8, URL-encoded search query of 500 characters maximum, including operators. Queries may additionally be limited by complexity.
             required: true
-            type: string 
+            type: string
           - name: end_time
             description: |
               YYYY-MM-DDTHH:mm:ssZ (ISO 8601/RFC 3339). The newest, most recent UTC timestamp to which the Tweets will be provided. 
               Timestamp is in second granularity and is exclusive (for example, 12:00:01 excludes the first second of the minute). 
               By default, a request will return Tweets from as recent as 30 seconds ago if you do not include this parameter.
             required: false
-            type: string 
+            type: string
           - name: expansions
             description: |
               Expansions enable you to request additional data objects that relate to the originally returned Tweets. 
@@ -187,14 +187,14 @@ subgroups:
           - name: query
             description: A UTF-8, URL-encoded search query of 500 characters maximum, including operators. Queries may additionally be limited by complexity.
             required: true
-            type: string 
+            type: string
           - name: end_time
             description: |
               YYYY-MM-DDTHH:mm:ssZ (ISO 8601/RFC 3339). The newest, most recent UTC timestamp to which the Tweets will be provided. 
               Timestamp is in second granularity and is exclusive (for example, 12:00:01 excludes the first second of the minute). 
               By default, a request will return Tweets from as recent as 30 seconds ago if you do not include this parameter.
             required: false
-            type: string 
+            type: string
           - name: expansions
             description: |
               Expansions enable you to request additional data objects that relate to the originally returned Tweets. 
@@ -279,3 +279,126 @@ subgroups:
               This fields parameter enables you to select which specific user fields will deliver in each returned Tweet.
             required: false
             type: string
+      - title: GET countRecentTweets
+        url: https://developer.twitter.com/en/docs/twitter-api/tweets/counts/api-reference/get-tweets-counts-recent
+        resourceUrl: https://api.twitter.com/2/tweets/counts/recent
+        description: |
+          The recent Tweet counts endpoint returns count of Tweets from the last seven days that match a query.
+        parameters:
+          - name: query
+            description: A UTF-8, URL-encoded search query of 500 characters maximum, including operators. Queries may additionally be limited by complexity.
+            required: true
+            type: string
+          - name: end_time
+            description: |
+              YYYY-MM-DDTHH:mm:ssZ (ISO 8601/RFC 3339). The newest, most recent UTC timestamp to which the Tweets will be provided. 
+              Timestamp is in second granularity and is exclusive (for example, 12:00:01 excludes the first second of the minute). 
+              By default, a request will return Tweets from as recent as 30 seconds ago if you do not include this parameter.
+            required: false
+            type: string
+          - name: start_time
+            description: |
+              YYYY-MM-DDTHH:mm:ssZ (ISO 8601/RFC 3339). The oldest UTC timestamp (from most recent seven days) from which the Tweets will be provided. 
+              Timestamp is in second granularity and is inclusive (for example, 12:00:01 includes the first second of the minute). 
+              If included with the same request as a since_id parameter, only since_id will be used. 
+              By default, a request will return Tweets from up to seven days ago if you do not include this parameter.
+            required: false
+            type: string
+          - name: granularity
+            description: |
+              This is the granularity that you want the timeseries count data to be grouped by. You can requeset minute, hour, or day granularity.
+              The default granularity, if not specified is hour.
+            required: false
+            type: string
+          - name: since_id
+            description: |
+              YYYY-MM-DDTHH:mm:ssZ (ISO 8601/RFC 3339). The oldest UTC timestamp (from most recent seven days) from which the Tweet counts will be provided.
+              Timestamp is in second granularity and is inclusive (for example, 12:00:01 includes the first second of the minute).
+              If included with the same request as a since_id parameter, only since_id will be used.
+              By default, a request will return Tweet counts from up to seven days ago if you do not include this parameter.
+            required: false
+            type: string
+          - name: until_id
+            description: |
+              Returns results with a Tweet ID less than (that is, older than) the specified ID. 
+              The ID specified is exclusive and responses will not include it.
+            required: false
+            type: string
+        exampleResponse: |
+          {
+            "data": [
+              {
+                "end": "2021-05-27T00:00:00.000Z",
+                "start": "2021-05-26T23:00:00.000Z",
+                "tweet_count": 345
+              },
+            ],
+            "meta": {
+              "total_tweet_count": 744364
+            }
+          }
+      - title: GET countAllTweets
+        url: https://developer.twitter.com/en/docs/twitter-api/tweets/counts/api-reference/get-tweets-counts-all
+        resourceUrl: https://api.twitter.com/2/tweets/counts/all
+        description: |
+          The recent Tweet counts endpoint returns count of Tweets from the last seven days that match a query.
+        parameters:
+          - name: query
+            description: A UTF-8, URL-encoded search query of 500 characters maximum, including operators. Queries may additionally be limited by complexity.
+            required: true
+            type: string
+          - name: end_time
+            description: |
+              YYYY-MM-DDTHH:mm:ssZ (ISO 8601/RFC 3339). The newest, most recent UTC timestamp to which the Tweets will be provided. 
+              Timestamp is in second granularity and is exclusive (for example, 12:00:01 excludes the first second of the minute). 
+              By default, a request will return Tweets from as recent as 30 seconds ago if you do not include this parameter.
+            required: false
+            type: string
+          - name: start_time
+            description: |
+              YYYY-MM-DDTHH:mm:ssZ (ISO 8601/RFC 3339). The oldest UTC timestamp (from most recent seven days) from which the Tweets will be provided. 
+              Timestamp is in second granularity and is inclusive (for example, 12:00:01 includes the first second of the minute). 
+              If included with the same request as a since_id parameter, only since_id will be used. 
+              By default, a request will return Tweets from up to seven days ago if you do not include this parameter.
+            required: false
+            type: string
+          - name: granularity
+            description: |
+              This is the granularity that you want the timeseries count data to be grouped by. You can requeset minute, hour, or day granularity.
+              The default granularity, if not specified is hour.
+            required: false
+            type: string
+          - name: since_id
+            description: |
+              YYYY-MM-DDTHH:mm:ssZ (ISO 8601/RFC 3339). The oldest UTC timestamp (from most recent seven days) from which the Tweet counts will be provided.
+              Timestamp is in second granularity and is inclusive (for example, 12:00:01 includes the first second of the minute).
+              If included with the same request as a since_id parameter, only since_id will be used.
+              By default, a request will return Tweet counts from up to seven days ago if you do not include this parameter.
+            required: false
+            type: string
+          - name: until_id
+            description: |
+              Returns results with a Tweet ID less than (that is, older than) the specified ID. 
+              The ID specified is exclusive and responses will not include it.
+            required: false
+            type: string
+          - name: next_token
+            description: |
+              This parameter is used to get the next 'page' of results.
+              The value used with the parameter is pulled directly from the response provided by the API, assuming that your request contains more than 31 days-worth of results,
+              and should not be modified. You can learn more by visiting our page on pagination.
+            required: false
+            type: string
+        exampleResponse: |
+          {
+            "data": [
+              {
+                "end": "2021-05-27T00:00:00.000Z",
+                "start": "2021-05-26T23:00:00.000Z",
+                "tweet_count": 345
+              },
+            ],
+            "meta": {
+              "total_tweet_count": 744364
+            }
+          }
