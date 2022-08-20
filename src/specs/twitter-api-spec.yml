@@ -3,9 +3,6 @@
 # BASICS
 - $ref: v1/basic.yml
 
-# APPS
-- $ref: v1/apps.yml
-
 # ACCOUNTS AND USERS
 - $ref: v1/accounts-and-users.yml
 
@@ -31,3 +28,9 @@
 
 # TWEETS
 - $ref: v2/tweets.yml
+
+# TIMELINES
+- $ref: v2/timelines.yml
+
+# USERS
+- $ref: v2/users.yml

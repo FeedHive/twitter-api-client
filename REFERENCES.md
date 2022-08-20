@@ -2581,16 +2581,50 @@ The recent Tweet counts endpoint returns count of Tweets from the last seven day
 
 #### Parameters
 
-| Name        | Required | type   |
-| ----------- | -------- | ------ |
-| query       | true     | string |
-| end_time    | false    | string |
-| start_time  | false    | string |
-| granularity | false    | string |
-| since_id    | false    | string |
-| until_id    | false    | string |
-| next_token  | false    | string |
-
+| Name | Required | type |
+| ---- | -------- | ---- |
+| query | true | string |
+| end_time | false | string |
+| expansions | false | string |
+| max_results | false | number |
+| media.fields | false | string |
+| next_token | false | string |
+| place.fields | false | string |
+| poll.fields | false | string |
+| since_id | false | string |
+| sort_order | false | string |
+| start_time | false | string |
+| tweet.fields | false | string |
+| until_id | false | string |
+| user.fields | false | string |
+  
 #### Link
+https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-all  
+  
+## Timelines
+### `TwitterClient.timelines.usersIdTweets(parameters)`
+#### Description
+Returns Tweets composed by a single user, specified by the requested user ID. By default, the most recent ten Tweets are returned per request. Using pagination, the most recent 3,200 Tweets can be retrieved. The Tweets returned by this endpoint count towards the Project-level Tweet cap.
 
-https://developer.twitter.com/en/docs/twitter-api/tweets/counts/api-reference/get-tweets-counts-all
+#### Parameters
+
+| Name | Required | type |
+| ---- | -------- | ---- |
+| id | true | string |
+| expansions | false | string |
+| max_results | false | number |
+| pagination_token | false | string |
+| until_id | false | string |
+  
+#### Link
+https://developer.twitter.com/en/docs/twitter-api/tweets/timelines/api-reference/get-users-id-tweets  
+  
+## Users
+### `TwitterClient.users.usersMe()`
+#### Description
+Return user information about an authorized user. User rate limit for OAuth 2.0 and OAuth 1.0a: 75 requests per 15-minute window per each authenticated user.
+
+
+  
+#### Link
+https://developer.twitter.com/en/docs/twitter-api/users/lookup/api-reference/get-users-me  
