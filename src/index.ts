@@ -32,7 +32,9 @@ async function start() {
 let dictionary: any;
 
 async function parseDictionary() {
-  dictionary = await $RefParser.dereference(resolve(__dirname, './specs/twitter-api-spec.yml'));
+  dictionary = await $RefParser.dereference(
+    resolve(__dirname, './specs/twitter-api-spec.yml')
+  );
 }
 
 function createParamsInterfaces() {
