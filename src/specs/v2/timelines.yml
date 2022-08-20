@@ -1,0 +1,80 @@
+title: timelines
+subgroups:
+  - title: Get tweets from a single user
+    endpoints:
+      - title: GET users/id/tweets
+        url: https://developer.twitter.com/en/docs/twitter-api/tweets/timelines/api-reference/get-users-id-tweets
+        resourceUrl: https://api.twitter.com/2/users/:id/tweets
+        description: Returns Tweets composed by a single user, specified by the requested user ID. By default, the most recent ten Tweets are returned per request. Using pagination, the most recent 3,200 Tweets can be retrieved. The Tweets returned by this endpoint count towards the Project-level Tweet cap.
+        parameters:
+          - name: id
+            description: Unique identifier of the Twitter account (user ID) for whom to return results. User ID can be referenced using the user/lookup endpoint.
+            required: true
+            type: string
+          - name: expansions
+            description: Expansions enable you to request additional data objects that relate to the originally returned Tweets. Submit a list of desired expansions in a comma-separated list without spaces.
+            required: false
+            type: string
+          - name: max_results
+            description: Specifies the number of Tweets to try and retrieve, up to a maximum of 100 per distinct request. By default, 10 results are returned if this parameter is not supplied.
+            required: false
+            type: number
+          - name: pagination_token
+            description: This parameter is used to move forwards or backwards through 'pages' of results, based on the value of the next_token or previous_token in the response.
+            required: false
+            type: string
+          - name: until_id
+            description: Returns results with a Tweet ID less less than (that is, older than) the specified 'until' Tweet ID.
+            required: false
+            type: string
+        exampleResponse: |
+          {
+            "data": [
+              {
+                "id": "1338971066773905408",
+                "text": "💡 Using Twitter data for academic research? Join our next livestream this Friday @ 9am PT on https://t.co/GrtBOXh5Y1!n n@SuhemParack will show how to get started with recent search &amp; filtered stream endpoints on the #TwitterAPI v2, the new Tweet payload, annotations, &amp; more. https://t.co/IraD2Z7wEg"
+              },
+              {
+                "id": "1338923691497959425",
+                "text": "📈 Live now with @jessicagarson and @i_am_daniele! https://t.co/Y1AFzsTTxb"
+              },
+              {
+                "id": "1337498609819021312",
+                "text": "Thanks to everyone who tuned in today to make music with the #TwitterAPI!nnNext week on Twitch - @iamdaniele and @jessicagarson will show you how to integrate the #TwitterAPI and Google Sheets 📈. Tuesday, Dec 15th at 2pm ET. nnhttps://t.co/SQziic6eyp"
+              },
+              {
+                "id": "1337464482654793740",
+                "text": "🎧💻 We're live! Tune in! 🎶 https://t.co/FSYP4rJdHr"
+              },
+              {
+                "id": "1337122535188652033",
+                "text": "👂We want to hear what you think about our plans. As we continue to build our new product tracks, your feedback is essential to shaping the future of the Twitter API. Share your thoughts on this survey: https://t.co/dkIqFGPji7"
+              },
+              {
+                "id": "1337122534173663235",
+                "text": "Is 2020 over yet?nDespite everything that happened this year, thousands of you still made the time to learn, play, and build incredible things on the new #TwitterAPI.nWe want to share some of your stories and give you a preview of what’s to come next year.nhttps://t.co/VpOKT22WgF"
+              },
+              {
+                "id": "1336463248510623745",
+                "text": "🎧 Headphones on: watch @jessicagarson build an interactive app to write music using SuperCollider, Python, FoxDot, and the new Twitter API. Streaming Friday 1:30 ET on our new Twitch channel 🎶💻 https://t.co/SQziic6eyp"
+              },
+              {
+                "id": "1334987486343299072",
+                "text": "console.log('Happy birthday, JavaScript!');"
+              },
+              {
+                "id": "1334920270587584521",
+                "text": "Live now!nJoin the first ever @Twitch stream from TwitterDev https://t.co/x33fiVIi7B"
+              },
+              {
+                "id": "1334564488884862976",
+                "text": "Before we release new #TwitterAPI endpoints, we let developers test drive a prototype of our intended design. @i_am_daniele takes you behind the scenes of an endpoint in the making. https://t.co/NNTDnciwNq"
+              }
+            ],
+            "meta": {
+              "oldest_id": "1334564488884862976",
+              "newest_id": "1338971066773905408",
+              "result_count": 10,
+              "next_token": "7140dibdnow9c7btw3w29grvxfcgvpb9n9coehpk7xz5i"
+            }
+          }
