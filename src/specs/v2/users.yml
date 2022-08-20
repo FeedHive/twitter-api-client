@@ -1,0 +1,18 @@
+title: users
+subgroups:
+  - title: Get information about an authorized user
+    endpoints:
+      - title: GET /users/me
+        url: https://developer.twitter.com/en/docs/twitter-api/users/lookup/api-reference/get-users-me
+        resourceUrl: https://api.twitter.com/2/users/me
+        description: |
+          Return user information about an authorized user. User rate limit for OAuth 2.0 and OAuth 1.0a: 75 requests per 15-minute window per each authenticated user.
+        parameters:
+        exampleResponse: |
+          {
+            "data": {
+              "id": "2244994945",
+              "name": "TwitterDev",
+              "username": "Twitter Dev"
+            }
+          }
